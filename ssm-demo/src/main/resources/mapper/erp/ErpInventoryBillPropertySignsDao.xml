@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.learning.demo.dao.erp.ErpInventoryBillPropertySignsDao">
+  <resultMap id="BaseResultMap" type="com.learning.demo.bean.domain.erp.ErpInventoryBillPropertySigns">
+    <id column="sign_id" jdbcType="INTEGER" property="signId" />
+    <result column="erp_id" jdbcType="INTEGER" property="erpId" />
+    <result column="system_type" jdbcType="BIT" property="systemType" />
+    <result column="property_id" jdbcType="INTEGER" property="propertyId" />
+    <result column="column_one" jdbcType="VARCHAR" property="columnOne" />
+    <result column="column_two" jdbcType="VARCHAR" property="columnTwo" />
+    <result column="column_three" jdbcType="VARCHAR" property="columnThree" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="created" jdbcType="INTEGER" property="created" />
+    <result column="updated" jdbcType="INTEGER" property="updated" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <if test="fields == null">
+      sign_id, erp_id, system_type, property_id, column_one, column_two, column_three, 
+      remark, created, updated, is_deleted
+    </if>
+    <if test="fields != null">
+      ${fields}
+    </if>
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    sign_id,erp_id,system_type,property_id,column_one,column_two,column_three,remark,created,updated,is_deleted
+    from erp_inventory_bill_property_signs
+    where sign_id = #{signId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from erp_inventory_bill_property_signs
+    where sign_id = #{signId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.learning.demo.bean.domain.erp.ErpInventoryBillPropertySigns">
+    insert into erp_inventory_bill_property_signs (sign_id, erp_id, system_type, 
+      property_id, column_one, column_two, 
+      column_three, remark, created, 
+      updated, is_deleted)
+    values (#{signId,jdbcType=INTEGER}, #{erpId,jdbcType=INTEGER}, #{systemType,jdbcType=BIT}, 
+      #{propertyId,jdbcType=INTEGER}, #{columnOne,jdbcType=VARCHAR}, #{columnTwo,jdbcType=VARCHAR}, 
+      #{columnThree,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{created,jdbcType=INTEGER}, 
+      #{updated,jdbcType=INTEGER}, #{isDeleted,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.learning.demo.bean.domain.erp.ErpInventoryBillPropertySigns">
+    insert into erp_inventory_bill_property_signs
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="signId != null">
+        sign_id,
+      </if>
+      <if test="erpId != null">
+        erp_id,
+      </if>
+      <if test="systemType != null">
+        system_type,
+      </if>
+      <if test="propertyId != null">
+        property_id,
+      </if>
+      <if test="columnOne != null">
+        column_one,
+      </if>
+      <if test="columnTwo != null">
+        column_two,
+      </if>
+      <if test="columnThree != null">
+        column_three,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="signId != null">
+        #{signId,jdbcType=INTEGER},
+      </if>
+      <if test="erpId != null">
+        #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="systemType != null">
+        #{systemType,jdbcType=BIT},
+      </if>
+      <if test="propertyId != null">
+        #{propertyId,jdbcType=INTEGER},
+      </if>
+      <if test="columnOne != null">
+        #{columnOne,jdbcType=VARCHAR},
+      </if>
+      <if test="columnTwo != null">
+        #{columnTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="columnThree != null">
+        #{columnThree,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.learning.demo.bean.domain.erp.ErpInventoryBillPropertySigns">
+    update erp_inventory_bill_property_signs
+    <set>
+      <if test="erpId != null">
+        erp_id = #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="systemType != null">
+        system_type = #{systemType,jdbcType=BIT},
+      </if>
+      <if test="propertyId != null">
+        property_id = #{propertyId,jdbcType=INTEGER},
+      </if>
+      <if test="columnOne != null">
+        column_one = #{columnOne,jdbcType=VARCHAR},
+      </if>
+      <if test="columnTwo != null">
+        column_two = #{columnTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="columnThree != null">
+        column_three = #{columnThree,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where sign_id = #{signId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.learning.demo.bean.domain.erp.ErpInventoryBillPropertySigns">
+    update erp_inventory_bill_property_signs
+    set erp_id = #{erpId,jdbcType=INTEGER},
+      system_type = #{systemType,jdbcType=BIT},
+      property_id = #{propertyId,jdbcType=INTEGER},
+      column_one = #{columnOne,jdbcType=VARCHAR},
+      column_two = #{columnTwo,jdbcType=VARCHAR},
+      column_three = #{columnThree,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      created = #{created,jdbcType=INTEGER},
+      updated = #{updated,jdbcType=INTEGER},
+      is_deleted = #{isDeleted,jdbcType=TINYINT}
+    where sign_id = #{signId,jdbcType=INTEGER}
+  </update>
+</mapper>

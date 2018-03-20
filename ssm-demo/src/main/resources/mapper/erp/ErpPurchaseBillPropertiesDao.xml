@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.learning.demo.dao.erp.ErpPurchaseBillPropertiesDao">
+  <resultMap id="BaseResultMap" type="com.learning.demo.bean.domain.erp.ErpPurchaseBillProperties">
+    <id column="property_id" jdbcType="INTEGER" property="propertyId" />
+    <result column="erp_id" jdbcType="INTEGER" property="erpId" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="type" jdbcType="TINYINT" property="type" />
+    <result column="is_autocoding" jdbcType="CHAR" property="isAutocoding" />
+    <result column="used_number" jdbcType="VARCHAR" property="usedNumber" />
+    <result column="money_precision" jdbcType="VARCHAR" property="moneyPrecision" />
+    <result column="direct_confirm" jdbcType="CHAR" property="directConfirm" />
+    <result column="direct_print" jdbcType="CHAR" property="directPrint" />
+    <result column="update_stock" jdbcType="CHAR" property="updateStock" />
+    <result column="update_check_price" jdbcType="CHAR" property="updateCheckPrice" />
+    <result column="check_purchase" jdbcType="CHAR" property="checkPurchase" />
+    <result column="direct_settle_account" jdbcType="CHAR" property="directSettleAccount" />
+    <result column="voucher_payable_property_id" jdbcType="INTEGER" property="voucherPayablePropertyId" />
+    <result column="created" jdbcType="INTEGER" property="created" />
+    <result column="updated" jdbcType="INTEGER" property="updated" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <if test="fields == null">
+      property_id, erp_id, code, name, type, is_autocoding, used_number, money_precision, 
+      direct_confirm, direct_print, update_stock, update_check_price, check_purchase, direct_settle_account, 
+      voucher_payable_property_id, created, updated, is_deleted
+    </if>
+    <if test="fields != null">
+      ${fields}
+    </if>
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    property_id,erp_id,code,name,type,is_autocoding,used_number,money_precision,direct_confirm,direct_print,update_stock,update_check_price,check_purchase,direct_settle_account,voucher_payable_property_id,created,updated,is_deleted
+    from erp_purchase_bill_properties
+    where property_id = #{propertyId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from erp_purchase_bill_properties
+    where property_id = #{propertyId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.learning.demo.bean.domain.erp.ErpPurchaseBillProperties">
+    insert into erp_purchase_bill_properties (property_id, erp_id, code, 
+      name, type, is_autocoding, 
+      used_number, money_precision, direct_confirm, 
+      direct_print, update_stock, update_check_price, 
+      check_purchase, direct_settle_account, voucher_payable_property_id, 
+      created, updated, is_deleted
+      )
+    values (#{propertyId,jdbcType=INTEGER}, #{erpId,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{type,jdbcType=TINYINT}, #{isAutocoding,jdbcType=CHAR}, 
+      #{usedNumber,jdbcType=VARCHAR}, #{moneyPrecision,jdbcType=VARCHAR}, #{directConfirm,jdbcType=CHAR}, 
+      #{directPrint,jdbcType=CHAR}, #{updateStock,jdbcType=CHAR}, #{updateCheckPrice,jdbcType=CHAR}, 
+      #{checkPurchase,jdbcType=CHAR}, #{directSettleAccount,jdbcType=CHAR}, #{voucherPayablePropertyId,jdbcType=INTEGER}, 
+      #{created,jdbcType=INTEGER}, #{updated,jdbcType=INTEGER}, #{isDeleted,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.learning.demo.bean.domain.erp.ErpPurchaseBillProperties">
+    insert into erp_purchase_bill_properties
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="propertyId != null">
+        property_id,
+      </if>
+      <if test="erpId != null">
+        erp_id,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="isAutocoding != null">
+        is_autocoding,
+      </if>
+      <if test="usedNumber != null">
+        used_number,
+      </if>
+      <if test="moneyPrecision != null">
+        money_precision,
+      </if>
+      <if test="directConfirm != null">
+        direct_confirm,
+      </if>
+      <if test="directPrint != null">
+        direct_print,
+      </if>
+      <if test="updateStock != null">
+        update_stock,
+      </if>
+      <if test="updateCheckPrice != null">
+        update_check_price,
+      </if>
+      <if test="checkPurchase != null">
+        check_purchase,
+      </if>
+      <if test="directSettleAccount != null">
+        direct_settle_account,
+      </if>
+      <if test="voucherPayablePropertyId != null">
+        voucher_payable_property_id,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="propertyId != null">
+        #{propertyId,jdbcType=INTEGER},
+      </if>
+      <if test="erpId != null">
+        #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="isAutocoding != null">
+        #{isAutocoding,jdbcType=CHAR},
+      </if>
+      <if test="usedNumber != null">
+        #{usedNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="moneyPrecision != null">
+        #{moneyPrecision,jdbcType=VARCHAR},
+      </if>
+      <if test="directConfirm != null">
+        #{directConfirm,jdbcType=CHAR},
+      </if>
+      <if test="directPrint != null">
+        #{directPrint,jdbcType=CHAR},
+      </if>
+      <if test="updateStock != null">
+        #{updateStock,jdbcType=CHAR},
+      </if>
+      <if test="updateCheckPrice != null">
+        #{updateCheckPrice,jdbcType=CHAR},
+      </if>
+      <if test="checkPurchase != null">
+        #{checkPurchase,jdbcType=CHAR},
+      </if>
+      <if test="directSettleAccount != null">
+        #{directSettleAccount,jdbcType=CHAR},
+      </if>
+      <if test="voucherPayablePropertyId != null">
+        #{voucherPayablePropertyId,jdbcType=INTEGER},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.learning.demo.bean.domain.erp.ErpPurchaseBillProperties">
+    update erp_purchase_bill_properties
+    <set>
+      <if test="erpId != null">
+        erp_id = #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="isAutocoding != null">
+        is_autocoding = #{isAutocoding,jdbcType=CHAR},
+      </if>
+      <if test="usedNumber != null">
+        used_number = #{usedNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="moneyPrecision != null">
+        money_precision = #{moneyPrecision,jdbcType=VARCHAR},
+      </if>
+      <if test="directConfirm != null">
+        direct_confirm = #{directConfirm,jdbcType=CHAR},
+      </if>
+      <if test="directPrint != null">
+        direct_print = #{directPrint,jdbcType=CHAR},
+      </if>
+      <if test="updateStock != null">
+        update_stock = #{updateStock,jdbcType=CHAR},
+      </if>
+      <if test="updateCheckPrice != null">
+        update_check_price = #{updateCheckPrice,jdbcType=CHAR},
+      </if>
+      <if test="checkPurchase != null">
+        check_purchase = #{checkPurchase,jdbcType=CHAR},
+      </if>
+      <if test="directSettleAccount != null">
+        direct_settle_account = #{directSettleAccount,jdbcType=CHAR},
+      </if>
+      <if test="voucherPayablePropertyId != null">
+        voucher_payable_property_id = #{voucherPayablePropertyId,jdbcType=INTEGER},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where property_id = #{propertyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.learning.demo.bean.domain.erp.ErpPurchaseBillProperties">
+    update erp_purchase_bill_properties
+    set erp_id = #{erpId,jdbcType=INTEGER},
+      code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      type = #{type,jdbcType=TINYINT},
+      is_autocoding = #{isAutocoding,jdbcType=CHAR},
+      used_number = #{usedNumber,jdbcType=VARCHAR},
+      money_precision = #{moneyPrecision,jdbcType=VARCHAR},
+      direct_confirm = #{directConfirm,jdbcType=CHAR},
+      direct_print = #{directPrint,jdbcType=CHAR},
+      update_stock = #{updateStock,jdbcType=CHAR},
+      update_check_price = #{updateCheckPrice,jdbcType=CHAR},
+      check_purchase = #{checkPurchase,jdbcType=CHAR},
+      direct_settle_account = #{directSettleAccount,jdbcType=CHAR},
+      voucher_payable_property_id = #{voucherPayablePropertyId,jdbcType=INTEGER},
+      created = #{created,jdbcType=INTEGER},
+      updated = #{updated,jdbcType=INTEGER},
+      is_deleted = #{isDeleted,jdbcType=TINYINT}
+    where property_id = #{propertyId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.learning.demo.dao.erp.ErpOrderInventoryChangeLogsDao">
+  <resultMap id="BaseResultMap" type="com.learning.demo.bean.domain.erp.ErpOrderInventoryChangeLogs">
+    <id column="log_id" jdbcType="INTEGER" property="logId" />
+    <result column="property_type" jdbcType="BIT" property="propertyType" />
+    <result column="bill_id" jdbcType="INTEGER" property="billId" />
+    <result column="bill_detail_id" jdbcType="INTEGER" property="billDetailId" />
+    <result column="change_time" jdbcType="INTEGER" property="changeTime" />
+    <result column="created" jdbcType="INTEGER" property="created" />
+    <result column="updated" jdbcType="INTEGER" property="updated" />
+    <result column="is_deleted" jdbcType="BIT" property="isDeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <if test="fields == null">
+      log_id, property_type, bill_id, bill_detail_id, change_time, created, updated, is_deleted
+    </if>
+    <if test="fields != null">
+      ${fields}
+    </if>
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    log_id,property_type,bill_id,bill_detail_id,change_time,created,updated,is_deleted
+    from erp_order_inventory_change_logs
+    where log_id = #{logId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from erp_order_inventory_change_logs
+    where log_id = #{logId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.learning.demo.bean.domain.erp.ErpOrderInventoryChangeLogs">
+    insert into erp_order_inventory_change_logs (log_id, property_type, bill_id, 
+      bill_detail_id, change_time, created, 
+      updated, is_deleted)
+    values (#{logId,jdbcType=INTEGER}, #{propertyType,jdbcType=BIT}, #{billId,jdbcType=INTEGER}, 
+      #{billDetailId,jdbcType=INTEGER}, #{changeTime,jdbcType=INTEGER}, #{created,jdbcType=INTEGER}, 
+      #{updated,jdbcType=INTEGER}, #{isDeleted,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.learning.demo.bean.domain.erp.ErpOrderInventoryChangeLogs">
+    insert into erp_order_inventory_change_logs
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="logId != null">
+        log_id,
+      </if>
+      <if test="propertyType != null">
+        property_type,
+      </if>
+      <if test="billId != null">
+        bill_id,
+      </if>
+      <if test="billDetailId != null">
+        bill_detail_id,
+      </if>
+      <if test="changeTime != null">
+        change_time,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="logId != null">
+        #{logId,jdbcType=INTEGER},
+      </if>
+      <if test="propertyType != null">
+        #{propertyType,jdbcType=BIT},
+      </if>
+      <if test="billId != null">
+        #{billId,jdbcType=INTEGER},
+      </if>
+      <if test="billDetailId != null">
+        #{billDetailId,jdbcType=INTEGER},
+      </if>
+      <if test="changeTime != null">
+        #{changeTime,jdbcType=INTEGER},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.learning.demo.bean.domain.erp.ErpOrderInventoryChangeLogs">
+    update erp_order_inventory_change_logs
+    <set>
+      <if test="propertyType != null">
+        property_type = #{propertyType,jdbcType=BIT},
+      </if>
+      <if test="billId != null">
+        bill_id = #{billId,jdbcType=INTEGER},
+      </if>
+      <if test="billDetailId != null">
+        bill_detail_id = #{billDetailId,jdbcType=INTEGER},
+      </if>
+      <if test="changeTime != null">
+        change_time = #{changeTime,jdbcType=INTEGER},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=BIT},
+      </if>
+    </set>
+    where log_id = #{logId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.learning.demo.bean.domain.erp.ErpOrderInventoryChangeLogs">
+    update erp_order_inventory_change_logs
+    set property_type = #{propertyType,jdbcType=BIT},
+      bill_id = #{billId,jdbcType=INTEGER},
+      bill_detail_id = #{billDetailId,jdbcType=INTEGER},
+      change_time = #{changeTime,jdbcType=INTEGER},
+      created = #{created,jdbcType=INTEGER},
+      updated = #{updated,jdbcType=INTEGER},
+      is_deleted = #{isDeleted,jdbcType=BIT}
+    where log_id = #{logId,jdbcType=INTEGER}
+  </update>
+</mapper>

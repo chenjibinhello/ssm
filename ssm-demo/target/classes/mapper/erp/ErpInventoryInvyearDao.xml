@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.learning.demo.dao.erp.ErpInventoryInvyearDao">
+  <resultMap id="BaseResultMap" type="com.learning.demo.bean.domain.erp.ErpInventoryInvyear">
+    <id column="invyear_id" jdbcType="INTEGER" property="invyearId" />
+    <result column="erp_id" jdbcType="INTEGER" property="erpId" />
+    <result column="year" jdbcType="INTEGER" property="year" />
+    <result column="created" jdbcType="INTEGER" property="created" />
+    <result column="updated" jdbcType="INTEGER" property="updated" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <if test="fields == null">
+      invyear_id, erp_id, year, created, updated, is_deleted
+    </if>
+    <if test="fields != null">
+      ${fields}
+    </if>
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    invyear_id,erp_id,year,created,updated,is_deleted
+    from erp_inventory_invyear
+    where invyear_id = #{invyearId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from erp_inventory_invyear
+    where invyear_id = #{invyearId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.learning.demo.bean.domain.erp.ErpInventoryInvyear">
+    insert into erp_inventory_invyear (invyear_id, erp_id, year, 
+      created, updated, is_deleted
+      )
+    values (#{invyearId,jdbcType=INTEGER}, #{erpId,jdbcType=INTEGER}, #{year,jdbcType=INTEGER}, 
+      #{created,jdbcType=INTEGER}, #{updated,jdbcType=INTEGER}, #{isDeleted,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.learning.demo.bean.domain.erp.ErpInventoryInvyear">
+    insert into erp_inventory_invyear
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="invyearId != null">
+        invyear_id,
+      </if>
+      <if test="erpId != null">
+        erp_id,
+      </if>
+      <if test="year != null">
+        year,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="invyearId != null">
+        #{invyearId,jdbcType=INTEGER},
+      </if>
+      <if test="erpId != null">
+        #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="year != null">
+        #{year,jdbcType=INTEGER},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.learning.demo.bean.domain.erp.ErpInventoryInvyear">
+    update erp_inventory_invyear
+    <set>
+      <if test="erpId != null">
+        erp_id = #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="year != null">
+        year = #{year,jdbcType=INTEGER},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where invyear_id = #{invyearId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.learning.demo.bean.domain.erp.ErpInventoryInvyear">
+    update erp_inventory_invyear
+    set erp_id = #{erpId,jdbcType=INTEGER},
+      year = #{year,jdbcType=INTEGER},
+      created = #{created,jdbcType=INTEGER},
+      updated = #{updated,jdbcType=INTEGER},
+      is_deleted = #{isDeleted,jdbcType=TINYINT}
+    where invyear_id = #{invyearId,jdbcType=INTEGER}
+  </update>
+</mapper>

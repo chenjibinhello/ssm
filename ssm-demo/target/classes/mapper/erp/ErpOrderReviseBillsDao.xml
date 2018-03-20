@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.learning.demo.dao.erp.ErpOrderReviseBillsDao">
+  <resultMap id="BaseResultMap" type="com.learning.demo.bean.domain.erp.ErpOrderReviseBills">
+    <id column="revise_bill_id" jdbcType="INTEGER" property="reviseBillId" />
+    <result column="customer_bill_id" jdbcType="INTEGER" property="customerBillId" />
+    <result column="erp_id" jdbcType="INTEGER" property="erpId" />
+    <result column="property_id" jdbcType="INTEGER" property="propertyId" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="revise_date" jdbcType="INTEGER" property="reviseDate" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="whole_settle_code" jdbcType="CHAR" property="wholeSettleCode" />
+    <result column="deliver_warehouse_id" jdbcType="INTEGER" property="deliverWarehouseId" />
+    <result column="currency_id" jdbcType="INTEGER" property="currencyId" />
+    <result column="price_condition" jdbcType="VARCHAR" property="priceCondition" />
+    <result column="payment_condition" jdbcType="VARCHAR" property="paymentCondition" />
+    <result column="revise_reason" jdbcType="VARCHAR" property="reviseReason" />
+    <result column="confirmation_code" jdbcType="CHAR" property="confirmationCode" />
+    <result column="print_count" jdbcType="INTEGER" property="printCount" />
+    <result column="update_code" jdbcType="CHAR" property="updateCode" />
+    <result column="transmission_code" jdbcType="CHAR" property="transmissionCode" />
+    <result column="origin_deliver_warehouse_id" jdbcType="INTEGER" property="originDeliverWarehouseId" />
+    <result column="origin_currency_id" jdbcType="INTEGER" property="originCurrencyId" />
+    <result column="origin_price_condition" jdbcType="VARCHAR" property="originPriceCondition" />
+    <result column="origin_payment_condition" jdbcType="VARCHAR" property="originPaymentCondition" />
+    <result column="created" jdbcType="INTEGER" property="created" />
+    <result column="updated" jdbcType="INTEGER" property="updated" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <if test="fields == null">
+      revise_bill_id, customer_bill_id, erp_id, property_id, code, revise_date, customer_id, 
+      whole_settle_code, deliver_warehouse_id, currency_id, price_condition, payment_condition, 
+      revise_reason, confirmation_code, print_count, update_code, transmission_code, origin_deliver_warehouse_id, 
+      origin_currency_id, origin_price_condition, origin_payment_condition, created, updated, 
+      is_deleted
+    </if>
+    <if test="fields != null">
+      ${fields}
+    </if>
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    revise_bill_id,customer_bill_id,erp_id,property_id,code,revise_date,customer_id,whole_settle_code,deliver_warehouse_id,currency_id,price_condition,payment_condition,revise_reason,confirmation_code,print_count,update_code,transmission_code,origin_deliver_warehouse_id,origin_currency_id,origin_price_condition,origin_payment_condition,created,updated,is_deleted
+    from erp_order_revise_bills
+    where revise_bill_id = #{reviseBillId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from erp_order_revise_bills
+    where revise_bill_id = #{reviseBillId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.learning.demo.bean.domain.erp.ErpOrderReviseBills">
+    insert into erp_order_revise_bills (revise_bill_id, customer_bill_id, erp_id, 
+      property_id, code, revise_date, 
+      customer_id, whole_settle_code, deliver_warehouse_id, 
+      currency_id, price_condition, payment_condition, 
+      revise_reason, confirmation_code, print_count, 
+      update_code, transmission_code, origin_deliver_warehouse_id, 
+      origin_currency_id, origin_price_condition, 
+      origin_payment_condition, created, updated, 
+      is_deleted)
+    values (#{reviseBillId,jdbcType=INTEGER}, #{customerBillId,jdbcType=INTEGER}, #{erpId,jdbcType=INTEGER}, 
+      #{propertyId,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{reviseDate,jdbcType=INTEGER}, 
+      #{customerId,jdbcType=INTEGER}, #{wholeSettleCode,jdbcType=CHAR}, #{deliverWarehouseId,jdbcType=INTEGER}, 
+      #{currencyId,jdbcType=INTEGER}, #{priceCondition,jdbcType=VARCHAR}, #{paymentCondition,jdbcType=VARCHAR}, 
+      #{reviseReason,jdbcType=VARCHAR}, #{confirmationCode,jdbcType=CHAR}, #{printCount,jdbcType=INTEGER}, 
+      #{updateCode,jdbcType=CHAR}, #{transmissionCode,jdbcType=CHAR}, #{originDeliverWarehouseId,jdbcType=INTEGER}, 
+      #{originCurrencyId,jdbcType=INTEGER}, #{originPriceCondition,jdbcType=VARCHAR}, 
+      #{originPaymentCondition,jdbcType=VARCHAR}, #{created,jdbcType=INTEGER}, #{updated,jdbcType=INTEGER}, 
+      #{isDeleted,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.learning.demo.bean.domain.erp.ErpOrderReviseBills">
+    insert into erp_order_revise_bills
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="reviseBillId != null">
+        revise_bill_id,
+      </if>
+      <if test="customerBillId != null">
+        customer_bill_id,
+      </if>
+      <if test="erpId != null">
+        erp_id,
+      </if>
+      <if test="propertyId != null">
+        property_id,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="reviseDate != null">
+        revise_date,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="wholeSettleCode != null">
+        whole_settle_code,
+      </if>
+      <if test="deliverWarehouseId != null">
+        deliver_warehouse_id,
+      </if>
+      <if test="currencyId != null">
+        currency_id,
+      </if>
+      <if test="priceCondition != null">
+        price_condition,
+      </if>
+      <if test="paymentCondition != null">
+        payment_condition,
+      </if>
+      <if test="reviseReason != null">
+        revise_reason,
+      </if>
+      <if test="confirmationCode != null">
+        confirmation_code,
+      </if>
+      <if test="printCount != null">
+        print_count,
+      </if>
+      <if test="updateCode != null">
+        update_code,
+      </if>
+      <if test="transmissionCode != null">
+        transmission_code,
+      </if>
+      <if test="originDeliverWarehouseId != null">
+        origin_deliver_warehouse_id,
+      </if>
+      <if test="originCurrencyId != null">
+        origin_currency_id,
+      </if>
+      <if test="originPriceCondition != null">
+        origin_price_condition,
+      </if>
+      <if test="originPaymentCondition != null">
+        origin_payment_condition,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="reviseBillId != null">
+        #{reviseBillId,jdbcType=INTEGER},
+      </if>
+      <if test="customerBillId != null">
+        #{customerBillId,jdbcType=INTEGER},
+      </if>
+      <if test="erpId != null">
+        #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="propertyId != null">
+        #{propertyId,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="reviseDate != null">
+        #{reviseDate,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="wholeSettleCode != null">
+        #{wholeSettleCode,jdbcType=CHAR},
+      </if>
+      <if test="deliverWarehouseId != null">
+        #{deliverWarehouseId,jdbcType=INTEGER},
+      </if>
+      <if test="currencyId != null">
+        #{currencyId,jdbcType=INTEGER},
+      </if>
+      <if test="priceCondition != null">
+        #{priceCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentCondition != null">
+        #{paymentCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="reviseReason != null">
+        #{reviseReason,jdbcType=VARCHAR},
+      </if>
+      <if test="confirmationCode != null">
+        #{confirmationCode,jdbcType=CHAR},
+      </if>
+      <if test="printCount != null">
+        #{printCount,jdbcType=INTEGER},
+      </if>
+      <if test="updateCode != null">
+        #{updateCode,jdbcType=CHAR},
+      </if>
+      <if test="transmissionCode != null">
+        #{transmissionCode,jdbcType=CHAR},
+      </if>
+      <if test="originDeliverWarehouseId != null">
+        #{originDeliverWarehouseId,jdbcType=INTEGER},
+      </if>
+      <if test="originCurrencyId != null">
+        #{originCurrencyId,jdbcType=INTEGER},
+      </if>
+      <if test="originPriceCondition != null">
+        #{originPriceCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="originPaymentCondition != null">
+        #{originPaymentCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.learning.demo.bean.domain.erp.ErpOrderReviseBills">
+    update erp_order_revise_bills
+    <set>
+      <if test="customerBillId != null">
+        customer_bill_id = #{customerBillId,jdbcType=INTEGER},
+      </if>
+      <if test="erpId != null">
+        erp_id = #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="propertyId != null">
+        property_id = #{propertyId,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="reviseDate != null">
+        revise_date = #{reviseDate,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="wholeSettleCode != null">
+        whole_settle_code = #{wholeSettleCode,jdbcType=CHAR},
+      </if>
+      <if test="deliverWarehouseId != null">
+        deliver_warehouse_id = #{deliverWarehouseId,jdbcType=INTEGER},
+      </if>
+      <if test="currencyId != null">
+        currency_id = #{currencyId,jdbcType=INTEGER},
+      </if>
+      <if test="priceCondition != null">
+        price_condition = #{priceCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentCondition != null">
+        payment_condition = #{paymentCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="reviseReason != null">
+        revise_reason = #{reviseReason,jdbcType=VARCHAR},
+      </if>
+      <if test="confirmationCode != null">
+        confirmation_code = #{confirmationCode,jdbcType=CHAR},
+      </if>
+      <if test="printCount != null">
+        print_count = #{printCount,jdbcType=INTEGER},
+      </if>
+      <if test="updateCode != null">
+        update_code = #{updateCode,jdbcType=CHAR},
+      </if>
+      <if test="transmissionCode != null">
+        transmission_code = #{transmissionCode,jdbcType=CHAR},
+      </if>
+      <if test="originDeliverWarehouseId != null">
+        origin_deliver_warehouse_id = #{originDeliverWarehouseId,jdbcType=INTEGER},
+      </if>
+      <if test="originCurrencyId != null">
+        origin_currency_id = #{originCurrencyId,jdbcType=INTEGER},
+      </if>
+      <if test="originPriceCondition != null">
+        origin_price_condition = #{originPriceCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="originPaymentCondition != null">
+        origin_payment_condition = #{originPaymentCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where revise_bill_id = #{reviseBillId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.learning.demo.bean.domain.erp.ErpOrderReviseBills">
+    update erp_order_revise_bills
+    set customer_bill_id = #{customerBillId,jdbcType=INTEGER},
+      erp_id = #{erpId,jdbcType=INTEGER},
+      property_id = #{propertyId,jdbcType=INTEGER},
+      code = #{code,jdbcType=VARCHAR},
+      revise_date = #{reviseDate,jdbcType=INTEGER},
+      customer_id = #{customerId,jdbcType=INTEGER},
+      whole_settle_code = #{wholeSettleCode,jdbcType=CHAR},
+      deliver_warehouse_id = #{deliverWarehouseId,jdbcType=INTEGER},
+      currency_id = #{currencyId,jdbcType=INTEGER},
+      price_condition = #{priceCondition,jdbcType=VARCHAR},
+      payment_condition = #{paymentCondition,jdbcType=VARCHAR},
+      revise_reason = #{reviseReason,jdbcType=VARCHAR},
+      confirmation_code = #{confirmationCode,jdbcType=CHAR},
+      print_count = #{printCount,jdbcType=INTEGER},
+      update_code = #{updateCode,jdbcType=CHAR},
+      transmission_code = #{transmissionCode,jdbcType=CHAR},
+      origin_deliver_warehouse_id = #{originDeliverWarehouseId,jdbcType=INTEGER},
+      origin_currency_id = #{originCurrencyId,jdbcType=INTEGER},
+      origin_price_condition = #{originPriceCondition,jdbcType=VARCHAR},
+      origin_payment_condition = #{originPaymentCondition,jdbcType=VARCHAR},
+      created = #{created,jdbcType=INTEGER},
+      updated = #{updated,jdbcType=INTEGER},
+      is_deleted = #{isDeleted,jdbcType=TINYINT}
+    where revise_bill_id = #{reviseBillId,jdbcType=INTEGER}
+  </update>
+</mapper>

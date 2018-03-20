@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.learning.demo.dao.erp.ErpPurchaseVoucherBillsDao">
+  <resultMap id="BaseResultMap" type="com.learning.demo.bean.domain.erp.ErpPurchaseVoucherBills">
+    <id column="voucher_bill_id" jdbcType="INTEGER" property="voucherBillId" />
+    <result column="erp_id" jdbcType="INTEGER" property="erpId" />
+    <result column="property_id" jdbcType="INTEGER" property="propertyId" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="voucher_date" jdbcType="INTEGER" property="voucherDate" />
+    <result column="supplier_id" jdbcType="INTEGER" property="supplierId" />
+    <result column="invoice_number" jdbcType="VARCHAR" property="invoiceNumber" />
+    <result column="invoice_date" jdbcType="INTEGER" property="invoiceDate" />
+    <result column="business_tax_rate" jdbcType="BIGINT" property="businessTaxRate" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="payable_price" jdbcType="BIGINT" property="payablePrice" />
+    <result column="business_tax_price" jdbcType="BIGINT" property="businessTaxPrice" />
+    <result column="paid_price" jdbcType="BIGINT" property="paidPrice" />
+    <result column="confirmation_code" jdbcType="CHAR" property="confirmationCode" />
+    <result column="update_code" jdbcType="CHAR" property="updateCode" />
+    <result column="transmission_code" jdbcType="CHAR" property="transmissionCode" />
+    <result column="currency_id" jdbcType="INTEGER" property="currencyId" />
+    <result column="exchange_rate" jdbcType="BIGINT" property="exchangeRate" />
+    <result column="unified_number" jdbcType="VARCHAR" property="unifiedNumber" />
+    <result column="invoice_lianshu_code" jdbcType="CHAR" property="invoiceLianshuCode" />
+    <result column="tax_code" jdbcType="CHAR" property="taxCode" />
+    <result column="deduction_code" jdbcType="CHAR" property="deductionCode" />
+    <result column="invoice_payment_price" jdbcType="BIGINT" property="invoicePaymentPrice" />
+    <result column="invoice_tax_price" jdbcType="BIGINT" property="invoiceTaxPrice" />
+    <result column="forecast_pay_date" jdbcType="INTEGER" property="forecastPayDate" />
+    <result column="forecast_cash_date" jdbcType="INTEGER" property="forecastCashDate" />
+    <result column="created" jdbcType="INTEGER" property="created" />
+    <result column="updated" jdbcType="INTEGER" property="updated" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <if test="fields == null">
+      voucher_bill_id, erp_id, property_id, code, voucher_date, supplier_id, invoice_number, 
+      invoice_date, business_tax_rate, remark, payable_price, business_tax_price, paid_price, 
+      confirmation_code, update_code, transmission_code, currency_id, exchange_rate, unified_number, 
+      invoice_lianshu_code, tax_code, deduction_code, invoice_payment_price, invoice_tax_price, 
+      forecast_pay_date, forecast_cash_date, created, updated, is_deleted
+    </if>
+    <if test="fields != null">
+      ${fields}
+    </if>
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    voucher_bill_id,erp_id,property_id,code,voucher_date,supplier_id,invoice_number,invoice_date,business_tax_rate,remark,payable_price,business_tax_price,paid_price,confirmation_code,update_code,transmission_code,currency_id,exchange_rate,unified_number,invoice_lianshu_code,tax_code,deduction_code,invoice_payment_price,invoice_tax_price,forecast_pay_date,forecast_cash_date,created,updated,is_deleted
+    from erp_purchase_voucher_bills
+    where voucher_bill_id = #{voucherBillId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from erp_purchase_voucher_bills
+    where voucher_bill_id = #{voucherBillId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.learning.demo.bean.domain.erp.ErpPurchaseVoucherBills">
+    insert into erp_purchase_voucher_bills (voucher_bill_id, erp_id, property_id, 
+      code, voucher_date, supplier_id, 
+      invoice_number, invoice_date, business_tax_rate, 
+      remark, payable_price, business_tax_price, 
+      paid_price, confirmation_code, update_code, 
+      transmission_code, currency_id, exchange_rate, 
+      unified_number, invoice_lianshu_code, tax_code, 
+      deduction_code, invoice_payment_price, invoice_tax_price, 
+      forecast_pay_date, forecast_cash_date, created, 
+      updated, is_deleted)
+    values (#{voucherBillId,jdbcType=INTEGER}, #{erpId,jdbcType=INTEGER}, #{propertyId,jdbcType=INTEGER}, 
+      #{code,jdbcType=VARCHAR}, #{voucherDate,jdbcType=INTEGER}, #{supplierId,jdbcType=INTEGER}, 
+      #{invoiceNumber,jdbcType=VARCHAR}, #{invoiceDate,jdbcType=INTEGER}, #{businessTaxRate,jdbcType=BIGINT}, 
+      #{remark,jdbcType=VARCHAR}, #{payablePrice,jdbcType=BIGINT}, #{businessTaxPrice,jdbcType=BIGINT}, 
+      #{paidPrice,jdbcType=BIGINT}, #{confirmationCode,jdbcType=CHAR}, #{updateCode,jdbcType=CHAR}, 
+      #{transmissionCode,jdbcType=CHAR}, #{currencyId,jdbcType=INTEGER}, #{exchangeRate,jdbcType=BIGINT}, 
+      #{unifiedNumber,jdbcType=VARCHAR}, #{invoiceLianshuCode,jdbcType=CHAR}, #{taxCode,jdbcType=CHAR}, 
+      #{deductionCode,jdbcType=CHAR}, #{invoicePaymentPrice,jdbcType=BIGINT}, #{invoiceTaxPrice,jdbcType=BIGINT}, 
+      #{forecastPayDate,jdbcType=INTEGER}, #{forecastCashDate,jdbcType=INTEGER}, #{created,jdbcType=INTEGER}, 
+      #{updated,jdbcType=INTEGER}, #{isDeleted,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.learning.demo.bean.domain.erp.ErpPurchaseVoucherBills">
+    insert into erp_purchase_voucher_bills
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="voucherBillId != null">
+        voucher_bill_id,
+      </if>
+      <if test="erpId != null">
+        erp_id,
+      </if>
+      <if test="propertyId != null">
+        property_id,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="voucherDate != null">
+        voucher_date,
+      </if>
+      <if test="supplierId != null">
+        supplier_id,
+      </if>
+      <if test="invoiceNumber != null">
+        invoice_number,
+      </if>
+      <if test="invoiceDate != null">
+        invoice_date,
+      </if>
+      <if test="businessTaxRate != null">
+        business_tax_rate,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="payablePrice != null">
+        payable_price,
+      </if>
+      <if test="businessTaxPrice != null">
+        business_tax_price,
+      </if>
+      <if test="paidPrice != null">
+        paid_price,
+      </if>
+      <if test="confirmationCode != null">
+        confirmation_code,
+      </if>
+      <if test="updateCode != null">
+        update_code,
+      </if>
+      <if test="transmissionCode != null">
+        transmission_code,
+      </if>
+      <if test="currencyId != null">
+        currency_id,
+      </if>
+      <if test="exchangeRate != null">
+        exchange_rate,
+      </if>
+      <if test="unifiedNumber != null">
+        unified_number,
+      </if>
+      <if test="invoiceLianshuCode != null">
+        invoice_lianshu_code,
+      </if>
+      <if test="taxCode != null">
+        tax_code,
+      </if>
+      <if test="deductionCode != null">
+        deduction_code,
+      </if>
+      <if test="invoicePaymentPrice != null">
+        invoice_payment_price,
+      </if>
+      <if test="invoiceTaxPrice != null">
+        invoice_tax_price,
+      </if>
+      <if test="forecastPayDate != null">
+        forecast_pay_date,
+      </if>
+      <if test="forecastCashDate != null">
+        forecast_cash_date,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="voucherBillId != null">
+        #{voucherBillId,jdbcType=INTEGER},
+      </if>
+      <if test="erpId != null">
+        #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="propertyId != null">
+        #{propertyId,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="voucherDate != null">
+        #{voucherDate,jdbcType=INTEGER},
+      </if>
+      <if test="supplierId != null">
+        #{supplierId,jdbcType=INTEGER},
+      </if>
+      <if test="invoiceNumber != null">
+        #{invoiceNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceDate != null">
+        #{invoiceDate,jdbcType=INTEGER},
+      </if>
+      <if test="businessTaxRate != null">
+        #{businessTaxRate,jdbcType=BIGINT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="payablePrice != null">
+        #{payablePrice,jdbcType=BIGINT},
+      </if>
+      <if test="businessTaxPrice != null">
+        #{businessTaxPrice,jdbcType=BIGINT},
+      </if>
+      <if test="paidPrice != null">
+        #{paidPrice,jdbcType=BIGINT},
+      </if>
+      <if test="confirmationCode != null">
+        #{confirmationCode,jdbcType=CHAR},
+      </if>
+      <if test="updateCode != null">
+        #{updateCode,jdbcType=CHAR},
+      </if>
+      <if test="transmissionCode != null">
+        #{transmissionCode,jdbcType=CHAR},
+      </if>
+      <if test="currencyId != null">
+        #{currencyId,jdbcType=INTEGER},
+      </if>
+      <if test="exchangeRate != null">
+        #{exchangeRate,jdbcType=BIGINT},
+      </if>
+      <if test="unifiedNumber != null">
+        #{unifiedNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceLianshuCode != null">
+        #{invoiceLianshuCode,jdbcType=CHAR},
+      </if>
+      <if test="taxCode != null">
+        #{taxCode,jdbcType=CHAR},
+      </if>
+      <if test="deductionCode != null">
+        #{deductionCode,jdbcType=CHAR},
+      </if>
+      <if test="invoicePaymentPrice != null">
+        #{invoicePaymentPrice,jdbcType=BIGINT},
+      </if>
+      <if test="invoiceTaxPrice != null">
+        #{invoiceTaxPrice,jdbcType=BIGINT},
+      </if>
+      <if test="forecastPayDate != null">
+        #{forecastPayDate,jdbcType=INTEGER},
+      </if>
+      <if test="forecastCashDate != null">
+        #{forecastCashDate,jdbcType=INTEGER},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.learning.demo.bean.domain.erp.ErpPurchaseVoucherBills">
+    update erp_purchase_voucher_bills
+    <set>
+      <if test="erpId != null">
+        erp_id = #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="propertyId != null">
+        property_id = #{propertyId,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="voucherDate != null">
+        voucher_date = #{voucherDate,jdbcType=INTEGER},
+      </if>
+      <if test="supplierId != null">
+        supplier_id = #{supplierId,jdbcType=INTEGER},
+      </if>
+      <if test="invoiceNumber != null">
+        invoice_number = #{invoiceNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceDate != null">
+        invoice_date = #{invoiceDate,jdbcType=INTEGER},
+      </if>
+      <if test="businessTaxRate != null">
+        business_tax_rate = #{businessTaxRate,jdbcType=BIGINT},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="payablePrice != null">
+        payable_price = #{payablePrice,jdbcType=BIGINT},
+      </if>
+      <if test="businessTaxPrice != null">
+        business_tax_price = #{businessTaxPrice,jdbcType=BIGINT},
+      </if>
+      <if test="paidPrice != null">
+        paid_price = #{paidPrice,jdbcType=BIGINT},
+      </if>
+      <if test="confirmationCode != null">
+        confirmation_code = #{confirmationCode,jdbcType=CHAR},
+      </if>
+      <if test="updateCode != null">
+        update_code = #{updateCode,jdbcType=CHAR},
+      </if>
+      <if test="transmissionCode != null">
+        transmission_code = #{transmissionCode,jdbcType=CHAR},
+      </if>
+      <if test="currencyId != null">
+        currency_id = #{currencyId,jdbcType=INTEGER},
+      </if>
+      <if test="exchangeRate != null">
+        exchange_rate = #{exchangeRate,jdbcType=BIGINT},
+      </if>
+      <if test="unifiedNumber != null">
+        unified_number = #{unifiedNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceLianshuCode != null">
+        invoice_lianshu_code = #{invoiceLianshuCode,jdbcType=CHAR},
+      </if>
+      <if test="taxCode != null">
+        tax_code = #{taxCode,jdbcType=CHAR},
+      </if>
+      <if test="deductionCode != null">
+        deduction_code = #{deductionCode,jdbcType=CHAR},
+      </if>
+      <if test="invoicePaymentPrice != null">
+        invoice_payment_price = #{invoicePaymentPrice,jdbcType=BIGINT},
+      </if>
+      <if test="invoiceTaxPrice != null">
+        invoice_tax_price = #{invoiceTaxPrice,jdbcType=BIGINT},
+      </if>
+      <if test="forecastPayDate != null">
+        forecast_pay_date = #{forecastPayDate,jdbcType=INTEGER},
+      </if>
+      <if test="forecastCashDate != null">
+        forecast_cash_date = #{forecastCashDate,jdbcType=INTEGER},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where voucher_bill_id = #{voucherBillId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.learning.demo.bean.domain.erp.ErpPurchaseVoucherBills">
+    update erp_purchase_voucher_bills
+    set erp_id = #{erpId,jdbcType=INTEGER},
+      property_id = #{propertyId,jdbcType=INTEGER},
+      code = #{code,jdbcType=VARCHAR},
+      voucher_date = #{voucherDate,jdbcType=INTEGER},
+      supplier_id = #{supplierId,jdbcType=INTEGER},
+      invoice_number = #{invoiceNumber,jdbcType=VARCHAR},
+      invoice_date = #{invoiceDate,jdbcType=INTEGER},
+      business_tax_rate = #{businessTaxRate,jdbcType=BIGINT},
+      remark = #{remark,jdbcType=VARCHAR},
+      payable_price = #{payablePrice,jdbcType=BIGINT},
+      business_tax_price = #{businessTaxPrice,jdbcType=BIGINT},
+      paid_price = #{paidPrice,jdbcType=BIGINT},
+      confirmation_code = #{confirmationCode,jdbcType=CHAR},
+      update_code = #{updateCode,jdbcType=CHAR},
+      transmission_code = #{transmissionCode,jdbcType=CHAR},
+      currency_id = #{currencyId,jdbcType=INTEGER},
+      exchange_rate = #{exchangeRate,jdbcType=BIGINT},
+      unified_number = #{unifiedNumber,jdbcType=VARCHAR},
+      invoice_lianshu_code = #{invoiceLianshuCode,jdbcType=CHAR},
+      tax_code = #{taxCode,jdbcType=CHAR},
+      deduction_code = #{deductionCode,jdbcType=CHAR},
+      invoice_payment_price = #{invoicePaymentPrice,jdbcType=BIGINT},
+      invoice_tax_price = #{invoiceTaxPrice,jdbcType=BIGINT},
+      forecast_pay_date = #{forecastPayDate,jdbcType=INTEGER},
+      forecast_cash_date = #{forecastCashDate,jdbcType=INTEGER},
+      created = #{created,jdbcType=INTEGER},
+      updated = #{updated,jdbcType=INTEGER},
+      is_deleted = #{isDeleted,jdbcType=TINYINT}
+    where voucher_bill_id = #{voucherBillId,jdbcType=INTEGER}
+  </update>
+</mapper>

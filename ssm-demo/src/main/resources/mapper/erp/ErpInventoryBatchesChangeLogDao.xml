@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.learning.demo.dao.erp.ErpInventoryBatchesChangeLogDao">
+  <resultMap id="BaseResultMap" type="com.learning.demo.bean.domain.erp.ErpInventoryBatchesChangeLog">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="erp_id" jdbcType="INTEGER" property="erpId" />
+    <result column="material_id" jdbcType="INTEGER" property="materialId" />
+    <result column="batch_id" jdbcType="INTEGER" property="batchId" />
+    <result column="change_date" jdbcType="INTEGER" property="changeDate" />
+    <result column="bill_id" jdbcType="INTEGER" property="billId" />
+    <result column="serial_number" jdbcType="CHAR" property="serialNumber" />
+    <result column="warehouse_id" jdbcType="INTEGER" property="warehouseId" />
+    <result column="io_check" jdbcType="VARCHAR" property="ioCheck" />
+    <result column="quantity" jdbcType="BIGINT" property="quantity" />
+    <result column="change_type" jdbcType="TINYINT" property="changeType" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="created" jdbcType="INTEGER" property="created" />
+    <result column="updated" jdbcType="INTEGER" property="updated" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <if test="fields == null">
+      id, erp_id, material_id, batch_id, change_date, bill_id, serial_number, warehouse_id, 
+      io_check, quantity, change_type, remark, created, updated, is_deleted
+    </if>
+    <if test="fields != null">
+      ${fields}
+    </if>
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    id,erp_id,material_id,batch_id,change_date,bill_id,serial_number,warehouse_id,io_check,quantity,change_type,remark,created,updated,is_deleted
+    from erp_inventory_batches_change_log
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from erp_inventory_batches_change_log
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.learning.demo.bean.domain.erp.ErpInventoryBatchesChangeLog">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Integer">
+      selectuuid_short()
+    </selectKey>
+    insert into erp_inventory_batches_change_log (id, erp_id, material_id, 
+      batch_id, change_date, bill_id, 
+      serial_number, warehouse_id, io_check, 
+      quantity, change_type, remark, 
+      created, updated, is_deleted
+      )
+    values (#{id,jdbcType=INTEGER}, #{erpId,jdbcType=INTEGER}, #{materialId,jdbcType=INTEGER}, 
+      #{batchId,jdbcType=INTEGER}, #{changeDate,jdbcType=INTEGER}, #{billId,jdbcType=INTEGER}, 
+      #{serialNumber,jdbcType=CHAR}, #{warehouseId,jdbcType=INTEGER}, #{ioCheck,jdbcType=VARCHAR}, 
+      #{quantity,jdbcType=BIGINT}, #{changeType,jdbcType=TINYINT}, #{remark,jdbcType=VARCHAR}, 
+      #{created,jdbcType=INTEGER}, #{updated,jdbcType=INTEGER}, #{isDeleted,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.learning.demo.bean.domain.erp.ErpInventoryBatchesChangeLog">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Integer">
+      selectuuid_short()
+    </selectKey>
+    insert into erp_inventory_batches_change_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      id,
+      <if test="erpId != null">
+        erp_id,
+      </if>
+      <if test="materialId != null">
+        material_id,
+      </if>
+      <if test="batchId != null">
+        batch_id,
+      </if>
+      <if test="changeDate != null">
+        change_date,
+      </if>
+      <if test="billId != null">
+        bill_id,
+      </if>
+      <if test="serialNumber != null">
+        serial_number,
+      </if>
+      <if test="warehouseId != null">
+        warehouse_id,
+      </if>
+      <if test="ioCheck != null">
+        io_check,
+      </if>
+      <if test="quantity != null">
+        quantity,
+      </if>
+      <if test="changeType != null">
+        change_type,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      #{id,jdbcType=INTEGER},
+      <if test="erpId != null">
+        #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="materialId != null">
+        #{materialId,jdbcType=INTEGER},
+      </if>
+      <if test="batchId != null">
+        #{batchId,jdbcType=INTEGER},
+      </if>
+      <if test="changeDate != null">
+        #{changeDate,jdbcType=INTEGER},
+      </if>
+      <if test="billId != null">
+        #{billId,jdbcType=INTEGER},
+      </if>
+      <if test="serialNumber != null">
+        #{serialNumber,jdbcType=CHAR},
+      </if>
+      <if test="warehouseId != null">
+        #{warehouseId,jdbcType=INTEGER},
+      </if>
+      <if test="ioCheck != null">
+        #{ioCheck,jdbcType=VARCHAR},
+      </if>
+      <if test="quantity != null">
+        #{quantity,jdbcType=BIGINT},
+      </if>
+      <if test="changeType != null">
+        #{changeType,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.learning.demo.bean.domain.erp.ErpInventoryBatchesChangeLog">
+    update erp_inventory_batches_change_log
+    <set>
+      <if test="erpId != null">
+        erp_id = #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="materialId != null">
+        material_id = #{materialId,jdbcType=INTEGER},
+      </if>
+      <if test="batchId != null">
+        batch_id = #{batchId,jdbcType=INTEGER},
+      </if>
+      <if test="changeDate != null">
+        change_date = #{changeDate,jdbcType=INTEGER},
+      </if>
+      <if test="billId != null">
+        bill_id = #{billId,jdbcType=INTEGER},
+      </if>
+      <if test="serialNumber != null">
+        serial_number = #{serialNumber,jdbcType=CHAR},
+      </if>
+      <if test="warehouseId != null">
+        warehouse_id = #{warehouseId,jdbcType=INTEGER},
+      </if>
+      <if test="ioCheck != null">
+        io_check = #{ioCheck,jdbcType=VARCHAR},
+      </if>
+      <if test="quantity != null">
+        quantity = #{quantity,jdbcType=BIGINT},
+      </if>
+      <if test="changeType != null">
+        change_type = #{changeType,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.learning.demo.bean.domain.erp.ErpInventoryBatchesChangeLog">
+    update erp_inventory_batches_change_log
+    set erp_id = #{erpId,jdbcType=INTEGER},
+      material_id = #{materialId,jdbcType=INTEGER},
+      batch_id = #{batchId,jdbcType=INTEGER},
+      change_date = #{changeDate,jdbcType=INTEGER},
+      bill_id = #{billId,jdbcType=INTEGER},
+      serial_number = #{serialNumber,jdbcType=CHAR},
+      warehouse_id = #{warehouseId,jdbcType=INTEGER},
+      io_check = #{ioCheck,jdbcType=VARCHAR},
+      quantity = #{quantity,jdbcType=BIGINT},
+      change_type = #{changeType,jdbcType=TINYINT},
+      remark = #{remark,jdbcType=VARCHAR},
+      created = #{created,jdbcType=INTEGER},
+      updated = #{updated,jdbcType=INTEGER},
+      is_deleted = #{isDeleted,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

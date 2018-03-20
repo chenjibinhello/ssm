@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.learning.demo.dao.erp.ErpPurchaseMaterialManufacturersDao">
+  <resultMap id="BaseResultMap" type="com.learning.demo.bean.domain.erp.ErpPurchaseMaterialManufacturers">
+    <id column="manufacturer_id" jdbcType="INTEGER" property="manufacturerId" />
+    <result column="erp_id" jdbcType="INTEGER" property="erpId" />
+    <result column="material_id" jdbcType="INTEGER" property="materialId" />
+    <result column="supplier_id" jdbcType="INTEGER" property="supplierId" />
+    <result column="manufacturer_material_code" jdbcType="VARCHAR" property="manufacturerMaterialCode" />
+    <result column="check_date" jdbcType="INTEGER" property="checkDate" />
+    <result column="currency_id" jdbcType="INTEGER" property="currencyId" />
+    <result column="price_unit" jdbcType="VARCHAR" property="priceUnit" />
+    <result column="purchase_price" jdbcType="BIGINT" property="purchasePrice" />
+    <result column="machining_price" jdbcType="BIGINT" property="machiningPrice" />
+    <result column="last_purchase_date" jdbcType="INTEGER" property="lastPurchaseDate" />
+    <result column="purchase_quantity_january" jdbcType="BIGINT" property="purchaseQuantityJanuary" />
+    <result column="purchase_price_january" jdbcType="BIGINT" property="purchasePriceJanuary" />
+    <result column="purchase_quantity_february" jdbcType="BIGINT" property="purchaseQuantityFebruary" />
+    <result column="purchase_price_february" jdbcType="BIGINT" property="purchasePriceFebruary" />
+    <result column="purchase_quantity_march" jdbcType="BIGINT" property="purchaseQuantityMarch" />
+    <result column="purchase_price_march" jdbcType="BIGINT" property="purchasePriceMarch" />
+    <result column="purchase_quantity_april" jdbcType="BIGINT" property="purchaseQuantityApril" />
+    <result column="purchase_price_april" jdbcType="BIGINT" property="purchasePriceApril" />
+    <result column="purchase_quantity_may" jdbcType="BIGINT" property="purchaseQuantityMay" />
+    <result column="purchase_price_may" jdbcType="BIGINT" property="purchasePriceMay" />
+    <result column="purchase_quantity_june" jdbcType="BIGINT" property="purchaseQuantityJune" />
+    <result column="purchase_price_june" jdbcType="BIGINT" property="purchasePriceJune" />
+    <result column="purchase_quantity_july" jdbcType="BIGINT" property="purchaseQuantityJuly" />
+    <result column="purchase_price_july" jdbcType="BIGINT" property="purchasePriceJuly" />
+    <result column="purchase_quantity_august" jdbcType="BIGINT" property="purchaseQuantityAugust" />
+    <result column="purchase_price_august" jdbcType="BIGINT" property="purchasePriceAugust" />
+    <result column="purchase_quantity_september" jdbcType="BIGINT" property="purchaseQuantitySeptember" />
+    <result column="purchase_price_september" jdbcType="BIGINT" property="purchasePriceSeptember" />
+    <result column="purchase_quantity_october" jdbcType="BIGINT" property="purchaseQuantityOctober" />
+    <result column="purchase_price_october" jdbcType="BIGINT" property="purchasePriceOctober" />
+    <result column="purchase_quantity_november" jdbcType="BIGINT" property="purchaseQuantityNovember" />
+    <result column="purchase_price_november" jdbcType="BIGINT" property="purchasePriceNovember" />
+    <result column="purchase_quantity_december" jdbcType="BIGINT" property="purchaseQuantityDecember" />
+    <result column="purchase_price_december" jdbcType="BIGINT" property="purchasePriceDecember" />
+    <result column="created" jdbcType="INTEGER" property="created" />
+    <result column="updated" jdbcType="INTEGER" property="updated" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <if test="fields == null">
+      manufacturer_id, erp_id, material_id, supplier_id, manufacturer_material_code, check_date, 
+      currency_id, price_unit, purchase_price, machining_price, last_purchase_date, purchase_quantity_january, 
+      purchase_price_january, purchase_quantity_february, purchase_price_february, purchase_quantity_march, 
+      purchase_price_march, purchase_quantity_april, purchase_price_april, purchase_quantity_may, 
+      purchase_price_may, purchase_quantity_june, purchase_price_june, purchase_quantity_july, 
+      purchase_price_july, purchase_quantity_august, purchase_price_august, purchase_quantity_september, 
+      purchase_price_september, purchase_quantity_october, purchase_price_october, purchase_quantity_november, 
+      purchase_price_november, purchase_quantity_december, purchase_price_december, created, 
+      updated, is_deleted
+    </if>
+    <if test="fields != null">
+      ${fields}
+    </if>
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    manufacturer_id,erp_id,material_id,supplier_id,manufacturer_material_code,check_date,currency_id,price_unit,purchase_price,machining_price,last_purchase_date,purchase_quantity_january,purchase_price_january,purchase_quantity_february,purchase_price_february,purchase_quantity_march,purchase_price_march,purchase_quantity_april,purchase_price_april,purchase_quantity_may,purchase_price_may,purchase_quantity_june,purchase_price_june,purchase_quantity_july,purchase_price_july,purchase_quantity_august,purchase_price_august,purchase_quantity_september,purchase_price_september,purchase_quantity_october,purchase_price_october,purchase_quantity_november,purchase_price_november,purchase_quantity_december,purchase_price_december,created,updated,is_deleted
+    from erp_purchase_material_manufacturers
+    where manufacturer_id = #{manufacturerId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from erp_purchase_material_manufacturers
+    where manufacturer_id = #{manufacturerId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.learning.demo.bean.domain.erp.ErpPurchaseMaterialManufacturers">
+    insert into erp_purchase_material_manufacturers (manufacturer_id, erp_id, material_id, 
+      supplier_id, manufacturer_material_code, check_date, 
+      currency_id, price_unit, purchase_price, 
+      machining_price, last_purchase_date, purchase_quantity_january, 
+      purchase_price_january, purchase_quantity_february, 
+      purchase_price_february, purchase_quantity_march, 
+      purchase_price_march, purchase_quantity_april, 
+      purchase_price_april, purchase_quantity_may, 
+      purchase_price_may, purchase_quantity_june, purchase_price_june, 
+      purchase_quantity_july, purchase_price_july, 
+      purchase_quantity_august, purchase_price_august, 
+      purchase_quantity_september, purchase_price_september, 
+      purchase_quantity_october, purchase_price_october, 
+      purchase_quantity_november, purchase_price_november, 
+      purchase_quantity_december, purchase_price_december, 
+      created, updated, is_deleted
+      )
+    values (#{manufacturerId,jdbcType=INTEGER}, #{erpId,jdbcType=INTEGER}, #{materialId,jdbcType=INTEGER}, 
+      #{supplierId,jdbcType=INTEGER}, #{manufacturerMaterialCode,jdbcType=VARCHAR}, #{checkDate,jdbcType=INTEGER}, 
+      #{currencyId,jdbcType=INTEGER}, #{priceUnit,jdbcType=VARCHAR}, #{purchasePrice,jdbcType=BIGINT}, 
+      #{machiningPrice,jdbcType=BIGINT}, #{lastPurchaseDate,jdbcType=INTEGER}, #{purchaseQuantityJanuary,jdbcType=BIGINT}, 
+      #{purchasePriceJanuary,jdbcType=BIGINT}, #{purchaseQuantityFebruary,jdbcType=BIGINT}, 
+      #{purchasePriceFebruary,jdbcType=BIGINT}, #{purchaseQuantityMarch,jdbcType=BIGINT}, 
+      #{purchasePriceMarch,jdbcType=BIGINT}, #{purchaseQuantityApril,jdbcType=BIGINT}, 
+      #{purchasePriceApril,jdbcType=BIGINT}, #{purchaseQuantityMay,jdbcType=BIGINT}, 
+      #{purchasePriceMay,jdbcType=BIGINT}, #{purchaseQuantityJune,jdbcType=BIGINT}, #{purchasePriceJune,jdbcType=BIGINT}, 
+      #{purchaseQuantityJuly,jdbcType=BIGINT}, #{purchasePriceJuly,jdbcType=BIGINT}, 
+      #{purchaseQuantityAugust,jdbcType=BIGINT}, #{purchasePriceAugust,jdbcType=BIGINT}, 
+      #{purchaseQuantitySeptember,jdbcType=BIGINT}, #{purchasePriceSeptember,jdbcType=BIGINT}, 
+      #{purchaseQuantityOctober,jdbcType=BIGINT}, #{purchasePriceOctober,jdbcType=BIGINT}, 
+      #{purchaseQuantityNovember,jdbcType=BIGINT}, #{purchasePriceNovember,jdbcType=BIGINT}, 
+      #{purchaseQuantityDecember,jdbcType=BIGINT}, #{purchasePriceDecember,jdbcType=BIGINT}, 
+      #{created,jdbcType=INTEGER}, #{updated,jdbcType=INTEGER}, #{isDeleted,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.learning.demo.bean.domain.erp.ErpPurchaseMaterialManufacturers">
+    insert into erp_purchase_material_manufacturers
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="manufacturerId != null">
+        manufacturer_id,
+      </if>
+      <if test="erpId != null">
+        erp_id,
+      </if>
+      <if test="materialId != null">
+        material_id,
+      </if>
+      <if test="supplierId != null">
+        supplier_id,
+      </if>
+      <if test="manufacturerMaterialCode != null">
+        manufacturer_material_code,
+      </if>
+      <if test="checkDate != null">
+        check_date,
+      </if>
+      <if test="currencyId != null">
+        currency_id,
+      </if>
+      <if test="priceUnit != null">
+        price_unit,
+      </if>
+      <if test="purchasePrice != null">
+        purchase_price,
+      </if>
+      <if test="machiningPrice != null">
+        machining_price,
+      </if>
+      <if test="lastPurchaseDate != null">
+        last_purchase_date,
+      </if>
+      <if test="purchaseQuantityJanuary != null">
+        purchase_quantity_january,
+      </if>
+      <if test="purchasePriceJanuary != null">
+        purchase_price_january,
+      </if>
+      <if test="purchaseQuantityFebruary != null">
+        purchase_quantity_february,
+      </if>
+      <if test="purchasePriceFebruary != null">
+        purchase_price_february,
+      </if>
+      <if test="purchaseQuantityMarch != null">
+        purchase_quantity_march,
+      </if>
+      <if test="purchasePriceMarch != null">
+        purchase_price_march,
+      </if>
+      <if test="purchaseQuantityApril != null">
+        purchase_quantity_april,
+      </if>
+      <if test="purchasePriceApril != null">
+        purchase_price_april,
+      </if>
+      <if test="purchaseQuantityMay != null">
+        purchase_quantity_may,
+      </if>
+      <if test="purchasePriceMay != null">
+        purchase_price_may,
+      </if>
+      <if test="purchaseQuantityJune != null">
+        purchase_quantity_june,
+      </if>
+      <if test="purchasePriceJune != null">
+        purchase_price_june,
+      </if>
+      <if test="purchaseQuantityJuly != null">
+        purchase_quantity_july,
+      </if>
+      <if test="purchasePriceJuly != null">
+        purchase_price_july,
+      </if>
+      <if test="purchaseQuantityAugust != null">
+        purchase_quantity_august,
+      </if>
+      <if test="purchasePriceAugust != null">
+        purchase_price_august,
+      </if>
+      <if test="purchaseQuantitySeptember != null">
+        purchase_quantity_september,
+      </if>
+      <if test="purchasePriceSeptember != null">
+        purchase_price_september,
+      </if>
+      <if test="purchaseQuantityOctober != null">
+        purchase_quantity_october,
+      </if>
+      <if test="purchasePriceOctober != null">
+        purchase_price_october,
+      </if>
+      <if test="purchaseQuantityNovember != null">
+        purchase_quantity_november,
+      </if>
+      <if test="purchasePriceNovember != null">
+        purchase_price_november,
+      </if>
+      <if test="purchaseQuantityDecember != null">
+        purchase_quantity_december,
+      </if>
+      <if test="purchasePriceDecember != null">
+        purchase_price_december,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="manufacturerId != null">
+        #{manufacturerId,jdbcType=INTEGER},
+      </if>
+      <if test="erpId != null">
+        #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="materialId != null">
+        #{materialId,jdbcType=INTEGER},
+      </if>
+      <if test="supplierId != null">
+        #{supplierId,jdbcType=INTEGER},
+      </if>
+      <if test="manufacturerMaterialCode != null">
+        #{manufacturerMaterialCode,jdbcType=VARCHAR},
+      </if>
+      <if test="checkDate != null">
+        #{checkDate,jdbcType=INTEGER},
+      </if>
+      <if test="currencyId != null">
+        #{currencyId,jdbcType=INTEGER},
+      </if>
+      <if test="priceUnit != null">
+        #{priceUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="purchasePrice != null">
+        #{purchasePrice,jdbcType=BIGINT},
+      </if>
+      <if test="machiningPrice != null">
+        #{machiningPrice,jdbcType=BIGINT},
+      </if>
+      <if test="lastPurchaseDate != null">
+        #{lastPurchaseDate,jdbcType=INTEGER},
+      </if>
+      <if test="purchaseQuantityJanuary != null">
+        #{purchaseQuantityJanuary,jdbcType=BIGINT},
+      </if>
+      <if test="purchasePriceJanuary != null">
+        #{purchasePriceJanuary,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseQuantityFebruary != null">
+        #{purchaseQuantityFebruary,jdbcType=BIGINT},
+      </if>
+      <if test="purchasePriceFebruary != null">
+        #{purchasePriceFebruary,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseQuantityMarch != null">
+        #{purchaseQuantityMarch,jdbcType=BIGINT},
+      </if>
+      <if test="purchasePriceMarch != null">
+        #{purchasePriceMarch,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseQuantityApril != null">
+        #{purchaseQuantityApril,jdbcType=BIGINT},
+      </if>
+      <if test="purchasePriceApril != null">
+        #{purchasePriceApril,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseQuantityMay != null">
+        #{purchaseQuantityMay,jdbcType=BIGINT},
+      </if>
+      <if test="purchasePriceMay != null">
+        #{purchasePriceMay,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseQuantityJune != null">
+        #{purchaseQuantityJune,jdbcType=BIGINT},
+      </if>
+      <if test="purchasePriceJune != null">
+        #{purchasePriceJune,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseQuantityJuly != null">
+        #{purchaseQuantityJuly,jdbcType=BIGINT},
+      </if>
+      <if test="purchasePriceJuly != null">
+        #{purchasePriceJuly,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseQuantityAugust != null">
+        #{purchaseQuantityAugust,jdbcType=BIGINT},
+      </if>
+      <if test="purchasePriceAugust != null">
+        #{purchasePriceAugust,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseQuantitySeptember != null">
+        #{purchaseQuantitySeptember,jdbcType=BIGINT},
+      </if>
+      <if test="purchasePriceSeptember != null">
+        #{purchasePriceSeptember,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseQuantityOctober != null">
+        #{purchaseQuantityOctober,jdbcType=BIGINT},
+      </if>
+      <if test="purchasePriceOctober != null">
+        #{purchasePriceOctober,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseQuantityNovember != null">
+        #{purchaseQuantityNovember,jdbcType=BIGINT},
+      </if>
+      <if test="purchasePriceNovember != null">
+        #{purchasePriceNovember,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseQuantityDecember != null">
+        #{purchaseQuantityDecember,jdbcType=BIGINT},
+      </if>
+      <if test="purchasePriceDecember != null">
+        #{purchasePriceDecember,jdbcType=BIGINT},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.learning.demo.bean.domain.erp.ErpPurchaseMaterialManufacturers">
+    update erp_purchase_material_manufacturers
+    <set>
+      <if test="erpId != null">
+        erp_id = #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="materialId != null">
+        material_id = #{materialId,jdbcType=INTEGER},
+      </if>
+      <if test="supplierId != null">
+        supplier_id = #{supplierId,jdbcType=INTEGER},
+      </if>
+      <if test="manufacturerMaterialCode != null">
+        manufacturer_material_code = #{manufacturerMaterialCode,jdbcType=VARCHAR},
+      </if>
+      <if test="checkDate != null">
+        check_date = #{checkDate,jdbcType=INTEGER},
+      </if>
+      <if test="currencyId != null">
+        currency_id = #{currencyId,jdbcType=INTEGER},
+      </if>
+      <if test="priceUnit != null">
+        price_unit = #{priceUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="purchasePrice != null">
+        purchase_price = #{purchasePrice,jdbcType=BIGINT},
+      </if>
+      <if test="machiningPrice != null">
+        machining_price = #{machiningPrice,jdbcType=BIGINT},
+      </if>
+      <if test="lastPurchaseDate != null">
+        last_purchase_date = #{lastPurchaseDate,jdbcType=INTEGER},
+      </if>
+      <if test="purchaseQuantityJanuary != null">
+        purchase_quantity_january = #{purchaseQuantityJanuary,jdbcType=BIGINT},
+      </if>
+      <if test="purchasePriceJanuary != null">
+        purchase_price_january = #{purchasePriceJanuary,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseQuantityFebruary != null">
+        purchase_quantity_february = #{purchaseQuantityFebruary,jdbcType=BIGINT},
+      </if>
+      <if test="purchasePriceFebruary != null">
+        purchase_price_february = #{purchasePriceFebruary,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseQuantityMarch != null">
+        purchase_quantity_march = #{purchaseQuantityMarch,jdbcType=BIGINT},
+      </if>
+      <if test="purchasePriceMarch != null">
+        purchase_price_march = #{purchasePriceMarch,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseQuantityApril != null">
+        purchase_quantity_april = #{purchaseQuantityApril,jdbcType=BIGINT},
+      </if>
+      <if test="purchasePriceApril != null">
+        purchase_price_april = #{purchasePriceApril,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseQuantityMay != null">
+        purchase_quantity_may = #{purchaseQuantityMay,jdbcType=BIGINT},
+      </if>
+      <if test="purchasePriceMay != null">
+        purchase_price_may = #{purchasePriceMay,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseQuantityJune != null">
+        purchase_quantity_june = #{purchaseQuantityJune,jdbcType=BIGINT},
+      </if>
+      <if test="purchasePriceJune != null">
+        purchase_price_june = #{purchasePriceJune,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseQuantityJuly != null">
+        purchase_quantity_july = #{purchaseQuantityJuly,jdbcType=BIGINT},
+      </if>
+      <if test="purchasePriceJuly != null">
+        purchase_price_july = #{purchasePriceJuly,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseQuantityAugust != null">
+        purchase_quantity_august = #{purchaseQuantityAugust,jdbcType=BIGINT},
+      </if>
+      <if test="purchasePriceAugust != null">
+        purchase_price_august = #{purchasePriceAugust,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseQuantitySeptember != null">
+        purchase_quantity_september = #{purchaseQuantitySeptember,jdbcType=BIGINT},
+      </if>
+      <if test="purchasePriceSeptember != null">
+        purchase_price_september = #{purchasePriceSeptember,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseQuantityOctober != null">
+        purchase_quantity_october = #{purchaseQuantityOctober,jdbcType=BIGINT},
+      </if>
+      <if test="purchasePriceOctober != null">
+        purchase_price_october = #{purchasePriceOctober,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseQuantityNovember != null">
+        purchase_quantity_november = #{purchaseQuantityNovember,jdbcType=BIGINT},
+      </if>
+      <if test="purchasePriceNovember != null">
+        purchase_price_november = #{purchasePriceNovember,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseQuantityDecember != null">
+        purchase_quantity_december = #{purchaseQuantityDecember,jdbcType=BIGINT},
+      </if>
+      <if test="purchasePriceDecember != null">
+        purchase_price_december = #{purchasePriceDecember,jdbcType=BIGINT},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where manufacturer_id = #{manufacturerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.learning.demo.bean.domain.erp.ErpPurchaseMaterialManufacturers">
+    update erp_purchase_material_manufacturers
+    set erp_id = #{erpId,jdbcType=INTEGER},
+      material_id = #{materialId,jdbcType=INTEGER},
+      supplier_id = #{supplierId,jdbcType=INTEGER},
+      manufacturer_material_code = #{manufacturerMaterialCode,jdbcType=VARCHAR},
+      check_date = #{checkDate,jdbcType=INTEGER},
+      currency_id = #{currencyId,jdbcType=INTEGER},
+      price_unit = #{priceUnit,jdbcType=VARCHAR},
+      purchase_price = #{purchasePrice,jdbcType=BIGINT},
+      machining_price = #{machiningPrice,jdbcType=BIGINT},
+      last_purchase_date = #{lastPurchaseDate,jdbcType=INTEGER},
+      purchase_quantity_january = #{purchaseQuantityJanuary,jdbcType=BIGINT},
+      purchase_price_january = #{purchasePriceJanuary,jdbcType=BIGINT},
+      purchase_quantity_february = #{purchaseQuantityFebruary,jdbcType=BIGINT},
+      purchase_price_february = #{purchasePriceFebruary,jdbcType=BIGINT},
+      purchase_quantity_march = #{purchaseQuantityMarch,jdbcType=BIGINT},
+      purchase_price_march = #{purchasePriceMarch,jdbcType=BIGINT},
+      purchase_quantity_april = #{purchaseQuantityApril,jdbcType=BIGINT},
+      purchase_price_april = #{purchasePriceApril,jdbcType=BIGINT},
+      purchase_quantity_may = #{purchaseQuantityMay,jdbcType=BIGINT},
+      purchase_price_may = #{purchasePriceMay,jdbcType=BIGINT},
+      purchase_quantity_june = #{purchaseQuantityJune,jdbcType=BIGINT},
+      purchase_price_june = #{purchasePriceJune,jdbcType=BIGINT},
+      purchase_quantity_july = #{purchaseQuantityJuly,jdbcType=BIGINT},
+      purchase_price_july = #{purchasePriceJuly,jdbcType=BIGINT},
+      purchase_quantity_august = #{purchaseQuantityAugust,jdbcType=BIGINT},
+      purchase_price_august = #{purchasePriceAugust,jdbcType=BIGINT},
+      purchase_quantity_september = #{purchaseQuantitySeptember,jdbcType=BIGINT},
+      purchase_price_september = #{purchasePriceSeptember,jdbcType=BIGINT},
+      purchase_quantity_october = #{purchaseQuantityOctober,jdbcType=BIGINT},
+      purchase_price_october = #{purchasePriceOctober,jdbcType=BIGINT},
+      purchase_quantity_november = #{purchaseQuantityNovember,jdbcType=BIGINT},
+      purchase_price_november = #{purchasePriceNovember,jdbcType=BIGINT},
+      purchase_quantity_december = #{purchaseQuantityDecember,jdbcType=BIGINT},
+      purchase_price_december = #{purchasePriceDecember,jdbcType=BIGINT},
+      created = #{created,jdbcType=INTEGER},
+      updated = #{updated,jdbcType=INTEGER},
+      is_deleted = #{isDeleted,jdbcType=TINYINT}
+    where manufacturer_id = #{manufacturerId,jdbcType=INTEGER}
+  </update>
+</mapper>

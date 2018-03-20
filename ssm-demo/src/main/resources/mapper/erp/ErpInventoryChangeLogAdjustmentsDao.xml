@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.learning.demo.dao.erp.ErpInventoryChangeLogAdjustmentsDao">
+  <resultMap id="BaseResultMap" type="com.learning.demo.bean.domain.erp.ErpInventoryChangeLogAdjustments">
+    <id column="adjustment_id" jdbcType="INTEGER" property="adjustmentId" />
+    <result column="erp_id" jdbcType="INTEGER" property="erpId" />
+    <result column="adjust_type" jdbcType="TINYINT" property="adjustType" />
+    <result column="log_id" jdbcType="INTEGER" property="logId" />
+    <result column="old_material_id" jdbcType="INTEGER" property="oldMaterialId" />
+    <result column="new_material_id" jdbcType="INTEGER" property="newMaterialId" />
+    <result column="old_date" jdbcType="INTEGER" property="oldDate" />
+    <result column="new_date" jdbcType="INTEGER" property="newDate" />
+    <result column="old_io" jdbcType="CHAR" property="oldIo" />
+    <result column="new_io" jdbcType="CHAR" property="newIo" />
+    <result column="old_property_id" jdbcType="INTEGER" property="oldPropertyId" />
+    <result column="new_property_id" jdbcType="INTEGER" property="newPropertyId" />
+    <result column="old_bill_id" jdbcType="INTEGER" property="oldBillId" />
+    <result column="new_bill_id" jdbcType="INTEGER" property="newBillId" />
+    <result column="old_serial_number" jdbcType="VARCHAR" property="oldSerialNumber" />
+    <result column="new_serial_number" jdbcType="VARCHAR" property="newSerialNumber" />
+    <result column="old_warehouse_id" jdbcType="INTEGER" property="oldWarehouseId" />
+    <result column="new_warehouse_id" jdbcType="INTEGER" property="newWarehouseId" />
+    <result column="old_quantity" jdbcType="BIGINT" property="oldQuantity" />
+    <result column="new_quantity" jdbcType="BIGINT" property="newQuantity" />
+    <result column="old_unit_cost" jdbcType="BIGINT" property="oldUnitCost" />
+    <result column="new_unit_cost" jdbcType="BIGINT" property="newUnitCost" />
+    <result column="old_price" jdbcType="BIGINT" property="oldPrice" />
+    <result column="new_price" jdbcType="BIGINT" property="newPrice" />
+    <result column="old_batch_id" jdbcType="INTEGER" property="oldBatchId" />
+    <result column="new_batch_id" jdbcType="INTEGER" property="newBatchId" />
+    <result column="old_remark" jdbcType="VARCHAR" property="oldRemark" />
+    <result column="new_remark" jdbcType="VARCHAR" property="newRemark" />
+    <result column="old_change_type" jdbcType="TINYINT" property="oldChangeType" />
+    <result column="new_change_type" jdbcType="TINYINT" property="newChangeType" />
+    <result column="old_cost_code" jdbcType="CHAR" property="oldCostCode" />
+    <result column="new_cost_code" jdbcType="CHAR" property="newCostCode" />
+    <result column="created" jdbcType="INTEGER" property="created" />
+    <result column="updated" jdbcType="INTEGER" property="updated" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <if test="fields == null">
+      adjustment_id, erp_id, adjust_type, log_id, old_material_id, new_material_id, old_date, 
+      new_date, old_io, new_io, old_property_id, new_property_id, old_bill_id, new_bill_id, 
+      old_serial_number, new_serial_number, old_warehouse_id, new_warehouse_id, old_quantity, 
+      new_quantity, old_unit_cost, new_unit_cost, old_price, new_price, old_batch_id, new_batch_id, 
+      old_remark, new_remark, old_change_type, new_change_type, old_cost_code, new_cost_code, 
+      created, updated, is_deleted
+    </if>
+    <if test="fields != null">
+      ${fields}
+    </if>
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    adjustment_id,erp_id,adjust_type,log_id,old_material_id,new_material_id,old_date,new_date,old_io,new_io,old_property_id,new_property_id,old_bill_id,new_bill_id,old_serial_number,new_serial_number,old_warehouse_id,new_warehouse_id,old_quantity,new_quantity,old_unit_cost,new_unit_cost,old_price,new_price,old_batch_id,new_batch_id,old_remark,new_remark,old_change_type,new_change_type,old_cost_code,new_cost_code,created,updated,is_deleted
+    from erp_inventory_change_log_adjustments
+    where adjustment_id = #{adjustmentId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from erp_inventory_change_log_adjustments
+    where adjustment_id = #{adjustmentId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.learning.demo.bean.domain.erp.ErpInventoryChangeLogAdjustments">
+    insert into erp_inventory_change_log_adjustments (adjustment_id, erp_id, adjust_type, 
+      log_id, old_material_id, new_material_id, 
+      old_date, new_date, old_io, 
+      new_io, old_property_id, new_property_id, 
+      old_bill_id, new_bill_id, old_serial_number, 
+      new_serial_number, old_warehouse_id, new_warehouse_id, 
+      old_quantity, new_quantity, old_unit_cost, 
+      new_unit_cost, old_price, new_price, 
+      old_batch_id, new_batch_id, old_remark, 
+      new_remark, old_change_type, new_change_type, 
+      old_cost_code, new_cost_code, created, 
+      updated, is_deleted)
+    values (#{adjustmentId,jdbcType=INTEGER}, #{erpId,jdbcType=INTEGER}, #{adjustType,jdbcType=TINYINT}, 
+      #{logId,jdbcType=INTEGER}, #{oldMaterialId,jdbcType=INTEGER}, #{newMaterialId,jdbcType=INTEGER}, 
+      #{oldDate,jdbcType=INTEGER}, #{newDate,jdbcType=INTEGER}, #{oldIo,jdbcType=CHAR}, 
+      #{newIo,jdbcType=CHAR}, #{oldPropertyId,jdbcType=INTEGER}, #{newPropertyId,jdbcType=INTEGER}, 
+      #{oldBillId,jdbcType=INTEGER}, #{newBillId,jdbcType=INTEGER}, #{oldSerialNumber,jdbcType=VARCHAR}, 
+      #{newSerialNumber,jdbcType=VARCHAR}, #{oldWarehouseId,jdbcType=INTEGER}, #{newWarehouseId,jdbcType=INTEGER}, 
+      #{oldQuantity,jdbcType=BIGINT}, #{newQuantity,jdbcType=BIGINT}, #{oldUnitCost,jdbcType=BIGINT}, 
+      #{newUnitCost,jdbcType=BIGINT}, #{oldPrice,jdbcType=BIGINT}, #{newPrice,jdbcType=BIGINT}, 
+      #{oldBatchId,jdbcType=INTEGER}, #{newBatchId,jdbcType=INTEGER}, #{oldRemark,jdbcType=VARCHAR}, 
+      #{newRemark,jdbcType=VARCHAR}, #{oldChangeType,jdbcType=TINYINT}, #{newChangeType,jdbcType=TINYINT}, 
+      #{oldCostCode,jdbcType=CHAR}, #{newCostCode,jdbcType=CHAR}, #{created,jdbcType=INTEGER}, 
+      #{updated,jdbcType=INTEGER}, #{isDeleted,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.learning.demo.bean.domain.erp.ErpInventoryChangeLogAdjustments">
+    insert into erp_inventory_change_log_adjustments
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="adjustmentId != null">
+        adjustment_id,
+      </if>
+      <if test="erpId != null">
+        erp_id,
+      </if>
+      <if test="adjustType != null">
+        adjust_type,
+      </if>
+      <if test="logId != null">
+        log_id,
+      </if>
+      <if test="oldMaterialId != null">
+        old_material_id,
+      </if>
+      <if test="newMaterialId != null">
+        new_material_id,
+      </if>
+      <if test="oldDate != null">
+        old_date,
+      </if>
+      <if test="newDate != null">
+        new_date,
+      </if>
+      <if test="oldIo != null">
+        old_io,
+      </if>
+      <if test="newIo != null">
+        new_io,
+      </if>
+      <if test="oldPropertyId != null">
+        old_property_id,
+      </if>
+      <if test="newPropertyId != null">
+        new_property_id,
+      </if>
+      <if test="oldBillId != null">
+        old_bill_id,
+      </if>
+      <if test="newBillId != null">
+        new_bill_id,
+      </if>
+      <if test="oldSerialNumber != null">
+        old_serial_number,
+      </if>
+      <if test="newSerialNumber != null">
+        new_serial_number,
+      </if>
+      <if test="oldWarehouseId != null">
+        old_warehouse_id,
+      </if>
+      <if test="newWarehouseId != null">
+        new_warehouse_id,
+      </if>
+      <if test="oldQuantity != null">
+        old_quantity,
+      </if>
+      <if test="newQuantity != null">
+        new_quantity,
+      </if>
+      <if test="oldUnitCost != null">
+        old_unit_cost,
+      </if>
+      <if test="newUnitCost != null">
+        new_unit_cost,
+      </if>
+      <if test="oldPrice != null">
+        old_price,
+      </if>
+      <if test="newPrice != null">
+        new_price,
+      </if>
+      <if test="oldBatchId != null">
+        old_batch_id,
+      </if>
+      <if test="newBatchId != null">
+        new_batch_id,
+      </if>
+      <if test="oldRemark != null">
+        old_remark,
+      </if>
+      <if test="newRemark != null">
+        new_remark,
+      </if>
+      <if test="oldChangeType != null">
+        old_change_type,
+      </if>
+      <if test="newChangeType != null">
+        new_change_type,
+      </if>
+      <if test="oldCostCode != null">
+        old_cost_code,
+      </if>
+      <if test="newCostCode != null">
+        new_cost_code,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="adjustmentId != null">
+        #{adjustmentId,jdbcType=INTEGER},
+      </if>
+      <if test="erpId != null">
+        #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="adjustType != null">
+        #{adjustType,jdbcType=TINYINT},
+      </if>
+      <if test="logId != null">
+        #{logId,jdbcType=INTEGER},
+      </if>
+      <if test="oldMaterialId != null">
+        #{oldMaterialId,jdbcType=INTEGER},
+      </if>
+      <if test="newMaterialId != null">
+        #{newMaterialId,jdbcType=INTEGER},
+      </if>
+      <if test="oldDate != null">
+        #{oldDate,jdbcType=INTEGER},
+      </if>
+      <if test="newDate != null">
+        #{newDate,jdbcType=INTEGER},
+      </if>
+      <if test="oldIo != null">
+        #{oldIo,jdbcType=CHAR},
+      </if>
+      <if test="newIo != null">
+        #{newIo,jdbcType=CHAR},
+      </if>
+      <if test="oldPropertyId != null">
+        #{oldPropertyId,jdbcType=INTEGER},
+      </if>
+      <if test="newPropertyId != null">
+        #{newPropertyId,jdbcType=INTEGER},
+      </if>
+      <if test="oldBillId != null">
+        #{oldBillId,jdbcType=INTEGER},
+      </if>
+      <if test="newBillId != null">
+        #{newBillId,jdbcType=INTEGER},
+      </if>
+      <if test="oldSerialNumber != null">
+        #{oldSerialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="newSerialNumber != null">
+        #{newSerialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="oldWarehouseId != null">
+        #{oldWarehouseId,jdbcType=INTEGER},
+      </if>
+      <if test="newWarehouseId != null">
+        #{newWarehouseId,jdbcType=INTEGER},
+      </if>
+      <if test="oldQuantity != null">
+        #{oldQuantity,jdbcType=BIGINT},
+      </if>
+      <if test="newQuantity != null">
+        #{newQuantity,jdbcType=BIGINT},
+      </if>
+      <if test="oldUnitCost != null">
+        #{oldUnitCost,jdbcType=BIGINT},
+      </if>
+      <if test="newUnitCost != null">
+        #{newUnitCost,jdbcType=BIGINT},
+      </if>
+      <if test="oldPrice != null">
+        #{oldPrice,jdbcType=BIGINT},
+      </if>
+      <if test="newPrice != null">
+        #{newPrice,jdbcType=BIGINT},
+      </if>
+      <if test="oldBatchId != null">
+        #{oldBatchId,jdbcType=INTEGER},
+      </if>
+      <if test="newBatchId != null">
+        #{newBatchId,jdbcType=INTEGER},
+      </if>
+      <if test="oldRemark != null">
+        #{oldRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="newRemark != null">
+        #{newRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="oldChangeType != null">
+        #{oldChangeType,jdbcType=TINYINT},
+      </if>
+      <if test="newChangeType != null">
+        #{newChangeType,jdbcType=TINYINT},
+      </if>
+      <if test="oldCostCode != null">
+        #{oldCostCode,jdbcType=CHAR},
+      </if>
+      <if test="newCostCode != null">
+        #{newCostCode,jdbcType=CHAR},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.learning.demo.bean.domain.erp.ErpInventoryChangeLogAdjustments">
+    update erp_inventory_change_log_adjustments
+    <set>
+      <if test="erpId != null">
+        erp_id = #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="adjustType != null">
+        adjust_type = #{adjustType,jdbcType=TINYINT},
+      </if>
+      <if test="logId != null">
+        log_id = #{logId,jdbcType=INTEGER},
+      </if>
+      <if test="oldMaterialId != null">
+        old_material_id = #{oldMaterialId,jdbcType=INTEGER},
+      </if>
+      <if test="newMaterialId != null">
+        new_material_id = #{newMaterialId,jdbcType=INTEGER},
+      </if>
+      <if test="oldDate != null">
+        old_date = #{oldDate,jdbcType=INTEGER},
+      </if>
+      <if test="newDate != null">
+        new_date = #{newDate,jdbcType=INTEGER},
+      </if>
+      <if test="oldIo != null">
+        old_io = #{oldIo,jdbcType=CHAR},
+      </if>
+      <if test="newIo != null">
+        new_io = #{newIo,jdbcType=CHAR},
+      </if>
+      <if test="oldPropertyId != null">
+        old_property_id = #{oldPropertyId,jdbcType=INTEGER},
+      </if>
+      <if test="newPropertyId != null">
+        new_property_id = #{newPropertyId,jdbcType=INTEGER},
+      </if>
+      <if test="oldBillId != null">
+        old_bill_id = #{oldBillId,jdbcType=INTEGER},
+      </if>
+      <if test="newBillId != null">
+        new_bill_id = #{newBillId,jdbcType=INTEGER},
+      </if>
+      <if test="oldSerialNumber != null">
+        old_serial_number = #{oldSerialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="newSerialNumber != null">
+        new_serial_number = #{newSerialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="oldWarehouseId != null">
+        old_warehouse_id = #{oldWarehouseId,jdbcType=INTEGER},
+      </if>
+      <if test="newWarehouseId != null">
+        new_warehouse_id = #{newWarehouseId,jdbcType=INTEGER},
+      </if>
+      <if test="oldQuantity != null">
+        old_quantity = #{oldQuantity,jdbcType=BIGINT},
+      </if>
+      <if test="newQuantity != null">
+        new_quantity = #{newQuantity,jdbcType=BIGINT},
+      </if>
+      <if test="oldUnitCost != null">
+        old_unit_cost = #{oldUnitCost,jdbcType=BIGINT},
+      </if>
+      <if test="newUnitCost != null">
+        new_unit_cost = #{newUnitCost,jdbcType=BIGINT},
+      </if>
+      <if test="oldPrice != null">
+        old_price = #{oldPrice,jdbcType=BIGINT},
+      </if>
+      <if test="newPrice != null">
+        new_price = #{newPrice,jdbcType=BIGINT},
+      </if>
+      <if test="oldBatchId != null">
+        old_batch_id = #{oldBatchId,jdbcType=INTEGER},
+      </if>
+      <if test="newBatchId != null">
+        new_batch_id = #{newBatchId,jdbcType=INTEGER},
+      </if>
+      <if test="oldRemark != null">
+        old_remark = #{oldRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="newRemark != null">
+        new_remark = #{newRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="oldChangeType != null">
+        old_change_type = #{oldChangeType,jdbcType=TINYINT},
+      </if>
+      <if test="newChangeType != null">
+        new_change_type = #{newChangeType,jdbcType=TINYINT},
+      </if>
+      <if test="oldCostCode != null">
+        old_cost_code = #{oldCostCode,jdbcType=CHAR},
+      </if>
+      <if test="newCostCode != null">
+        new_cost_code = #{newCostCode,jdbcType=CHAR},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where adjustment_id = #{adjustmentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.learning.demo.bean.domain.erp.ErpInventoryChangeLogAdjustments">
+    update erp_inventory_change_log_adjustments
+    set erp_id = #{erpId,jdbcType=INTEGER},
+      adjust_type = #{adjustType,jdbcType=TINYINT},
+      log_id = #{logId,jdbcType=INTEGER},
+      old_material_id = #{oldMaterialId,jdbcType=INTEGER},
+      new_material_id = #{newMaterialId,jdbcType=INTEGER},
+      old_date = #{oldDate,jdbcType=INTEGER},
+      new_date = #{newDate,jdbcType=INTEGER},
+      old_io = #{oldIo,jdbcType=CHAR},
+      new_io = #{newIo,jdbcType=CHAR},
+      old_property_id = #{oldPropertyId,jdbcType=INTEGER},
+      new_property_id = #{newPropertyId,jdbcType=INTEGER},
+      old_bill_id = #{oldBillId,jdbcType=INTEGER},
+      new_bill_id = #{newBillId,jdbcType=INTEGER},
+      old_serial_number = #{oldSerialNumber,jdbcType=VARCHAR},
+      new_serial_number = #{newSerialNumber,jdbcType=VARCHAR},
+      old_warehouse_id = #{oldWarehouseId,jdbcType=INTEGER},
+      new_warehouse_id = #{newWarehouseId,jdbcType=INTEGER},
+      old_quantity = #{oldQuantity,jdbcType=BIGINT},
+      new_quantity = #{newQuantity,jdbcType=BIGINT},
+      old_unit_cost = #{oldUnitCost,jdbcType=BIGINT},
+      new_unit_cost = #{newUnitCost,jdbcType=BIGINT},
+      old_price = #{oldPrice,jdbcType=BIGINT},
+      new_price = #{newPrice,jdbcType=BIGINT},
+      old_batch_id = #{oldBatchId,jdbcType=INTEGER},
+      new_batch_id = #{newBatchId,jdbcType=INTEGER},
+      old_remark = #{oldRemark,jdbcType=VARCHAR},
+      new_remark = #{newRemark,jdbcType=VARCHAR},
+      old_change_type = #{oldChangeType,jdbcType=TINYINT},
+      new_change_type = #{newChangeType,jdbcType=TINYINT},
+      old_cost_code = #{oldCostCode,jdbcType=CHAR},
+      new_cost_code = #{newCostCode,jdbcType=CHAR},
+      created = #{created,jdbcType=INTEGER},
+      updated = #{updated,jdbcType=INTEGER},
+      is_deleted = #{isDeleted,jdbcType=TINYINT}
+    where adjustment_id = #{adjustmentId,jdbcType=INTEGER}
+  </update>
+</mapper>

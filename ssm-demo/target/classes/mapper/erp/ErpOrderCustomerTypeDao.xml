@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.learning.demo.dao.erp.ErpOrderCustomerTypeDao">
+  <resultMap id="BaseResultMap" type="com.learning.demo.bean.domain.erp.ErpOrderCustomerType">
+    <id column="customer_type_id" jdbcType="INTEGER" property="customerTypeId" />
+    <result column="erp_id" jdbcType="INTEGER" property="erpId" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="pricing_method" jdbcType="BIT" property="pricingMethod" />
+    <result column="discount" jdbcType="BIGINT" property="discount" />
+    <result column="created" jdbcType="INTEGER" property="created" />
+    <result column="updated" jdbcType="INTEGER" property="updated" />
+    <result column="is_deleted" jdbcType="BIT" property="isDeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <if test="fields == null">
+      customer_type_id, erp_id, code, name, pricing_method, discount, created, updated, 
+      is_deleted
+    </if>
+    <if test="fields != null">
+      ${fields}
+    </if>
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    customer_type_id,erp_id,code,name,pricing_method,discount,created,updated,is_deleted
+    from erp_order_customer_type
+    where customer_type_id = #{customerTypeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from erp_order_customer_type
+    where customer_type_id = #{customerTypeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.learning.demo.bean.domain.erp.ErpOrderCustomerType">
+    insert into erp_order_customer_type (customer_type_id, erp_id, code, 
+      name, pricing_method, discount, 
+      created, updated, is_deleted
+      )
+    values (#{customerTypeId,jdbcType=INTEGER}, #{erpId,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{pricingMethod,jdbcType=BIT}, #{discount,jdbcType=BIGINT}, 
+      #{created,jdbcType=INTEGER}, #{updated,jdbcType=INTEGER}, #{isDeleted,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.learning.demo.bean.domain.erp.ErpOrderCustomerType">
+    insert into erp_order_customer_type
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="customerTypeId != null">
+        customer_type_id,
+      </if>
+      <if test="erpId != null">
+        erp_id,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="pricingMethod != null">
+        pricing_method,
+      </if>
+      <if test="discount != null">
+        discount,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="customerTypeId != null">
+        #{customerTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="erpId != null">
+        #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pricingMethod != null">
+        #{pricingMethod,jdbcType=BIT},
+      </if>
+      <if test="discount != null">
+        #{discount,jdbcType=BIGINT},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.learning.demo.bean.domain.erp.ErpOrderCustomerType">
+    update erp_order_customer_type
+    <set>
+      <if test="erpId != null">
+        erp_id = #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pricingMethod != null">
+        pricing_method = #{pricingMethod,jdbcType=BIT},
+      </if>
+      <if test="discount != null">
+        discount = #{discount,jdbcType=BIGINT},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=BIT},
+      </if>
+    </set>
+    where customer_type_id = #{customerTypeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.learning.demo.bean.domain.erp.ErpOrderCustomerType">
+    update erp_order_customer_type
+    set erp_id = #{erpId,jdbcType=INTEGER},
+      code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      pricing_method = #{pricingMethod,jdbcType=BIT},
+      discount = #{discount,jdbcType=BIGINT},
+      created = #{created,jdbcType=INTEGER},
+      updated = #{updated,jdbcType=INTEGER},
+      is_deleted = #{isDeleted,jdbcType=BIT}
+    where customer_type_id = #{customerTypeId,jdbcType=INTEGER}
+  </update>
+</mapper>

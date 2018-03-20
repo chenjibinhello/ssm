@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.learning.demo.dao.erp.ErpInventoryBatchesDao">
+  <resultMap id="BaseResultMap" type="com.learning.demo.bean.domain.erp.ErpInventoryBatches">
+    <id column="batch_id" jdbcType="INTEGER" property="batchId" />
+    <result column="erp_id" jdbcType="INTEGER" property="erpId" />
+    <result column="material_id" jdbcType="INTEGER" property="materialId" />
+    <result column="batch_number" jdbcType="VARCHAR" property="batchNumber" />
+    <result column="bill_property_code" jdbcType="VARCHAR" property="billPropertyCode" />
+    <result column="bill_number" jdbcType="VARCHAR" property="billNumber" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="storage_date" jdbcType="INTEGER" property="storageDate" />
+    <result column="effective_date" jdbcType="INTEGER" property="effectiveDate" />
+    <result column="recheck_date" jdbcType="INTEGER" property="recheckDate" />
+    <result column="settle_method" jdbcType="CHAR" property="settleMethod" />
+    <result column="created" jdbcType="INTEGER" property="created" />
+    <result column="updated" jdbcType="INTEGER" property="updated" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <if test="fields == null">
+      batch_id, erp_id, material_id, batch_number, bill_property_code, bill_number, remark, 
+      storage_date, effective_date, recheck_date, settle_method, created, updated, is_deleted
+    </if>
+    <if test="fields != null">
+      ${fields}
+    </if>
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    batch_id,erp_id,material_id,batch_number,bill_property_code,bill_number,remark,storage_date,effective_date,recheck_date,settle_method,created,updated,is_deleted
+    from erp_inventory_batches
+    where batch_id = #{batchId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from erp_inventory_batches
+    where batch_id = #{batchId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.learning.demo.bean.domain.erp.ErpInventoryBatches">
+    insert into erp_inventory_batches (batch_id, erp_id, material_id, 
+      batch_number, bill_property_code, bill_number, 
+      remark, storage_date, effective_date, 
+      recheck_date, settle_method, created, 
+      updated, is_deleted)
+    values (#{batchId,jdbcType=INTEGER}, #{erpId,jdbcType=INTEGER}, #{materialId,jdbcType=INTEGER}, 
+      #{batchNumber,jdbcType=VARCHAR}, #{billPropertyCode,jdbcType=VARCHAR}, #{billNumber,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{storageDate,jdbcType=INTEGER}, #{effectiveDate,jdbcType=INTEGER}, 
+      #{recheckDate,jdbcType=INTEGER}, #{settleMethod,jdbcType=CHAR}, #{created,jdbcType=INTEGER}, 
+      #{updated,jdbcType=INTEGER}, #{isDeleted,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.learning.demo.bean.domain.erp.ErpInventoryBatches">
+    insert into erp_inventory_batches
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="batchId != null">
+        batch_id,
+      </if>
+      <if test="erpId != null">
+        erp_id,
+      </if>
+      <if test="materialId != null">
+        material_id,
+      </if>
+      <if test="batchNumber != null">
+        batch_number,
+      </if>
+      <if test="billPropertyCode != null">
+        bill_property_code,
+      </if>
+      <if test="billNumber != null">
+        bill_number,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="storageDate != null">
+        storage_date,
+      </if>
+      <if test="effectiveDate != null">
+        effective_date,
+      </if>
+      <if test="recheckDate != null">
+        recheck_date,
+      </if>
+      <if test="settleMethod != null">
+        settle_method,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="batchId != null">
+        #{batchId,jdbcType=INTEGER},
+      </if>
+      <if test="erpId != null">
+        #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="materialId != null">
+        #{materialId,jdbcType=INTEGER},
+      </if>
+      <if test="batchNumber != null">
+        #{batchNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="billPropertyCode != null">
+        #{billPropertyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="billNumber != null">
+        #{billNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="storageDate != null">
+        #{storageDate,jdbcType=INTEGER},
+      </if>
+      <if test="effectiveDate != null">
+        #{effectiveDate,jdbcType=INTEGER},
+      </if>
+      <if test="recheckDate != null">
+        #{recheckDate,jdbcType=INTEGER},
+      </if>
+      <if test="settleMethod != null">
+        #{settleMethod,jdbcType=CHAR},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.learning.demo.bean.domain.erp.ErpInventoryBatches">
+    update erp_inventory_batches
+    <set>
+      <if test="erpId != null">
+        erp_id = #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="materialId != null">
+        material_id = #{materialId,jdbcType=INTEGER},
+      </if>
+      <if test="batchNumber != null">
+        batch_number = #{batchNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="billPropertyCode != null">
+        bill_property_code = #{billPropertyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="billNumber != null">
+        bill_number = #{billNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="storageDate != null">
+        storage_date = #{storageDate,jdbcType=INTEGER},
+      </if>
+      <if test="effectiveDate != null">
+        effective_date = #{effectiveDate,jdbcType=INTEGER},
+      </if>
+      <if test="recheckDate != null">
+        recheck_date = #{recheckDate,jdbcType=INTEGER},
+      </if>
+      <if test="settleMethod != null">
+        settle_method = #{settleMethod,jdbcType=CHAR},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where batch_id = #{batchId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.learning.demo.bean.domain.erp.ErpInventoryBatches">
+    update erp_inventory_batches
+    set erp_id = #{erpId,jdbcType=INTEGER},
+      material_id = #{materialId,jdbcType=INTEGER},
+      batch_number = #{batchNumber,jdbcType=VARCHAR},
+      bill_property_code = #{billPropertyCode,jdbcType=VARCHAR},
+      bill_number = #{billNumber,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      storage_date = #{storageDate,jdbcType=INTEGER},
+      effective_date = #{effectiveDate,jdbcType=INTEGER},
+      recheck_date = #{recheckDate,jdbcType=INTEGER},
+      settle_method = #{settleMethod,jdbcType=CHAR},
+      created = #{created,jdbcType=INTEGER},
+      updated = #{updated,jdbcType=INTEGER},
+      is_deleted = #{isDeleted,jdbcType=TINYINT}
+    where batch_id = #{batchId,jdbcType=INTEGER}
+  </update>
+</mapper>

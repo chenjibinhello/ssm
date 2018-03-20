@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.learning.demo.dao.erp.ErpInventoryChecksDao">
+  <resultMap id="BaseResultMap" type="com.learning.demo.bean.domain.erp.ErpInventoryChecks">
+    <id column="check_id" jdbcType="INTEGER" property="checkId" />
+    <result column="erp_id" jdbcType="INTEGER" property="erpId" />
+    <result column="material_id" jdbcType="INTEGER" property="materialId" />
+    <result column="warehouse_id" jdbcType="INTEGER" property="warehouseId" />
+    <result column="account_amount" jdbcType="BIGINT" property="accountAmount" />
+    <result column="check_amount" jdbcType="BIGINT" property="checkAmount" />
+    <result column="manuscript_number" jdbcType="VARCHAR" property="manuscriptNumber" />
+    <result column="manuscript_order" jdbcType="VARCHAR" property="manuscriptOrder" />
+    <result column="check_date" jdbcType="INTEGER" property="checkDate" />
+    <result column="unit_cost" jdbcType="BIGINT" property="unitCost" />
+    <result column="is_updated" jdbcType="CHAR" property="isUpdated" />
+    <result column="bill_property_id" jdbcType="INTEGER" property="billPropertyId" />
+    <result column="bill_number" jdbcType="VARCHAR" property="billNumber" />
+    <result column="bill_order" jdbcType="VARCHAR" property="billOrder" />
+    <result column="batch_id" jdbcType="INTEGER" property="batchId" />
+    <result column="is_batch" jdbcType="CHAR" property="isBatch" />
+    <result column="created" jdbcType="INTEGER" property="created" />
+    <result column="updated" jdbcType="INTEGER" property="updated" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <if test="fields == null">
+      check_id, erp_id, material_id, warehouse_id, account_amount, check_amount, manuscript_number, 
+      manuscript_order, check_date, unit_cost, is_updated, bill_property_id, bill_number, 
+      bill_order, batch_id, is_batch, created, updated, is_deleted
+    </if>
+    <if test="fields != null">
+      ${fields}
+    </if>
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    check_id,erp_id,material_id,warehouse_id,account_amount,check_amount,manuscript_number,manuscript_order,check_date,unit_cost,is_updated,bill_property_id,bill_number,bill_order,batch_id,is_batch,created,updated,is_deleted
+    from erp_inventory_checks
+    where check_id = #{checkId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from erp_inventory_checks
+    where check_id = #{checkId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.learning.demo.bean.domain.erp.ErpInventoryChecks">
+    insert into erp_inventory_checks (check_id, erp_id, material_id, 
+      warehouse_id, account_amount, check_amount, 
+      manuscript_number, manuscript_order, check_date, 
+      unit_cost, is_updated, bill_property_id, 
+      bill_number, bill_order, batch_id, 
+      is_batch, created, updated, 
+      is_deleted)
+    values (#{checkId,jdbcType=INTEGER}, #{erpId,jdbcType=INTEGER}, #{materialId,jdbcType=INTEGER}, 
+      #{warehouseId,jdbcType=INTEGER}, #{accountAmount,jdbcType=BIGINT}, #{checkAmount,jdbcType=BIGINT}, 
+      #{manuscriptNumber,jdbcType=VARCHAR}, #{manuscriptOrder,jdbcType=VARCHAR}, #{checkDate,jdbcType=INTEGER}, 
+      #{unitCost,jdbcType=BIGINT}, #{isUpdated,jdbcType=CHAR}, #{billPropertyId,jdbcType=INTEGER}, 
+      #{billNumber,jdbcType=VARCHAR}, #{billOrder,jdbcType=VARCHAR}, #{batchId,jdbcType=INTEGER}, 
+      #{isBatch,jdbcType=CHAR}, #{created,jdbcType=INTEGER}, #{updated,jdbcType=INTEGER}, 
+      #{isDeleted,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.learning.demo.bean.domain.erp.ErpInventoryChecks">
+    insert into erp_inventory_checks
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="checkId != null">
+        check_id,
+      </if>
+      <if test="erpId != null">
+        erp_id,
+      </if>
+      <if test="materialId != null">
+        material_id,
+      </if>
+      <if test="warehouseId != null">
+        warehouse_id,
+      </if>
+      <if test="accountAmount != null">
+        account_amount,
+      </if>
+      <if test="checkAmount != null">
+        check_amount,
+      </if>
+      <if test="manuscriptNumber != null">
+        manuscript_number,
+      </if>
+      <if test="manuscriptOrder != null">
+        manuscript_order,
+      </if>
+      <if test="checkDate != null">
+        check_date,
+      </if>
+      <if test="unitCost != null">
+        unit_cost,
+      </if>
+      <if test="isUpdated != null">
+        is_updated,
+      </if>
+      <if test="billPropertyId != null">
+        bill_property_id,
+      </if>
+      <if test="billNumber != null">
+        bill_number,
+      </if>
+      <if test="billOrder != null">
+        bill_order,
+      </if>
+      <if test="batchId != null">
+        batch_id,
+      </if>
+      <if test="isBatch != null">
+        is_batch,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="checkId != null">
+        #{checkId,jdbcType=INTEGER},
+      </if>
+      <if test="erpId != null">
+        #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="materialId != null">
+        #{materialId,jdbcType=INTEGER},
+      </if>
+      <if test="warehouseId != null">
+        #{warehouseId,jdbcType=INTEGER},
+      </if>
+      <if test="accountAmount != null">
+        #{accountAmount,jdbcType=BIGINT},
+      </if>
+      <if test="checkAmount != null">
+        #{checkAmount,jdbcType=BIGINT},
+      </if>
+      <if test="manuscriptNumber != null">
+        #{manuscriptNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="manuscriptOrder != null">
+        #{manuscriptOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="checkDate != null">
+        #{checkDate,jdbcType=INTEGER},
+      </if>
+      <if test="unitCost != null">
+        #{unitCost,jdbcType=BIGINT},
+      </if>
+      <if test="isUpdated != null">
+        #{isUpdated,jdbcType=CHAR},
+      </if>
+      <if test="billPropertyId != null">
+        #{billPropertyId,jdbcType=INTEGER},
+      </if>
+      <if test="billNumber != null">
+        #{billNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="billOrder != null">
+        #{billOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="batchId != null">
+        #{batchId,jdbcType=INTEGER},
+      </if>
+      <if test="isBatch != null">
+        #{isBatch,jdbcType=CHAR},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.learning.demo.bean.domain.erp.ErpInventoryChecks">
+    update erp_inventory_checks
+    <set>
+      <if test="erpId != null">
+        erp_id = #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="materialId != null">
+        material_id = #{materialId,jdbcType=INTEGER},
+      </if>
+      <if test="warehouseId != null">
+        warehouse_id = #{warehouseId,jdbcType=INTEGER},
+      </if>
+      <if test="accountAmount != null">
+        account_amount = #{accountAmount,jdbcType=BIGINT},
+      </if>
+      <if test="checkAmount != null">
+        check_amount = #{checkAmount,jdbcType=BIGINT},
+      </if>
+      <if test="manuscriptNumber != null">
+        manuscript_number = #{manuscriptNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="manuscriptOrder != null">
+        manuscript_order = #{manuscriptOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="checkDate != null">
+        check_date = #{checkDate,jdbcType=INTEGER},
+      </if>
+      <if test="unitCost != null">
+        unit_cost = #{unitCost,jdbcType=BIGINT},
+      </if>
+      <if test="isUpdated != null">
+        is_updated = #{isUpdated,jdbcType=CHAR},
+      </if>
+      <if test="billPropertyId != null">
+        bill_property_id = #{billPropertyId,jdbcType=INTEGER},
+      </if>
+      <if test="billNumber != null">
+        bill_number = #{billNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="billOrder != null">
+        bill_order = #{billOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="batchId != null">
+        batch_id = #{batchId,jdbcType=INTEGER},
+      </if>
+      <if test="isBatch != null">
+        is_batch = #{isBatch,jdbcType=CHAR},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where check_id = #{checkId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.learning.demo.bean.domain.erp.ErpInventoryChecks">
+    update erp_inventory_checks
+    set erp_id = #{erpId,jdbcType=INTEGER},
+      material_id = #{materialId,jdbcType=INTEGER},
+      warehouse_id = #{warehouseId,jdbcType=INTEGER},
+      account_amount = #{accountAmount,jdbcType=BIGINT},
+      check_amount = #{checkAmount,jdbcType=BIGINT},
+      manuscript_number = #{manuscriptNumber,jdbcType=VARCHAR},
+      manuscript_order = #{manuscriptOrder,jdbcType=VARCHAR},
+      check_date = #{checkDate,jdbcType=INTEGER},
+      unit_cost = #{unitCost,jdbcType=BIGINT},
+      is_updated = #{isUpdated,jdbcType=CHAR},
+      bill_property_id = #{billPropertyId,jdbcType=INTEGER},
+      bill_number = #{billNumber,jdbcType=VARCHAR},
+      bill_order = #{billOrder,jdbcType=VARCHAR},
+      batch_id = #{batchId,jdbcType=INTEGER},
+      is_batch = #{isBatch,jdbcType=CHAR},
+      created = #{created,jdbcType=INTEGER},
+      updated = #{updated,jdbcType=INTEGER},
+      is_deleted = #{isDeleted,jdbcType=TINYINT}
+    where check_id = #{checkId,jdbcType=INTEGER}
+  </update>
+</mapper>

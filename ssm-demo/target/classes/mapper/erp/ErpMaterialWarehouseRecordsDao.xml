@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.learning.demo.dao.erp.ErpMaterialWarehouseRecordsDao">
+  <resultMap id="BaseResultMap" type="com.learning.demo.bean.domain.erp.ErpMaterialWarehouseRecords">
+    <id column="record_id" jdbcType="INTEGER" property="recordId" />
+    <result column="erp_id" jdbcType="INTEGER" property="erpId" />
+    <result column="material_id" jdbcType="INTEGER" property="materialId" />
+    <result column="warehouse_id" jdbcType="INTEGER" property="warehouseId" />
+    <result column="storage_location" jdbcType="VARCHAR" property="storageLocation" />
+    <result column="stock_quantity" jdbcType="BIGINT" property="stockQuantity" />
+    <result column="month_quantity" jdbcType="BIGINT" property="monthQuantity" />
+    <result column="last_check_date" jdbcType="INTEGER" property="lastCheckDate" />
+    <result column="last_check_exist_change" jdbcType="BIT" property="lastCheckExistChange" />
+    <result column="created" jdbcType="INTEGER" property="created" />
+    <result column="updated" jdbcType="INTEGER" property="updated" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <if test="fields == null">
+      record_id, erp_id, material_id, warehouse_id, storage_location, stock_quantity, month_quantity, 
+      last_check_date, last_check_exist_change, created, updated, is_deleted
+    </if>
+    <if test="fields != null">
+      ${fields}
+    </if>
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    record_id,erp_id,material_id,warehouse_id,storage_location,stock_quantity,month_quantity,last_check_date,last_check_exist_change,created,updated,is_deleted
+    from erp_material_warehouse_records
+    where record_id = #{recordId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from erp_material_warehouse_records
+    where record_id = #{recordId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.learning.demo.bean.domain.erp.ErpMaterialWarehouseRecords">
+    insert into erp_material_warehouse_records (record_id, erp_id, material_id, 
+      warehouse_id, storage_location, stock_quantity, 
+      month_quantity, last_check_date, last_check_exist_change, 
+      created, updated, is_deleted
+      )
+    values (#{recordId,jdbcType=INTEGER}, #{erpId,jdbcType=INTEGER}, #{materialId,jdbcType=INTEGER}, 
+      #{warehouseId,jdbcType=INTEGER}, #{storageLocation,jdbcType=VARCHAR}, #{stockQuantity,jdbcType=BIGINT}, 
+      #{monthQuantity,jdbcType=BIGINT}, #{lastCheckDate,jdbcType=INTEGER}, #{lastCheckExistChange,jdbcType=BIT}, 
+      #{created,jdbcType=INTEGER}, #{updated,jdbcType=INTEGER}, #{isDeleted,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.learning.demo.bean.domain.erp.ErpMaterialWarehouseRecords">
+    insert into erp_material_warehouse_records
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="recordId != null">
+        record_id,
+      </if>
+      <if test="erpId != null">
+        erp_id,
+      </if>
+      <if test="materialId != null">
+        material_id,
+      </if>
+      <if test="warehouseId != null">
+        warehouse_id,
+      </if>
+      <if test="storageLocation != null">
+        storage_location,
+      </if>
+      <if test="stockQuantity != null">
+        stock_quantity,
+      </if>
+      <if test="monthQuantity != null">
+        month_quantity,
+      </if>
+      <if test="lastCheckDate != null">
+        last_check_date,
+      </if>
+      <if test="lastCheckExistChange != null">
+        last_check_exist_change,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="recordId != null">
+        #{recordId,jdbcType=INTEGER},
+      </if>
+      <if test="erpId != null">
+        #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="materialId != null">
+        #{materialId,jdbcType=INTEGER},
+      </if>
+      <if test="warehouseId != null">
+        #{warehouseId,jdbcType=INTEGER},
+      </if>
+      <if test="storageLocation != null">
+        #{storageLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="stockQuantity != null">
+        #{stockQuantity,jdbcType=BIGINT},
+      </if>
+      <if test="monthQuantity != null">
+        #{monthQuantity,jdbcType=BIGINT},
+      </if>
+      <if test="lastCheckDate != null">
+        #{lastCheckDate,jdbcType=INTEGER},
+      </if>
+      <if test="lastCheckExistChange != null">
+        #{lastCheckExistChange,jdbcType=BIT},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.learning.demo.bean.domain.erp.ErpMaterialWarehouseRecords">
+    update erp_material_warehouse_records
+    <set>
+      <if test="erpId != null">
+        erp_id = #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="materialId != null">
+        material_id = #{materialId,jdbcType=INTEGER},
+      </if>
+      <if test="warehouseId != null">
+        warehouse_id = #{warehouseId,jdbcType=INTEGER},
+      </if>
+      <if test="storageLocation != null">
+        storage_location = #{storageLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="stockQuantity != null">
+        stock_quantity = #{stockQuantity,jdbcType=BIGINT},
+      </if>
+      <if test="monthQuantity != null">
+        month_quantity = #{monthQuantity,jdbcType=BIGINT},
+      </if>
+      <if test="lastCheckDate != null">
+        last_check_date = #{lastCheckDate,jdbcType=INTEGER},
+      </if>
+      <if test="lastCheckExistChange != null">
+        last_check_exist_change = #{lastCheckExistChange,jdbcType=BIT},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where record_id = #{recordId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.learning.demo.bean.domain.erp.ErpMaterialWarehouseRecords">
+    update erp_material_warehouse_records
+    set erp_id = #{erpId,jdbcType=INTEGER},
+      material_id = #{materialId,jdbcType=INTEGER},
+      warehouse_id = #{warehouseId,jdbcType=INTEGER},
+      storage_location = #{storageLocation,jdbcType=VARCHAR},
+      stock_quantity = #{stockQuantity,jdbcType=BIGINT},
+      month_quantity = #{monthQuantity,jdbcType=BIGINT},
+      last_check_date = #{lastCheckDate,jdbcType=INTEGER},
+      last_check_exist_change = #{lastCheckExistChange,jdbcType=BIT},
+      created = #{created,jdbcType=INTEGER},
+      updated = #{updated,jdbcType=INTEGER},
+      is_deleted = #{isDeleted,jdbcType=TINYINT}
+    where record_id = #{recordId,jdbcType=INTEGER}
+  </update>
+</mapper>

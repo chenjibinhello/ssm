@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.learning.demo.dao.erp.ErpPurchaseReturnBillDetailsDao">
+  <resultMap id="BaseResultMap" type="com.learning.demo.bean.domain.erp.ErpPurchaseReturnBillDetails">
+    <id column="return_bill_detail_id" jdbcType="INTEGER" property="returnBillDetailId" />
+    <result column="return_bill_id" jdbcType="INTEGER" property="returnBillId" />
+    <result column="erp_id" jdbcType="INTEGER" property="erpId" />
+    <result column="property_id" jdbcType="INTEGER" property="propertyId" />
+    <result column="code" jdbcType="INTEGER" property="code" />
+    <result column="return_date" jdbcType="INTEGER" property="returnDate" />
+    <result column="serial_number" jdbcType="VARCHAR" property="serialNumber" />
+    <result column="supplier_id" jdbcType="INTEGER" property="supplierId" />
+    <result column="material_id" jdbcType="INTEGER" property="materialId" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="unit_convert_rate" jdbcType="BIGINT" property="unitConvertRate" />
+    <result column="unit_price" jdbcType="BIGINT" property="unitPrice" />
+    <result column="rmb_unit_price" jdbcType="BIGINT" property="rmbUnitPrice" />
+    <result column="price" jdbcType="BIGINT" property="price" />
+    <result column="rmb_price" jdbcType="BIGINT" property="rmbPrice" />
+    <result column="return_quantity" jdbcType="BIGINT" property="returnQuantity" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="warehouse_id" jdbcType="INTEGER" property="warehouseId" />
+    <result column="batch_id" jdbcType="BIGINT" property="batchId" />
+    <result column="confirmation_code" jdbcType="CHAR" property="confirmationCode" />
+    <result column="origin_receive_bill_id" jdbcType="INTEGER" property="originReceiveBillId" />
+    <result column="origin_purchase_bill_detail_id" jdbcType="INTEGER" property="originPurchaseBillDetailId" />
+    <result column="created" jdbcType="INTEGER" property="created" />
+    <result column="updated" jdbcType="INTEGER" property="updated" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <if test="fields == null">
+      return_bill_detail_id, return_bill_id, erp_id, property_id, code, return_date, serial_number, 
+      supplier_id, material_id, unit, unit_convert_rate, unit_price, rmb_unit_price, price, 
+      rmb_price, return_quantity, remark, warehouse_id, batch_id, confirmation_code, origin_receive_bill_id, 
+      origin_purchase_bill_detail_id, created, updated, is_deleted
+    </if>
+    <if test="fields != null">
+      ${fields}
+    </if>
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    return_bill_detail_id,return_bill_id,erp_id,property_id,code,return_date,serial_number,supplier_id,material_id,unit,unit_convert_rate,unit_price,rmb_unit_price,price,rmb_price,return_quantity,remark,warehouse_id,batch_id,confirmation_code,origin_receive_bill_id,origin_purchase_bill_detail_id,created,updated,is_deleted
+    from erp_purchase_return_bill_details
+    where return_bill_detail_id = #{returnBillDetailId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from erp_purchase_return_bill_details
+    where return_bill_detail_id = #{returnBillDetailId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.learning.demo.bean.domain.erp.ErpPurchaseReturnBillDetails">
+    insert into erp_purchase_return_bill_details (return_bill_detail_id, return_bill_id, 
+      erp_id, property_id, code, 
+      return_date, serial_number, supplier_id, 
+      material_id, unit, unit_convert_rate, 
+      unit_price, rmb_unit_price, price, 
+      rmb_price, return_quantity, remark, 
+      warehouse_id, batch_id, confirmation_code, 
+      origin_receive_bill_id, origin_purchase_bill_detail_id, 
+      created, updated, is_deleted
+      )
+    values (#{returnBillDetailId,jdbcType=INTEGER}, #{returnBillId,jdbcType=INTEGER}, 
+      #{erpId,jdbcType=INTEGER}, #{propertyId,jdbcType=INTEGER}, #{code,jdbcType=INTEGER}, 
+      #{returnDate,jdbcType=INTEGER}, #{serialNumber,jdbcType=VARCHAR}, #{supplierId,jdbcType=INTEGER}, 
+      #{materialId,jdbcType=INTEGER}, #{unit,jdbcType=VARCHAR}, #{unitConvertRate,jdbcType=BIGINT}, 
+      #{unitPrice,jdbcType=BIGINT}, #{rmbUnitPrice,jdbcType=BIGINT}, #{price,jdbcType=BIGINT}, 
+      #{rmbPrice,jdbcType=BIGINT}, #{returnQuantity,jdbcType=BIGINT}, #{remark,jdbcType=VARCHAR}, 
+      #{warehouseId,jdbcType=INTEGER}, #{batchId,jdbcType=BIGINT}, #{confirmationCode,jdbcType=CHAR}, 
+      #{originReceiveBillId,jdbcType=INTEGER}, #{originPurchaseBillDetailId,jdbcType=INTEGER}, 
+      #{created,jdbcType=INTEGER}, #{updated,jdbcType=INTEGER}, #{isDeleted,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.learning.demo.bean.domain.erp.ErpPurchaseReturnBillDetails">
+    insert into erp_purchase_return_bill_details
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="returnBillDetailId != null">
+        return_bill_detail_id,
+      </if>
+      <if test="returnBillId != null">
+        return_bill_id,
+      </if>
+      <if test="erpId != null">
+        erp_id,
+      </if>
+      <if test="propertyId != null">
+        property_id,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="returnDate != null">
+        return_date,
+      </if>
+      <if test="serialNumber != null">
+        serial_number,
+      </if>
+      <if test="supplierId != null">
+        supplier_id,
+      </if>
+      <if test="materialId != null">
+        material_id,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+      <if test="unitConvertRate != null">
+        unit_convert_rate,
+      </if>
+      <if test="unitPrice != null">
+        unit_price,
+      </if>
+      <if test="rmbUnitPrice != null">
+        rmb_unit_price,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="rmbPrice != null">
+        rmb_price,
+      </if>
+      <if test="returnQuantity != null">
+        return_quantity,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="warehouseId != null">
+        warehouse_id,
+      </if>
+      <if test="batchId != null">
+        batch_id,
+      </if>
+      <if test="confirmationCode != null">
+        confirmation_code,
+      </if>
+      <if test="originReceiveBillId != null">
+        origin_receive_bill_id,
+      </if>
+      <if test="originPurchaseBillDetailId != null">
+        origin_purchase_bill_detail_id,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="returnBillDetailId != null">
+        #{returnBillDetailId,jdbcType=INTEGER},
+      </if>
+      <if test="returnBillId != null">
+        #{returnBillId,jdbcType=INTEGER},
+      </if>
+      <if test="erpId != null">
+        #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="propertyId != null">
+        #{propertyId,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=INTEGER},
+      </if>
+      <if test="returnDate != null">
+        #{returnDate,jdbcType=INTEGER},
+      </if>
+      <if test="serialNumber != null">
+        #{serialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierId != null">
+        #{supplierId,jdbcType=INTEGER},
+      </if>
+      <if test="materialId != null">
+        #{materialId,jdbcType=INTEGER},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="unitConvertRate != null">
+        #{unitConvertRate,jdbcType=BIGINT},
+      </if>
+      <if test="unitPrice != null">
+        #{unitPrice,jdbcType=BIGINT},
+      </if>
+      <if test="rmbUnitPrice != null">
+        #{rmbUnitPrice,jdbcType=BIGINT},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=BIGINT},
+      </if>
+      <if test="rmbPrice != null">
+        #{rmbPrice,jdbcType=BIGINT},
+      </if>
+      <if test="returnQuantity != null">
+        #{returnQuantity,jdbcType=BIGINT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseId != null">
+        #{warehouseId,jdbcType=INTEGER},
+      </if>
+      <if test="batchId != null">
+        #{batchId,jdbcType=BIGINT},
+      </if>
+      <if test="confirmationCode != null">
+        #{confirmationCode,jdbcType=CHAR},
+      </if>
+      <if test="originReceiveBillId != null">
+        #{originReceiveBillId,jdbcType=INTEGER},
+      </if>
+      <if test="originPurchaseBillDetailId != null">
+        #{originPurchaseBillDetailId,jdbcType=INTEGER},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.learning.demo.bean.domain.erp.ErpPurchaseReturnBillDetails">
+    update erp_purchase_return_bill_details
+    <set>
+      <if test="returnBillId != null">
+        return_bill_id = #{returnBillId,jdbcType=INTEGER},
+      </if>
+      <if test="erpId != null">
+        erp_id = #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="propertyId != null">
+        property_id = #{propertyId,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=INTEGER},
+      </if>
+      <if test="returnDate != null">
+        return_date = #{returnDate,jdbcType=INTEGER},
+      </if>
+      <if test="serialNumber != null">
+        serial_number = #{serialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierId != null">
+        supplier_id = #{supplierId,jdbcType=INTEGER},
+      </if>
+      <if test="materialId != null">
+        material_id = #{materialId,jdbcType=INTEGER},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="unitConvertRate != null">
+        unit_convert_rate = #{unitConvertRate,jdbcType=BIGINT},
+      </if>
+      <if test="unitPrice != null">
+        unit_price = #{unitPrice,jdbcType=BIGINT},
+      </if>
+      <if test="rmbUnitPrice != null">
+        rmb_unit_price = #{rmbUnitPrice,jdbcType=BIGINT},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=BIGINT},
+      </if>
+      <if test="rmbPrice != null">
+        rmb_price = #{rmbPrice,jdbcType=BIGINT},
+      </if>
+      <if test="returnQuantity != null">
+        return_quantity = #{returnQuantity,jdbcType=BIGINT},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseId != null">
+        warehouse_id = #{warehouseId,jdbcType=INTEGER},
+      </if>
+      <if test="batchId != null">
+        batch_id = #{batchId,jdbcType=BIGINT},
+      </if>
+      <if test="confirmationCode != null">
+        confirmation_code = #{confirmationCode,jdbcType=CHAR},
+      </if>
+      <if test="originReceiveBillId != null">
+        origin_receive_bill_id = #{originReceiveBillId,jdbcType=INTEGER},
+      </if>
+      <if test="originPurchaseBillDetailId != null">
+        origin_purchase_bill_detail_id = #{originPurchaseBillDetailId,jdbcType=INTEGER},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where return_bill_detail_id = #{returnBillDetailId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.learning.demo.bean.domain.erp.ErpPurchaseReturnBillDetails">
+    update erp_purchase_return_bill_details
+    set return_bill_id = #{returnBillId,jdbcType=INTEGER},
+      erp_id = #{erpId,jdbcType=INTEGER},
+      property_id = #{propertyId,jdbcType=INTEGER},
+      code = #{code,jdbcType=INTEGER},
+      return_date = #{returnDate,jdbcType=INTEGER},
+      serial_number = #{serialNumber,jdbcType=VARCHAR},
+      supplier_id = #{supplierId,jdbcType=INTEGER},
+      material_id = #{materialId,jdbcType=INTEGER},
+      unit = #{unit,jdbcType=VARCHAR},
+      unit_convert_rate = #{unitConvertRate,jdbcType=BIGINT},
+      unit_price = #{unitPrice,jdbcType=BIGINT},
+      rmb_unit_price = #{rmbUnitPrice,jdbcType=BIGINT},
+      price = #{price,jdbcType=BIGINT},
+      rmb_price = #{rmbPrice,jdbcType=BIGINT},
+      return_quantity = #{returnQuantity,jdbcType=BIGINT},
+      remark = #{remark,jdbcType=VARCHAR},
+      warehouse_id = #{warehouseId,jdbcType=INTEGER},
+      batch_id = #{batchId,jdbcType=BIGINT},
+      confirmation_code = #{confirmationCode,jdbcType=CHAR},
+      origin_receive_bill_id = #{originReceiveBillId,jdbcType=INTEGER},
+      origin_purchase_bill_detail_id = #{originPurchaseBillDetailId,jdbcType=INTEGER},
+      created = #{created,jdbcType=INTEGER},
+      updated = #{updated,jdbcType=INTEGER},
+      is_deleted = #{isDeleted,jdbcType=TINYINT}
+    where return_bill_detail_id = #{returnBillDetailId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.learning.demo.dao.erp.ErpPurchaseVoucherBillDetailsDao">
+  <resultMap id="BaseResultMap" type="com.learning.demo.bean.domain.erp.ErpPurchaseVoucherBillDetails">
+    <id column="voucher_bill_detail_id" jdbcType="INTEGER" property="voucherBillDetailId" />
+    <result column="voucher_bill_id" jdbcType="INTEGER" property="voucherBillId" />
+    <result column="erp_id" jdbcType="INTEGER" property="erpId" />
+    <result column="supplier_id" jdbcType="BIGINT" property="supplierId" />
+    <result column="property_id" jdbcType="INTEGER" property="propertyId" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="voucher_date" jdbcType="INTEGER" property="voucherDate" />
+    <result column="serial_number" jdbcType="VARCHAR" property="serialNumber" />
+    <result column="related_bill_id" jdbcType="INTEGER" property="relatedBillId" />
+    <result column="related_type" jdbcType="TINYINT" property="relatedType" />
+    <result column="related_date" jdbcType="INTEGER" property="relatedDate" />
+    <result column="payable_price" jdbcType="BIGINT" property="payablePrice" />
+    <result column="discount_price" jdbcType="BIGINT" property="discountPrice" />
+    <result column="rmb_discount_price" jdbcType="BIGINT" property="rmbDiscountPrice" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="confirmation_code" jdbcType="CHAR" property="confirmationCode" />
+    <result column="created" jdbcType="INTEGER" property="created" />
+    <result column="updated" jdbcType="INTEGER" property="updated" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <if test="fields == null">
+      voucher_bill_detail_id, voucher_bill_id, erp_id, supplier_id, property_id, code, 
+      voucher_date, serial_number, related_bill_id, related_type, related_date, payable_price, 
+      discount_price, rmb_discount_price, remark, confirmation_code, created, updated, 
+      is_deleted
+    </if>
+    <if test="fields != null">
+      ${fields}
+    </if>
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    voucher_bill_detail_id,voucher_bill_id,erp_id,supplier_id,property_id,code,voucher_date,serial_number,related_bill_id,related_type,related_date,payable_price,discount_price,rmb_discount_price,remark,confirmation_code,created,updated,is_deleted
+    from erp_purchase_voucher_bill_details
+    where voucher_bill_detail_id = #{voucherBillDetailId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from erp_purchase_voucher_bill_details
+    where voucher_bill_detail_id = #{voucherBillDetailId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.learning.demo.bean.domain.erp.ErpPurchaseVoucherBillDetails">
+    insert into erp_purchase_voucher_bill_details (voucher_bill_detail_id, voucher_bill_id, 
+      erp_id, supplier_id, property_id, 
+      code, voucher_date, serial_number, 
+      related_bill_id, related_type, related_date, 
+      payable_price, discount_price, rmb_discount_price, 
+      remark, confirmation_code, created, 
+      updated, is_deleted)
+    values (#{voucherBillDetailId,jdbcType=INTEGER}, #{voucherBillId,jdbcType=INTEGER}, 
+      #{erpId,jdbcType=INTEGER}, #{supplierId,jdbcType=BIGINT}, #{propertyId,jdbcType=INTEGER}, 
+      #{code,jdbcType=VARCHAR}, #{voucherDate,jdbcType=INTEGER}, #{serialNumber,jdbcType=VARCHAR}, 
+      #{relatedBillId,jdbcType=INTEGER}, #{relatedType,jdbcType=TINYINT}, #{relatedDate,jdbcType=INTEGER}, 
+      #{payablePrice,jdbcType=BIGINT}, #{discountPrice,jdbcType=BIGINT}, #{rmbDiscountPrice,jdbcType=BIGINT}, 
+      #{remark,jdbcType=VARCHAR}, #{confirmationCode,jdbcType=CHAR}, #{created,jdbcType=INTEGER}, 
+      #{updated,jdbcType=INTEGER}, #{isDeleted,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.learning.demo.bean.domain.erp.ErpPurchaseVoucherBillDetails">
+    insert into erp_purchase_voucher_bill_details
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="voucherBillDetailId != null">
+        voucher_bill_detail_id,
+      </if>
+      <if test="voucherBillId != null">
+        voucher_bill_id,
+      </if>
+      <if test="erpId != null">
+        erp_id,
+      </if>
+      <if test="supplierId != null">
+        supplier_id,
+      </if>
+      <if test="propertyId != null">
+        property_id,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="voucherDate != null">
+        voucher_date,
+      </if>
+      <if test="serialNumber != null">
+        serial_number,
+      </if>
+      <if test="relatedBillId != null">
+        related_bill_id,
+      </if>
+      <if test="relatedType != null">
+        related_type,
+      </if>
+      <if test="relatedDate != null">
+        related_date,
+      </if>
+      <if test="payablePrice != null">
+        payable_price,
+      </if>
+      <if test="discountPrice != null">
+        discount_price,
+      </if>
+      <if test="rmbDiscountPrice != null">
+        rmb_discount_price,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="confirmationCode != null">
+        confirmation_code,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="voucherBillDetailId != null">
+        #{voucherBillDetailId,jdbcType=INTEGER},
+      </if>
+      <if test="voucherBillId != null">
+        #{voucherBillId,jdbcType=INTEGER},
+      </if>
+      <if test="erpId != null">
+        #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="supplierId != null">
+        #{supplierId,jdbcType=BIGINT},
+      </if>
+      <if test="propertyId != null">
+        #{propertyId,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="voucherDate != null">
+        #{voucherDate,jdbcType=INTEGER},
+      </if>
+      <if test="serialNumber != null">
+        #{serialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="relatedBillId != null">
+        #{relatedBillId,jdbcType=INTEGER},
+      </if>
+      <if test="relatedType != null">
+        #{relatedType,jdbcType=TINYINT},
+      </if>
+      <if test="relatedDate != null">
+        #{relatedDate,jdbcType=INTEGER},
+      </if>
+      <if test="payablePrice != null">
+        #{payablePrice,jdbcType=BIGINT},
+      </if>
+      <if test="discountPrice != null">
+        #{discountPrice,jdbcType=BIGINT},
+      </if>
+      <if test="rmbDiscountPrice != null">
+        #{rmbDiscountPrice,jdbcType=BIGINT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="confirmationCode != null">
+        #{confirmationCode,jdbcType=CHAR},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.learning.demo.bean.domain.erp.ErpPurchaseVoucherBillDetails">
+    update erp_purchase_voucher_bill_details
+    <set>
+      <if test="voucherBillId != null">
+        voucher_bill_id = #{voucherBillId,jdbcType=INTEGER},
+      </if>
+      <if test="erpId != null">
+        erp_id = #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="supplierId != null">
+        supplier_id = #{supplierId,jdbcType=BIGINT},
+      </if>
+      <if test="propertyId != null">
+        property_id = #{propertyId,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="voucherDate != null">
+        voucher_date = #{voucherDate,jdbcType=INTEGER},
+      </if>
+      <if test="serialNumber != null">
+        serial_number = #{serialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="relatedBillId != null">
+        related_bill_id = #{relatedBillId,jdbcType=INTEGER},
+      </if>
+      <if test="relatedType != null">
+        related_type = #{relatedType,jdbcType=TINYINT},
+      </if>
+      <if test="relatedDate != null">
+        related_date = #{relatedDate,jdbcType=INTEGER},
+      </if>
+      <if test="payablePrice != null">
+        payable_price = #{payablePrice,jdbcType=BIGINT},
+      </if>
+      <if test="discountPrice != null">
+        discount_price = #{discountPrice,jdbcType=BIGINT},
+      </if>
+      <if test="rmbDiscountPrice != null">
+        rmb_discount_price = #{rmbDiscountPrice,jdbcType=BIGINT},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="confirmationCode != null">
+        confirmation_code = #{confirmationCode,jdbcType=CHAR},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where voucher_bill_detail_id = #{voucherBillDetailId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.learning.demo.bean.domain.erp.ErpPurchaseVoucherBillDetails">
+    update erp_purchase_voucher_bill_details
+    set voucher_bill_id = #{voucherBillId,jdbcType=INTEGER},
+      erp_id = #{erpId,jdbcType=INTEGER},
+      supplier_id = #{supplierId,jdbcType=BIGINT},
+      property_id = #{propertyId,jdbcType=INTEGER},
+      code = #{code,jdbcType=VARCHAR},
+      voucher_date = #{voucherDate,jdbcType=INTEGER},
+      serial_number = #{serialNumber,jdbcType=VARCHAR},
+      related_bill_id = #{relatedBillId,jdbcType=INTEGER},
+      related_type = #{relatedType,jdbcType=TINYINT},
+      related_date = #{relatedDate,jdbcType=INTEGER},
+      payable_price = #{payablePrice,jdbcType=BIGINT},
+      discount_price = #{discountPrice,jdbcType=BIGINT},
+      rmb_discount_price = #{rmbDiscountPrice,jdbcType=BIGINT},
+      remark = #{remark,jdbcType=VARCHAR},
+      confirmation_code = #{confirmationCode,jdbcType=CHAR},
+      created = #{created,jdbcType=INTEGER},
+      updated = #{updated,jdbcType=INTEGER},
+      is_deleted = #{isDeleted,jdbcType=TINYINT}
+    where voucher_bill_detail_id = #{voucherBillDetailId,jdbcType=INTEGER}
+  </update>
+</mapper>

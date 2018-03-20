@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.learning.demo.dao.erp.ErpPurchaseReviseBillDetailsDao">
+  <resultMap id="BaseResultMap" type="com.learning.demo.bean.domain.erp.ErpPurchaseReviseBillDetails">
+    <id column="revise_bill_detail_id" jdbcType="INTEGER" property="reviseBillDetailId" />
+    <result column="revise_bill_id" jdbcType="INTEGER" property="reviseBillId" />
+    <result column="erp_id" jdbcType="INTEGER" property="erpId" />
+    <result column="serial_number" jdbcType="VARCHAR" property="serialNumber" />
+    <result column="material_id" jdbcType="INTEGER" property="materialId" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="purchase_quantity" jdbcType="BIGINT" property="purchaseQuantity" />
+    <result column="purchase_unit_price" jdbcType="BIGINT" property="purchaseUnitPrice" />
+    <result column="delivery_date" jdbcType="INTEGER" property="deliveryDate" />
+    <result column="settle_code" jdbcType="CHAR" property="settleCode" />
+    <result column="revise_reason" jdbcType="VARCHAR" property="reviseReason" />
+    <result column="confirmation_code" jdbcType="CHAR" property="confirmationCode" />
+    <result column="origin_material_id" jdbcType="INTEGER" property="originMaterialId" />
+    <result column="origin_detail_id" jdbcType="BIGINT" property="originDetailId" />
+    <result column="origin_unit" jdbcType="VARCHAR" property="originUnit" />
+    <result column="origin_purchase_quantity" jdbcType="BIGINT" property="originPurchaseQuantity" />
+    <result column="origin_purchase_unit_price" jdbcType="BIGINT" property="originPurchaseUnitPrice" />
+    <result column="origin_delivery_date" jdbcType="INTEGER" property="originDeliveryDate" />
+    <result column="origin_settle_code" jdbcType="CHAR" property="originSettleCode" />
+    <result column="origin_delivered_quantity" jdbcType="BIGINT" property="originDeliveredQuantity" />
+    <result column="created" jdbcType="INTEGER" property="created" />
+    <result column="updated" jdbcType="INTEGER" property="updated" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <if test="fields == null">
+      revise_bill_detail_id, revise_bill_id, erp_id, serial_number, material_id, unit, 
+      purchase_quantity, purchase_unit_price, delivery_date, settle_code, revise_reason, 
+      confirmation_code, origin_material_id, origin_detail_id, origin_unit, origin_purchase_quantity, 
+      origin_purchase_unit_price, origin_delivery_date, origin_settle_code, origin_delivered_quantity, 
+      created, updated, is_deleted
+    </if>
+    <if test="fields != null">
+      ${fields}
+    </if>
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    revise_bill_detail_id,revise_bill_id,erp_id,serial_number,material_id,unit,purchase_quantity,purchase_unit_price,delivery_date,settle_code,revise_reason,confirmation_code,origin_material_id,origin_detail_id,origin_unit,origin_purchase_quantity,origin_purchase_unit_price,origin_delivery_date,origin_settle_code,origin_delivered_quantity,created,updated,is_deleted
+    from erp_purchase_revise_bill_details
+    where revise_bill_detail_id = #{reviseBillDetailId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from erp_purchase_revise_bill_details
+    where revise_bill_detail_id = #{reviseBillDetailId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.learning.demo.bean.domain.erp.ErpPurchaseReviseBillDetails">
+    insert into erp_purchase_revise_bill_details (revise_bill_detail_id, revise_bill_id, 
+      erp_id, serial_number, material_id, 
+      unit, purchase_quantity, purchase_unit_price, 
+      delivery_date, settle_code, revise_reason, 
+      confirmation_code, origin_material_id, origin_detail_id, 
+      origin_unit, origin_purchase_quantity, origin_purchase_unit_price, 
+      origin_delivery_date, origin_settle_code, origin_delivered_quantity, 
+      created, updated, is_deleted
+      )
+    values (#{reviseBillDetailId,jdbcType=INTEGER}, #{reviseBillId,jdbcType=INTEGER}, 
+      #{erpId,jdbcType=INTEGER}, #{serialNumber,jdbcType=VARCHAR}, #{materialId,jdbcType=INTEGER}, 
+      #{unit,jdbcType=VARCHAR}, #{purchaseQuantity,jdbcType=BIGINT}, #{purchaseUnitPrice,jdbcType=BIGINT}, 
+      #{deliveryDate,jdbcType=INTEGER}, #{settleCode,jdbcType=CHAR}, #{reviseReason,jdbcType=VARCHAR}, 
+      #{confirmationCode,jdbcType=CHAR}, #{originMaterialId,jdbcType=INTEGER}, #{originDetailId,jdbcType=BIGINT}, 
+      #{originUnit,jdbcType=VARCHAR}, #{originPurchaseQuantity,jdbcType=BIGINT}, #{originPurchaseUnitPrice,jdbcType=BIGINT}, 
+      #{originDeliveryDate,jdbcType=INTEGER}, #{originSettleCode,jdbcType=CHAR}, #{originDeliveredQuantity,jdbcType=BIGINT}, 
+      #{created,jdbcType=INTEGER}, #{updated,jdbcType=INTEGER}, #{isDeleted,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.learning.demo.bean.domain.erp.ErpPurchaseReviseBillDetails">
+    insert into erp_purchase_revise_bill_details
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="reviseBillDetailId != null">
+        revise_bill_detail_id,
+      </if>
+      <if test="reviseBillId != null">
+        revise_bill_id,
+      </if>
+      <if test="erpId != null">
+        erp_id,
+      </if>
+      <if test="serialNumber != null">
+        serial_number,
+      </if>
+      <if test="materialId != null">
+        material_id,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+      <if test="purchaseQuantity != null">
+        purchase_quantity,
+      </if>
+      <if test="purchaseUnitPrice != null">
+        purchase_unit_price,
+      </if>
+      <if test="deliveryDate != null">
+        delivery_date,
+      </if>
+      <if test="settleCode != null">
+        settle_code,
+      </if>
+      <if test="reviseReason != null">
+        revise_reason,
+      </if>
+      <if test="confirmationCode != null">
+        confirmation_code,
+      </if>
+      <if test="originMaterialId != null">
+        origin_material_id,
+      </if>
+      <if test="originDetailId != null">
+        origin_detail_id,
+      </if>
+      <if test="originUnit != null">
+        origin_unit,
+      </if>
+      <if test="originPurchaseQuantity != null">
+        origin_purchase_quantity,
+      </if>
+      <if test="originPurchaseUnitPrice != null">
+        origin_purchase_unit_price,
+      </if>
+      <if test="originDeliveryDate != null">
+        origin_delivery_date,
+      </if>
+      <if test="originSettleCode != null">
+        origin_settle_code,
+      </if>
+      <if test="originDeliveredQuantity != null">
+        origin_delivered_quantity,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="reviseBillDetailId != null">
+        #{reviseBillDetailId,jdbcType=INTEGER},
+      </if>
+      <if test="reviseBillId != null">
+        #{reviseBillId,jdbcType=INTEGER},
+      </if>
+      <if test="erpId != null">
+        #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="serialNumber != null">
+        #{serialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="materialId != null">
+        #{materialId,jdbcType=INTEGER},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseQuantity != null">
+        #{purchaseQuantity,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseUnitPrice != null">
+        #{purchaseUnitPrice,jdbcType=BIGINT},
+      </if>
+      <if test="deliveryDate != null">
+        #{deliveryDate,jdbcType=INTEGER},
+      </if>
+      <if test="settleCode != null">
+        #{settleCode,jdbcType=CHAR},
+      </if>
+      <if test="reviseReason != null">
+        #{reviseReason,jdbcType=VARCHAR},
+      </if>
+      <if test="confirmationCode != null">
+        #{confirmationCode,jdbcType=CHAR},
+      </if>
+      <if test="originMaterialId != null">
+        #{originMaterialId,jdbcType=INTEGER},
+      </if>
+      <if test="originDetailId != null">
+        #{originDetailId,jdbcType=BIGINT},
+      </if>
+      <if test="originUnit != null">
+        #{originUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="originPurchaseQuantity != null">
+        #{originPurchaseQuantity,jdbcType=BIGINT},
+      </if>
+      <if test="originPurchaseUnitPrice != null">
+        #{originPurchaseUnitPrice,jdbcType=BIGINT},
+      </if>
+      <if test="originDeliveryDate != null">
+        #{originDeliveryDate,jdbcType=INTEGER},
+      </if>
+      <if test="originSettleCode != null">
+        #{originSettleCode,jdbcType=CHAR},
+      </if>
+      <if test="originDeliveredQuantity != null">
+        #{originDeliveredQuantity,jdbcType=BIGINT},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.learning.demo.bean.domain.erp.ErpPurchaseReviseBillDetails">
+    update erp_purchase_revise_bill_details
+    <set>
+      <if test="reviseBillId != null">
+        revise_bill_id = #{reviseBillId,jdbcType=INTEGER},
+      </if>
+      <if test="erpId != null">
+        erp_id = #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="serialNumber != null">
+        serial_number = #{serialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="materialId != null">
+        material_id = #{materialId,jdbcType=INTEGER},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseQuantity != null">
+        purchase_quantity = #{purchaseQuantity,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseUnitPrice != null">
+        purchase_unit_price = #{purchaseUnitPrice,jdbcType=BIGINT},
+      </if>
+      <if test="deliveryDate != null">
+        delivery_date = #{deliveryDate,jdbcType=INTEGER},
+      </if>
+      <if test="settleCode != null">
+        settle_code = #{settleCode,jdbcType=CHAR},
+      </if>
+      <if test="reviseReason != null">
+        revise_reason = #{reviseReason,jdbcType=VARCHAR},
+      </if>
+      <if test="confirmationCode != null">
+        confirmation_code = #{confirmationCode,jdbcType=CHAR},
+      </if>
+      <if test="originMaterialId != null">
+        origin_material_id = #{originMaterialId,jdbcType=INTEGER},
+      </if>
+      <if test="originDetailId != null">
+        origin_detail_id = #{originDetailId,jdbcType=BIGINT},
+      </if>
+      <if test="originUnit != null">
+        origin_unit = #{originUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="originPurchaseQuantity != null">
+        origin_purchase_quantity = #{originPurchaseQuantity,jdbcType=BIGINT},
+      </if>
+      <if test="originPurchaseUnitPrice != null">
+        origin_purchase_unit_price = #{originPurchaseUnitPrice,jdbcType=BIGINT},
+      </if>
+      <if test="originDeliveryDate != null">
+        origin_delivery_date = #{originDeliveryDate,jdbcType=INTEGER},
+      </if>
+      <if test="originSettleCode != null">
+        origin_settle_code = #{originSettleCode,jdbcType=CHAR},
+      </if>
+      <if test="originDeliveredQuantity != null">
+        origin_delivered_quantity = #{originDeliveredQuantity,jdbcType=BIGINT},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where revise_bill_detail_id = #{reviseBillDetailId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.learning.demo.bean.domain.erp.ErpPurchaseReviseBillDetails">
+    update erp_purchase_revise_bill_details
+    set revise_bill_id = #{reviseBillId,jdbcType=INTEGER},
+      erp_id = #{erpId,jdbcType=INTEGER},
+      serial_number = #{serialNumber,jdbcType=VARCHAR},
+      material_id = #{materialId,jdbcType=INTEGER},
+      unit = #{unit,jdbcType=VARCHAR},
+      purchase_quantity = #{purchaseQuantity,jdbcType=BIGINT},
+      purchase_unit_price = #{purchaseUnitPrice,jdbcType=BIGINT},
+      delivery_date = #{deliveryDate,jdbcType=INTEGER},
+      settle_code = #{settleCode,jdbcType=CHAR},
+      revise_reason = #{reviseReason,jdbcType=VARCHAR},
+      confirmation_code = #{confirmationCode,jdbcType=CHAR},
+      origin_material_id = #{originMaterialId,jdbcType=INTEGER},
+      origin_detail_id = #{originDetailId,jdbcType=BIGINT},
+      origin_unit = #{originUnit,jdbcType=VARCHAR},
+      origin_purchase_quantity = #{originPurchaseQuantity,jdbcType=BIGINT},
+      origin_purchase_unit_price = #{originPurchaseUnitPrice,jdbcType=BIGINT},
+      origin_delivery_date = #{originDeliveryDate,jdbcType=INTEGER},
+      origin_settle_code = #{originSettleCode,jdbcType=CHAR},
+      origin_delivered_quantity = #{originDeliveredQuantity,jdbcType=BIGINT},
+      created = #{created,jdbcType=INTEGER},
+      updated = #{updated,jdbcType=INTEGER},
+      is_deleted = #{isDeleted,jdbcType=TINYINT}
+    where revise_bill_detail_id = #{reviseBillDetailId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.learning.demo.dao.erp.ErpOrderSaleBillsDao">
+  <resultMap id="BaseResultMap" type="com.learning.demo.bean.domain.erp.ErpOrderSaleBills">
+    <id column="sale_bill_id" jdbcType="INTEGER" property="saleBillId" />
+    <result column="erp_id" jdbcType="INTEGER" property="erpId" />
+    <result column="property_id" jdbcType="INTEGER" property="propertyId" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="sale_date" jdbcType="INTEGER" property="saleDate" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+    <result column="business_personnel_id" jdbcType="INTEGER" property="businessPersonnelId" />
+    <result column="currency_id" jdbcType="INTEGER" property="currencyId" />
+    <result column="exchange_rate" jdbcType="BIGINT" property="exchangeRate" />
+    <result column="sale_price" jdbcType="INTEGER" property="salePrice" />
+    <result column="customer_full_name" jdbcType="VARCHAR" property="customerFullName" />
+    <result column="deliver_address_one" jdbcType="VARCHAR" property="deliverAddressOne" />
+    <result column="deliver_address_two" jdbcType="VARCHAR" property="deliverAddressTwo" />
+    <result column="invoice_lianshu_code" jdbcType="CHAR" property="invoiceLianshuCode" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="settle_code" jdbcType="CHAR" property="settleCode" />
+    <result column="confirmation_code" jdbcType="CHAR" property="confirmationCode" />
+    <result column="update_code" jdbcType="CHAR" property="updateCode" />
+    <result column="transmission_code" jdbcType="CHAR" property="transmissionCode" />
+    <result column="print_count" jdbcType="INTEGER" property="printCount" />
+    <result column="unified_code" jdbcType="VARCHAR" property="unifiedCode" />
+    <result column="tax_code" jdbcType="CHAR" property="taxCode" />
+    <result column="created" jdbcType="INTEGER" property="created" />
+    <result column="updated" jdbcType="INTEGER" property="updated" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <if test="fields == null">
+      sale_bill_id, erp_id, property_id, code, sale_date, customer_id, department_id, business_personnel_id, 
+      currency_id, exchange_rate, sale_price, customer_full_name, deliver_address_one, 
+      deliver_address_two, invoice_lianshu_code, remark, settle_code, confirmation_code, 
+      update_code, transmission_code, print_count, unified_code, tax_code, created, updated, 
+      is_deleted
+    </if>
+    <if test="fields != null">
+      ${fields}
+    </if>
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    sale_bill_id,erp_id,property_id,code,sale_date,customer_id,department_id,business_personnel_id,currency_id,exchange_rate,sale_price,customer_full_name,deliver_address_one,deliver_address_two,invoice_lianshu_code,remark,settle_code,confirmation_code,update_code,transmission_code,print_count,unified_code,tax_code,created,updated,is_deleted
+    from erp_order_sale_bills
+    where sale_bill_id = #{saleBillId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from erp_order_sale_bills
+    where sale_bill_id = #{saleBillId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.learning.demo.bean.domain.erp.ErpOrderSaleBills">
+    insert into erp_order_sale_bills (sale_bill_id, erp_id, property_id, 
+      code, sale_date, customer_id, 
+      department_id, business_personnel_id, currency_id, 
+      exchange_rate, sale_price, customer_full_name, 
+      deliver_address_one, deliver_address_two, invoice_lianshu_code, 
+      remark, settle_code, confirmation_code, 
+      update_code, transmission_code, print_count, 
+      unified_code, tax_code, created, 
+      updated, is_deleted)
+    values (#{saleBillId,jdbcType=INTEGER}, #{erpId,jdbcType=INTEGER}, #{propertyId,jdbcType=INTEGER}, 
+      #{code,jdbcType=VARCHAR}, #{saleDate,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, 
+      #{departmentId,jdbcType=INTEGER}, #{businessPersonnelId,jdbcType=INTEGER}, #{currencyId,jdbcType=INTEGER}, 
+      #{exchangeRate,jdbcType=BIGINT}, #{salePrice,jdbcType=INTEGER}, #{customerFullName,jdbcType=VARCHAR}, 
+      #{deliverAddressOne,jdbcType=VARCHAR}, #{deliverAddressTwo,jdbcType=VARCHAR}, #{invoiceLianshuCode,jdbcType=CHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{settleCode,jdbcType=CHAR}, #{confirmationCode,jdbcType=CHAR}, 
+      #{updateCode,jdbcType=CHAR}, #{transmissionCode,jdbcType=CHAR}, #{printCount,jdbcType=INTEGER}, 
+      #{unifiedCode,jdbcType=VARCHAR}, #{taxCode,jdbcType=CHAR}, #{created,jdbcType=INTEGER}, 
+      #{updated,jdbcType=INTEGER}, #{isDeleted,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.learning.demo.bean.domain.erp.ErpOrderSaleBills">
+    insert into erp_order_sale_bills
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="saleBillId != null">
+        sale_bill_id,
+      </if>
+      <if test="erpId != null">
+        erp_id,
+      </if>
+      <if test="propertyId != null">
+        property_id,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="saleDate != null">
+        sale_date,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="departmentId != null">
+        department_id,
+      </if>
+      <if test="businessPersonnelId != null">
+        business_personnel_id,
+      </if>
+      <if test="currencyId != null">
+        currency_id,
+      </if>
+      <if test="exchangeRate != null">
+        exchange_rate,
+      </if>
+      <if test="salePrice != null">
+        sale_price,
+      </if>
+      <if test="customerFullName != null">
+        customer_full_name,
+      </if>
+      <if test="deliverAddressOne != null">
+        deliver_address_one,
+      </if>
+      <if test="deliverAddressTwo != null">
+        deliver_address_two,
+      </if>
+      <if test="invoiceLianshuCode != null">
+        invoice_lianshu_code,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="settleCode != null">
+        settle_code,
+      </if>
+      <if test="confirmationCode != null">
+        confirmation_code,
+      </if>
+      <if test="updateCode != null">
+        update_code,
+      </if>
+      <if test="transmissionCode != null">
+        transmission_code,
+      </if>
+      <if test="printCount != null">
+        print_count,
+      </if>
+      <if test="unifiedCode != null">
+        unified_code,
+      </if>
+      <if test="taxCode != null">
+        tax_code,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="saleBillId != null">
+        #{saleBillId,jdbcType=INTEGER},
+      </if>
+      <if test="erpId != null">
+        #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="propertyId != null">
+        #{propertyId,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="saleDate != null">
+        #{saleDate,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="departmentId != null">
+        #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="businessPersonnelId != null">
+        #{businessPersonnelId,jdbcType=INTEGER},
+      </if>
+      <if test="currencyId != null">
+        #{currencyId,jdbcType=INTEGER},
+      </if>
+      <if test="exchangeRate != null">
+        #{exchangeRate,jdbcType=BIGINT},
+      </if>
+      <if test="salePrice != null">
+        #{salePrice,jdbcType=INTEGER},
+      </if>
+      <if test="customerFullName != null">
+        #{customerFullName,jdbcType=VARCHAR},
+      </if>
+      <if test="deliverAddressOne != null">
+        #{deliverAddressOne,jdbcType=VARCHAR},
+      </if>
+      <if test="deliverAddressTwo != null">
+        #{deliverAddressTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceLianshuCode != null">
+        #{invoiceLianshuCode,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="settleCode != null">
+        #{settleCode,jdbcType=CHAR},
+      </if>
+      <if test="confirmationCode != null">
+        #{confirmationCode,jdbcType=CHAR},
+      </if>
+      <if test="updateCode != null">
+        #{updateCode,jdbcType=CHAR},
+      </if>
+      <if test="transmissionCode != null">
+        #{transmissionCode,jdbcType=CHAR},
+      </if>
+      <if test="printCount != null">
+        #{printCount,jdbcType=INTEGER},
+      </if>
+      <if test="unifiedCode != null">
+        #{unifiedCode,jdbcType=VARCHAR},
+      </if>
+      <if test="taxCode != null">
+        #{taxCode,jdbcType=CHAR},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.learning.demo.bean.domain.erp.ErpOrderSaleBills">
+    update erp_order_sale_bills
+    <set>
+      <if test="erpId != null">
+        erp_id = #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="propertyId != null">
+        property_id = #{propertyId,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="saleDate != null">
+        sale_date = #{saleDate,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="departmentId != null">
+        department_id = #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="businessPersonnelId != null">
+        business_personnel_id = #{businessPersonnelId,jdbcType=INTEGER},
+      </if>
+      <if test="currencyId != null">
+        currency_id = #{currencyId,jdbcType=INTEGER},
+      </if>
+      <if test="exchangeRate != null">
+        exchange_rate = #{exchangeRate,jdbcType=BIGINT},
+      </if>
+      <if test="salePrice != null">
+        sale_price = #{salePrice,jdbcType=INTEGER},
+      </if>
+      <if test="customerFullName != null">
+        customer_full_name = #{customerFullName,jdbcType=VARCHAR},
+      </if>
+      <if test="deliverAddressOne != null">
+        deliver_address_one = #{deliverAddressOne,jdbcType=VARCHAR},
+      </if>
+      <if test="deliverAddressTwo != null">
+        deliver_address_two = #{deliverAddressTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceLianshuCode != null">
+        invoice_lianshu_code = #{invoiceLianshuCode,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="settleCode != null">
+        settle_code = #{settleCode,jdbcType=CHAR},
+      </if>
+      <if test="confirmationCode != null">
+        confirmation_code = #{confirmationCode,jdbcType=CHAR},
+      </if>
+      <if test="updateCode != null">
+        update_code = #{updateCode,jdbcType=CHAR},
+      </if>
+      <if test="transmissionCode != null">
+        transmission_code = #{transmissionCode,jdbcType=CHAR},
+      </if>
+      <if test="printCount != null">
+        print_count = #{printCount,jdbcType=INTEGER},
+      </if>
+      <if test="unifiedCode != null">
+        unified_code = #{unifiedCode,jdbcType=VARCHAR},
+      </if>
+      <if test="taxCode != null">
+        tax_code = #{taxCode,jdbcType=CHAR},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where sale_bill_id = #{saleBillId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.learning.demo.bean.domain.erp.ErpOrderSaleBills">
+    update erp_order_sale_bills
+    set erp_id = #{erpId,jdbcType=INTEGER},
+      property_id = #{propertyId,jdbcType=INTEGER},
+      code = #{code,jdbcType=VARCHAR},
+      sale_date = #{saleDate,jdbcType=INTEGER},
+      customer_id = #{customerId,jdbcType=INTEGER},
+      department_id = #{departmentId,jdbcType=INTEGER},
+      business_personnel_id = #{businessPersonnelId,jdbcType=INTEGER},
+      currency_id = #{currencyId,jdbcType=INTEGER},
+      exchange_rate = #{exchangeRate,jdbcType=BIGINT},
+      sale_price = #{salePrice,jdbcType=INTEGER},
+      customer_full_name = #{customerFullName,jdbcType=VARCHAR},
+      deliver_address_one = #{deliverAddressOne,jdbcType=VARCHAR},
+      deliver_address_two = #{deliverAddressTwo,jdbcType=VARCHAR},
+      invoice_lianshu_code = #{invoiceLianshuCode,jdbcType=CHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      settle_code = #{settleCode,jdbcType=CHAR},
+      confirmation_code = #{confirmationCode,jdbcType=CHAR},
+      update_code = #{updateCode,jdbcType=CHAR},
+      transmission_code = #{transmissionCode,jdbcType=CHAR},
+      print_count = #{printCount,jdbcType=INTEGER},
+      unified_code = #{unifiedCode,jdbcType=VARCHAR},
+      tax_code = #{taxCode,jdbcType=CHAR},
+      created = #{created,jdbcType=INTEGER},
+      updated = #{updated,jdbcType=INTEGER},
+      is_deleted = #{isDeleted,jdbcType=TINYINT}
+    where sale_bill_id = #{saleBillId,jdbcType=INTEGER}
+  </update>
+</mapper>

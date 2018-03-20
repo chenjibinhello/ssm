@@ -1,0 +1,1047 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.learning.demo.dao.erp.ErpSuppliersDao">
+  <resultMap id="BaseResultMap" type="com.learning.demo.bean.domain.erp.ErpSuppliers">
+    <id column="supplier_id" jdbcType="INTEGER" property="supplierId" />
+    <result column="erp_id" jdbcType="INTEGER" property="erpId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="unified_code" jdbcType="VARCHAR" property="unifiedCode" />
+    <result column="opening_day" jdbcType="INTEGER" property="openingDay" />
+    <result column="capital_amount" jdbcType="BIGINT" property="capitalAmount" />
+    <result column="staff_count" jdbcType="INTEGER" property="staffCount" />
+    <result column="begin_trade" jdbcType="INTEGER" property="beginTrade" />
+    <result column="last_trade" jdbcType="INTEGER" property="lastTrade" />
+    <result column="ABC_level" jdbcType="CHAR" property="abcLevel" />
+    <result column="delivery_level" jdbcType="CHAR" property="deliveryLevel" />
+    <result column="quality_level" jdbcType="CHAR" property="qualityLevel" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="province" jdbcType="INTEGER" property="province" />
+    <result column="city" jdbcType="INTEGER" property="city" />
+    <result column="district" jdbcType="INTEGER" property="district" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="responsible_person_name" jdbcType="VARCHAR" property="responsiblePersonName" />
+    <result column="liaison_name" jdbcType="VARCHAR" property="liaisonName" />
+    <result column="currency_id" jdbcType="INTEGER" property="currencyId" />
+    <result column="price_conditions" jdbcType="VARCHAR" property="priceConditions" />
+    <result column="payment_conditions" jdbcType="VARCHAR" property="paymentConditions" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="mobile_phone" jdbcType="VARCHAR" property="mobilePhone" />
+    <result column="fax_number" jdbcType="VARCHAR" property="faxNumber" />
+    <result column="accounting_subject_id" jdbcType="INTEGER" property="accountingSubjectId" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="purchase_price_jan" jdbcType="BIGINT" property="purchasePriceJan" />
+    <result column="purchase_count_jan" jdbcType="INTEGER" property="purchaseCountJan" />
+    <result column="overdue_count_jan" jdbcType="INTEGER" property="overdueCountJan" />
+    <result column="harmful_count_jan" jdbcType="INTEGER" property="harmfulCountJan" />
+    <result column="purchase_price_feb" jdbcType="BIGINT" property="purchasePriceFeb" />
+    <result column="purchase_count_feb" jdbcType="INTEGER" property="purchaseCountFeb" />
+    <result column="overdue_count_feb" jdbcType="INTEGER" property="overdueCountFeb" />
+    <result column="harmful_count_feb" jdbcType="INTEGER" property="harmfulCountFeb" />
+    <result column="purchase_price_mar" jdbcType="BIGINT" property="purchasePriceMar" />
+    <result column="purchase_count_mar" jdbcType="INTEGER" property="purchaseCountMar" />
+    <result column="overdue_count_mar" jdbcType="INTEGER" property="overdueCountMar" />
+    <result column="harmful_count_mar" jdbcType="INTEGER" property="harmfulCountMar" />
+    <result column="purchase_price_apr" jdbcType="BIGINT" property="purchasePriceApr" />
+    <result column="purchase_count_apr" jdbcType="INTEGER" property="purchaseCountApr" />
+    <result column="overdue_count_apr" jdbcType="INTEGER" property="overdueCountApr" />
+    <result column="harmful_count_apr" jdbcType="INTEGER" property="harmfulCountApr" />
+    <result column="purchase_price_may" jdbcType="BIGINT" property="purchasePriceMay" />
+    <result column="purchase_count_may" jdbcType="INTEGER" property="purchaseCountMay" />
+    <result column="overdue_count_may" jdbcType="INTEGER" property="overdueCountMay" />
+    <result column="harmful_count_may" jdbcType="INTEGER" property="harmfulCountMay" />
+    <result column="purchase_price_june" jdbcType="BIGINT" property="purchasePriceJune" />
+    <result column="purchase_count_june" jdbcType="INTEGER" property="purchaseCountJune" />
+    <result column="overdue_count_june" jdbcType="INTEGER" property="overdueCountJune" />
+    <result column="harmful_count_june" jdbcType="INTEGER" property="harmfulCountJune" />
+    <result column="purchase_price_july" jdbcType="BIGINT" property="purchasePriceJuly" />
+    <result column="purchase_count_july" jdbcType="INTEGER" property="purchaseCountJuly" />
+    <result column="overdue_count_july" jdbcType="INTEGER" property="overdueCountJuly" />
+    <result column="harmful_count_july" jdbcType="INTEGER" property="harmfulCountJuly" />
+    <result column="purchase_price_aug" jdbcType="BIGINT" property="purchasePriceAug" />
+    <result column="purchase_count_aug" jdbcType="INTEGER" property="purchaseCountAug" />
+    <result column="overdue_count_aug" jdbcType="INTEGER" property="overdueCountAug" />
+    <result column="harmful_count_aug" jdbcType="INTEGER" property="harmfulCountAug" />
+    <result column="purchase_price_sept" jdbcType="BIGINT" property="purchasePriceSept" />
+    <result column="purchase_count_sept" jdbcType="INTEGER" property="purchaseCountSept" />
+    <result column="overdue_count_sept" jdbcType="INTEGER" property="overdueCountSept" />
+    <result column="harmful_count_sept" jdbcType="INTEGER" property="harmfulCountSept" />
+    <result column="purchase_price_oct" jdbcType="BIGINT" property="purchasePriceOct" />
+    <result column="purchase_count_oct" jdbcType="INTEGER" property="purchaseCountOct" />
+    <result column="overdue_count_oct" jdbcType="INTEGER" property="overdueCountOct" />
+    <result column="harmful_count_oct" jdbcType="INTEGER" property="harmfulCountOct" />
+    <result column="purchase_price_nov" jdbcType="BIGINT" property="purchasePriceNov" />
+    <result column="purchase_count_nov" jdbcType="INTEGER" property="purchaseCountNov" />
+    <result column="overdue_count_nov" jdbcType="INTEGER" property="overdueCountNov" />
+    <result column="harmful_count_nov" jdbcType="INTEGER" property="harmfulCountNov" />
+    <result column="purchase_price_dec" jdbcType="BIGINT" property="purchasePriceDec" />
+    <result column="purchase_count_dec" jdbcType="INTEGER" property="purchaseCountDec" />
+    <result column="overdue_count_dec" jdbcType="INTEGER" property="overdueCountDec" />
+    <result column="harmful_count_dec" jdbcType="INTEGER" property="harmfulCountDec" />
+    <result column="checkout_month" jdbcType="TINYINT" property="checkoutMonth" />
+    <result column="checkout_day" jdbcType="TINYINT" property="checkoutDay" />
+    <result column="payment_month" jdbcType="TINYINT" property="paymentMonth" />
+    <result column="payment_day" jdbcType="TINYINT" property="paymentDay" />
+    <result column="voucher_month" jdbcType="TINYINT" property="voucherMonth" />
+    <result column="voucher_day" jdbcType="TINYINT" property="voucherDay" />
+    <result column="created" jdbcType="INTEGER" property="created" />
+    <result column="updated" jdbcType="INTEGER" property="updated" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <if test="fields == null">
+      supplier_id, erp_id, name, code, unified_code, opening_day, capital_amount, staff_count, 
+      begin_trade, last_trade, ABC_level, delivery_level, quality_level, company_name, 
+      province, city, district, address, responsible_person_name, liaison_name, currency_id, 
+      price_conditions, payment_conditions, phone, mobile_phone, fax_number, accounting_subject_id, 
+      remark, purchase_price_jan, purchase_count_jan, overdue_count_jan, harmful_count_jan, 
+      purchase_price_feb, purchase_count_feb, overdue_count_feb, harmful_count_feb, purchase_price_mar, 
+      purchase_count_mar, overdue_count_mar, harmful_count_mar, purchase_price_apr, purchase_count_apr, 
+      overdue_count_apr, harmful_count_apr, purchase_price_may, purchase_count_may, overdue_count_may, 
+      harmful_count_may, purchase_price_june, purchase_count_june, overdue_count_june, 
+      harmful_count_june, purchase_price_july, purchase_count_july, overdue_count_july, 
+      harmful_count_july, purchase_price_aug, purchase_count_aug, overdue_count_aug, harmful_count_aug, 
+      purchase_price_sept, purchase_count_sept, overdue_count_sept, harmful_count_sept, 
+      purchase_price_oct, purchase_count_oct, overdue_count_oct, harmful_count_oct, purchase_price_nov, 
+      purchase_count_nov, overdue_count_nov, harmful_count_nov, purchase_price_dec, purchase_count_dec, 
+      overdue_count_dec, harmful_count_dec, checkout_month, checkout_day, payment_month, 
+      payment_day, voucher_month, voucher_day, created, updated, is_deleted
+    </if>
+    <if test="fields != null">
+      ${fields}
+    </if>
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    supplier_id,erp_id,name,code,unified_code,opening_day,capital_amount,staff_count,begin_trade,last_trade,ABC_level,delivery_level,quality_level,company_name,province,city,district,address,responsible_person_name,liaison_name,currency_id,price_conditions,payment_conditions,phone,mobile_phone,fax_number,accounting_subject_id,remark,purchase_price_jan,purchase_count_jan,overdue_count_jan,harmful_count_jan,purchase_price_feb,purchase_count_feb,overdue_count_feb,harmful_count_feb,purchase_price_mar,purchase_count_mar,overdue_count_mar,harmful_count_mar,purchase_price_apr,purchase_count_apr,overdue_count_apr,harmful_count_apr,purchase_price_may,purchase_count_may,overdue_count_may,harmful_count_may,purchase_price_june,purchase_count_june,overdue_count_june,harmful_count_june,purchase_price_july,purchase_count_july,overdue_count_july,harmful_count_july,purchase_price_aug,purchase_count_aug,overdue_count_aug,harmful_count_aug,purchase_price_sept,purchase_count_sept,overdue_count_sept,harmful_count_sept,purchase_price_oct,purchase_count_oct,overdue_count_oct,harmful_count_oct,purchase_price_nov,purchase_count_nov,overdue_count_nov,harmful_count_nov,purchase_price_dec,purchase_count_dec,overdue_count_dec,harmful_count_dec,checkout_month,checkout_day,payment_month,payment_day,voucher_month,voucher_day,created,updated,is_deleted
+    from erp_suppliers
+    where supplier_id = #{supplierId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from erp_suppliers
+    where supplier_id = #{supplierId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.learning.demo.bean.domain.erp.ErpSuppliers">
+    insert into erp_suppliers (supplier_id, erp_id, name, 
+      code, unified_code, opening_day, 
+      capital_amount, staff_count, begin_trade, 
+      last_trade, ABC_level, delivery_level, 
+      quality_level, company_name, province, 
+      city, district, address, 
+      responsible_person_name, liaison_name, currency_id, 
+      price_conditions, payment_conditions, phone, 
+      mobile_phone, fax_number, accounting_subject_id, 
+      remark, purchase_price_jan, purchase_count_jan, 
+      overdue_count_jan, harmful_count_jan, purchase_price_feb, 
+      purchase_count_feb, overdue_count_feb, harmful_count_feb, 
+      purchase_price_mar, purchase_count_mar, overdue_count_mar, 
+      harmful_count_mar, purchase_price_apr, purchase_count_apr, 
+      overdue_count_apr, harmful_count_apr, purchase_price_may, 
+      purchase_count_may, overdue_count_may, harmful_count_may, 
+      purchase_price_june, purchase_count_june, overdue_count_june, 
+      harmful_count_june, purchase_price_july, purchase_count_july, 
+      overdue_count_july, harmful_count_july, purchase_price_aug, 
+      purchase_count_aug, overdue_count_aug, harmful_count_aug, 
+      purchase_price_sept, purchase_count_sept, overdue_count_sept, 
+      harmful_count_sept, purchase_price_oct, purchase_count_oct, 
+      overdue_count_oct, harmful_count_oct, purchase_price_nov, 
+      purchase_count_nov, overdue_count_nov, harmful_count_nov, 
+      purchase_price_dec, purchase_count_dec, overdue_count_dec, 
+      harmful_count_dec, checkout_month, checkout_day, 
+      payment_month, payment_day, voucher_month, 
+      voucher_day, created, updated, 
+      is_deleted)
+    values (#{supplierId,jdbcType=INTEGER}, #{erpId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{code,jdbcType=VARCHAR}, #{unifiedCode,jdbcType=VARCHAR}, #{openingDay,jdbcType=INTEGER}, 
+      #{capitalAmount,jdbcType=BIGINT}, #{staffCount,jdbcType=INTEGER}, #{beginTrade,jdbcType=INTEGER}, 
+      #{lastTrade,jdbcType=INTEGER}, #{abcLevel,jdbcType=CHAR}, #{deliveryLevel,jdbcType=CHAR}, 
+      #{qualityLevel,jdbcType=CHAR}, #{companyName,jdbcType=VARCHAR}, #{province,jdbcType=INTEGER}, 
+      #{city,jdbcType=INTEGER}, #{district,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, 
+      #{responsiblePersonName,jdbcType=VARCHAR}, #{liaisonName,jdbcType=VARCHAR}, #{currencyId,jdbcType=INTEGER}, 
+      #{priceConditions,jdbcType=VARCHAR}, #{paymentConditions,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{mobilePhone,jdbcType=VARCHAR}, #{faxNumber,jdbcType=VARCHAR}, #{accountingSubjectId,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR}, #{purchasePriceJan,jdbcType=BIGINT}, #{purchaseCountJan,jdbcType=INTEGER}, 
+      #{overdueCountJan,jdbcType=INTEGER}, #{harmfulCountJan,jdbcType=INTEGER}, #{purchasePriceFeb,jdbcType=BIGINT}, 
+      #{purchaseCountFeb,jdbcType=INTEGER}, #{overdueCountFeb,jdbcType=INTEGER}, #{harmfulCountFeb,jdbcType=INTEGER}, 
+      #{purchasePriceMar,jdbcType=BIGINT}, #{purchaseCountMar,jdbcType=INTEGER}, #{overdueCountMar,jdbcType=INTEGER}, 
+      #{harmfulCountMar,jdbcType=INTEGER}, #{purchasePriceApr,jdbcType=BIGINT}, #{purchaseCountApr,jdbcType=INTEGER}, 
+      #{overdueCountApr,jdbcType=INTEGER}, #{harmfulCountApr,jdbcType=INTEGER}, #{purchasePriceMay,jdbcType=BIGINT}, 
+      #{purchaseCountMay,jdbcType=INTEGER}, #{overdueCountMay,jdbcType=INTEGER}, #{harmfulCountMay,jdbcType=INTEGER}, 
+      #{purchasePriceJune,jdbcType=BIGINT}, #{purchaseCountJune,jdbcType=INTEGER}, #{overdueCountJune,jdbcType=INTEGER}, 
+      #{harmfulCountJune,jdbcType=INTEGER}, #{purchasePriceJuly,jdbcType=BIGINT}, #{purchaseCountJuly,jdbcType=INTEGER}, 
+      #{overdueCountJuly,jdbcType=INTEGER}, #{harmfulCountJuly,jdbcType=INTEGER}, #{purchasePriceAug,jdbcType=BIGINT}, 
+      #{purchaseCountAug,jdbcType=INTEGER}, #{overdueCountAug,jdbcType=INTEGER}, #{harmfulCountAug,jdbcType=INTEGER}, 
+      #{purchasePriceSept,jdbcType=BIGINT}, #{purchaseCountSept,jdbcType=INTEGER}, #{overdueCountSept,jdbcType=INTEGER}, 
+      #{harmfulCountSept,jdbcType=INTEGER}, #{purchasePriceOct,jdbcType=BIGINT}, #{purchaseCountOct,jdbcType=INTEGER}, 
+      #{overdueCountOct,jdbcType=INTEGER}, #{harmfulCountOct,jdbcType=INTEGER}, #{purchasePriceNov,jdbcType=BIGINT}, 
+      #{purchaseCountNov,jdbcType=INTEGER}, #{overdueCountNov,jdbcType=INTEGER}, #{harmfulCountNov,jdbcType=INTEGER}, 
+      #{purchasePriceDec,jdbcType=BIGINT}, #{purchaseCountDec,jdbcType=INTEGER}, #{overdueCountDec,jdbcType=INTEGER}, 
+      #{harmfulCountDec,jdbcType=INTEGER}, #{checkoutMonth,jdbcType=TINYINT}, #{checkoutDay,jdbcType=TINYINT}, 
+      #{paymentMonth,jdbcType=TINYINT}, #{paymentDay,jdbcType=TINYINT}, #{voucherMonth,jdbcType=TINYINT}, 
+      #{voucherDay,jdbcType=TINYINT}, #{created,jdbcType=INTEGER}, #{updated,jdbcType=INTEGER}, 
+      #{isDeleted,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.learning.demo.bean.domain.erp.ErpSuppliers">
+    insert into erp_suppliers
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="supplierId != null">
+        supplier_id,
+      </if>
+      <if test="erpId != null">
+        erp_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="unifiedCode != null">
+        unified_code,
+      </if>
+      <if test="openingDay != null">
+        opening_day,
+      </if>
+      <if test="capitalAmount != null">
+        capital_amount,
+      </if>
+      <if test="staffCount != null">
+        staff_count,
+      </if>
+      <if test="beginTrade != null">
+        begin_trade,
+      </if>
+      <if test="lastTrade != null">
+        last_trade,
+      </if>
+      <if test="abcLevel != null">
+        ABC_level,
+      </if>
+      <if test="deliveryLevel != null">
+        delivery_level,
+      </if>
+      <if test="qualityLevel != null">
+        quality_level,
+      </if>
+      <if test="companyName != null">
+        company_name,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="district != null">
+        district,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="responsiblePersonName != null">
+        responsible_person_name,
+      </if>
+      <if test="liaisonName != null">
+        liaison_name,
+      </if>
+      <if test="currencyId != null">
+        currency_id,
+      </if>
+      <if test="priceConditions != null">
+        price_conditions,
+      </if>
+      <if test="paymentConditions != null">
+        payment_conditions,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="mobilePhone != null">
+        mobile_phone,
+      </if>
+      <if test="faxNumber != null">
+        fax_number,
+      </if>
+      <if test="accountingSubjectId != null">
+        accounting_subject_id,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="purchasePriceJan != null">
+        purchase_price_jan,
+      </if>
+      <if test="purchaseCountJan != null">
+        purchase_count_jan,
+      </if>
+      <if test="overdueCountJan != null">
+        overdue_count_jan,
+      </if>
+      <if test="harmfulCountJan != null">
+        harmful_count_jan,
+      </if>
+      <if test="purchasePriceFeb != null">
+        purchase_price_feb,
+      </if>
+      <if test="purchaseCountFeb != null">
+        purchase_count_feb,
+      </if>
+      <if test="overdueCountFeb != null">
+        overdue_count_feb,
+      </if>
+      <if test="harmfulCountFeb != null">
+        harmful_count_feb,
+      </if>
+      <if test="purchasePriceMar != null">
+        purchase_price_mar,
+      </if>
+      <if test="purchaseCountMar != null">
+        purchase_count_mar,
+      </if>
+      <if test="overdueCountMar != null">
+        overdue_count_mar,
+      </if>
+      <if test="harmfulCountMar != null">
+        harmful_count_mar,
+      </if>
+      <if test="purchasePriceApr != null">
+        purchase_price_apr,
+      </if>
+      <if test="purchaseCountApr != null">
+        purchase_count_apr,
+      </if>
+      <if test="overdueCountApr != null">
+        overdue_count_apr,
+      </if>
+      <if test="harmfulCountApr != null">
+        harmful_count_apr,
+      </if>
+      <if test="purchasePriceMay != null">
+        purchase_price_may,
+      </if>
+      <if test="purchaseCountMay != null">
+        purchase_count_may,
+      </if>
+      <if test="overdueCountMay != null">
+        overdue_count_may,
+      </if>
+      <if test="harmfulCountMay != null">
+        harmful_count_may,
+      </if>
+      <if test="purchasePriceJune != null">
+        purchase_price_june,
+      </if>
+      <if test="purchaseCountJune != null">
+        purchase_count_june,
+      </if>
+      <if test="overdueCountJune != null">
+        overdue_count_june,
+      </if>
+      <if test="harmfulCountJune != null">
+        harmful_count_june,
+      </if>
+      <if test="purchasePriceJuly != null">
+        purchase_price_july,
+      </if>
+      <if test="purchaseCountJuly != null">
+        purchase_count_july,
+      </if>
+      <if test="overdueCountJuly != null">
+        overdue_count_july,
+      </if>
+      <if test="harmfulCountJuly != null">
+        harmful_count_july,
+      </if>
+      <if test="purchasePriceAug != null">
+        purchase_price_aug,
+      </if>
+      <if test="purchaseCountAug != null">
+        purchase_count_aug,
+      </if>
+      <if test="overdueCountAug != null">
+        overdue_count_aug,
+      </if>
+      <if test="harmfulCountAug != null">
+        harmful_count_aug,
+      </if>
+      <if test="purchasePriceSept != null">
+        purchase_price_sept,
+      </if>
+      <if test="purchaseCountSept != null">
+        purchase_count_sept,
+      </if>
+      <if test="overdueCountSept != null">
+        overdue_count_sept,
+      </if>
+      <if test="harmfulCountSept != null">
+        harmful_count_sept,
+      </if>
+      <if test="purchasePriceOct != null">
+        purchase_price_oct,
+      </if>
+      <if test="purchaseCountOct != null">
+        purchase_count_oct,
+      </if>
+      <if test="overdueCountOct != null">
+        overdue_count_oct,
+      </if>
+      <if test="harmfulCountOct != null">
+        harmful_count_oct,
+      </if>
+      <if test="purchasePriceNov != null">
+        purchase_price_nov,
+      </if>
+      <if test="purchaseCountNov != null">
+        purchase_count_nov,
+      </if>
+      <if test="overdueCountNov != null">
+        overdue_count_nov,
+      </if>
+      <if test="harmfulCountNov != null">
+        harmful_count_nov,
+      </if>
+      <if test="purchasePriceDec != null">
+        purchase_price_dec,
+      </if>
+      <if test="purchaseCountDec != null">
+        purchase_count_dec,
+      </if>
+      <if test="overdueCountDec != null">
+        overdue_count_dec,
+      </if>
+      <if test="harmfulCountDec != null">
+        harmful_count_dec,
+      </if>
+      <if test="checkoutMonth != null">
+        checkout_month,
+      </if>
+      <if test="checkoutDay != null">
+        checkout_day,
+      </if>
+      <if test="paymentMonth != null">
+        payment_month,
+      </if>
+      <if test="paymentDay != null">
+        payment_day,
+      </if>
+      <if test="voucherMonth != null">
+        voucher_month,
+      </if>
+      <if test="voucherDay != null">
+        voucher_day,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="supplierId != null">
+        #{supplierId,jdbcType=INTEGER},
+      </if>
+      <if test="erpId != null">
+        #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="unifiedCode != null">
+        #{unifiedCode,jdbcType=VARCHAR},
+      </if>
+      <if test="openingDay != null">
+        #{openingDay,jdbcType=INTEGER},
+      </if>
+      <if test="capitalAmount != null">
+        #{capitalAmount,jdbcType=BIGINT},
+      </if>
+      <if test="staffCount != null">
+        #{staffCount,jdbcType=INTEGER},
+      </if>
+      <if test="beginTrade != null">
+        #{beginTrade,jdbcType=INTEGER},
+      </if>
+      <if test="lastTrade != null">
+        #{lastTrade,jdbcType=INTEGER},
+      </if>
+      <if test="abcLevel != null">
+        #{abcLevel,jdbcType=CHAR},
+      </if>
+      <if test="deliveryLevel != null">
+        #{deliveryLevel,jdbcType=CHAR},
+      </if>
+      <if test="qualityLevel != null">
+        #{qualityLevel,jdbcType=CHAR},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=INTEGER},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=INTEGER},
+      </if>
+      <if test="district != null">
+        #{district,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="responsiblePersonName != null">
+        #{responsiblePersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="liaisonName != null">
+        #{liaisonName,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyId != null">
+        #{currencyId,jdbcType=INTEGER},
+      </if>
+      <if test="priceConditions != null">
+        #{priceConditions,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentConditions != null">
+        #{paymentConditions,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilePhone != null">
+        #{mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="faxNumber != null">
+        #{faxNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="accountingSubjectId != null">
+        #{accountingSubjectId,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="purchasePriceJan != null">
+        #{purchasePriceJan,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseCountJan != null">
+        #{purchaseCountJan,jdbcType=INTEGER},
+      </if>
+      <if test="overdueCountJan != null">
+        #{overdueCountJan,jdbcType=INTEGER},
+      </if>
+      <if test="harmfulCountJan != null">
+        #{harmfulCountJan,jdbcType=INTEGER},
+      </if>
+      <if test="purchasePriceFeb != null">
+        #{purchasePriceFeb,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseCountFeb != null">
+        #{purchaseCountFeb,jdbcType=INTEGER},
+      </if>
+      <if test="overdueCountFeb != null">
+        #{overdueCountFeb,jdbcType=INTEGER},
+      </if>
+      <if test="harmfulCountFeb != null">
+        #{harmfulCountFeb,jdbcType=INTEGER},
+      </if>
+      <if test="purchasePriceMar != null">
+        #{purchasePriceMar,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseCountMar != null">
+        #{purchaseCountMar,jdbcType=INTEGER},
+      </if>
+      <if test="overdueCountMar != null">
+        #{overdueCountMar,jdbcType=INTEGER},
+      </if>
+      <if test="harmfulCountMar != null">
+        #{harmfulCountMar,jdbcType=INTEGER},
+      </if>
+      <if test="purchasePriceApr != null">
+        #{purchasePriceApr,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseCountApr != null">
+        #{purchaseCountApr,jdbcType=INTEGER},
+      </if>
+      <if test="overdueCountApr != null">
+        #{overdueCountApr,jdbcType=INTEGER},
+      </if>
+      <if test="harmfulCountApr != null">
+        #{harmfulCountApr,jdbcType=INTEGER},
+      </if>
+      <if test="purchasePriceMay != null">
+        #{purchasePriceMay,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseCountMay != null">
+        #{purchaseCountMay,jdbcType=INTEGER},
+      </if>
+      <if test="overdueCountMay != null">
+        #{overdueCountMay,jdbcType=INTEGER},
+      </if>
+      <if test="harmfulCountMay != null">
+        #{harmfulCountMay,jdbcType=INTEGER},
+      </if>
+      <if test="purchasePriceJune != null">
+        #{purchasePriceJune,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseCountJune != null">
+        #{purchaseCountJune,jdbcType=INTEGER},
+      </if>
+      <if test="overdueCountJune != null">
+        #{overdueCountJune,jdbcType=INTEGER},
+      </if>
+      <if test="harmfulCountJune != null">
+        #{harmfulCountJune,jdbcType=INTEGER},
+      </if>
+      <if test="purchasePriceJuly != null">
+        #{purchasePriceJuly,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseCountJuly != null">
+        #{purchaseCountJuly,jdbcType=INTEGER},
+      </if>
+      <if test="overdueCountJuly != null">
+        #{overdueCountJuly,jdbcType=INTEGER},
+      </if>
+      <if test="harmfulCountJuly != null">
+        #{harmfulCountJuly,jdbcType=INTEGER},
+      </if>
+      <if test="purchasePriceAug != null">
+        #{purchasePriceAug,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseCountAug != null">
+        #{purchaseCountAug,jdbcType=INTEGER},
+      </if>
+      <if test="overdueCountAug != null">
+        #{overdueCountAug,jdbcType=INTEGER},
+      </if>
+      <if test="harmfulCountAug != null">
+        #{harmfulCountAug,jdbcType=INTEGER},
+      </if>
+      <if test="purchasePriceSept != null">
+        #{purchasePriceSept,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseCountSept != null">
+        #{purchaseCountSept,jdbcType=INTEGER},
+      </if>
+      <if test="overdueCountSept != null">
+        #{overdueCountSept,jdbcType=INTEGER},
+      </if>
+      <if test="harmfulCountSept != null">
+        #{harmfulCountSept,jdbcType=INTEGER},
+      </if>
+      <if test="purchasePriceOct != null">
+        #{purchasePriceOct,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseCountOct != null">
+        #{purchaseCountOct,jdbcType=INTEGER},
+      </if>
+      <if test="overdueCountOct != null">
+        #{overdueCountOct,jdbcType=INTEGER},
+      </if>
+      <if test="harmfulCountOct != null">
+        #{harmfulCountOct,jdbcType=INTEGER},
+      </if>
+      <if test="purchasePriceNov != null">
+        #{purchasePriceNov,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseCountNov != null">
+        #{purchaseCountNov,jdbcType=INTEGER},
+      </if>
+      <if test="overdueCountNov != null">
+        #{overdueCountNov,jdbcType=INTEGER},
+      </if>
+      <if test="harmfulCountNov != null">
+        #{harmfulCountNov,jdbcType=INTEGER},
+      </if>
+      <if test="purchasePriceDec != null">
+        #{purchasePriceDec,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseCountDec != null">
+        #{purchaseCountDec,jdbcType=INTEGER},
+      </if>
+      <if test="overdueCountDec != null">
+        #{overdueCountDec,jdbcType=INTEGER},
+      </if>
+      <if test="harmfulCountDec != null">
+        #{harmfulCountDec,jdbcType=INTEGER},
+      </if>
+      <if test="checkoutMonth != null">
+        #{checkoutMonth,jdbcType=TINYINT},
+      </if>
+      <if test="checkoutDay != null">
+        #{checkoutDay,jdbcType=TINYINT},
+      </if>
+      <if test="paymentMonth != null">
+        #{paymentMonth,jdbcType=TINYINT},
+      </if>
+      <if test="paymentDay != null">
+        #{paymentDay,jdbcType=TINYINT},
+      </if>
+      <if test="voucherMonth != null">
+        #{voucherMonth,jdbcType=TINYINT},
+      </if>
+      <if test="voucherDay != null">
+        #{voucherDay,jdbcType=TINYINT},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.learning.demo.bean.domain.erp.ErpSuppliers">
+    update erp_suppliers
+    <set>
+      <if test="erpId != null">
+        erp_id = #{erpId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="unifiedCode != null">
+        unified_code = #{unifiedCode,jdbcType=VARCHAR},
+      </if>
+      <if test="openingDay != null">
+        opening_day = #{openingDay,jdbcType=INTEGER},
+      </if>
+      <if test="capitalAmount != null">
+        capital_amount = #{capitalAmount,jdbcType=BIGINT},
+      </if>
+      <if test="staffCount != null">
+        staff_count = #{staffCount,jdbcType=INTEGER},
+      </if>
+      <if test="beginTrade != null">
+        begin_trade = #{beginTrade,jdbcType=INTEGER},
+      </if>
+      <if test="lastTrade != null">
+        last_trade = #{lastTrade,jdbcType=INTEGER},
+      </if>
+      <if test="abcLevel != null">
+        ABC_level = #{abcLevel,jdbcType=CHAR},
+      </if>
+      <if test="deliveryLevel != null">
+        delivery_level = #{deliveryLevel,jdbcType=CHAR},
+      </if>
+      <if test="qualityLevel != null">
+        quality_level = #{qualityLevel,jdbcType=CHAR},
+      </if>
+      <if test="companyName != null">
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=INTEGER},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=INTEGER},
+      </if>
+      <if test="district != null">
+        district = #{district,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="responsiblePersonName != null">
+        responsible_person_name = #{responsiblePersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="liaisonName != null">
+        liaison_name = #{liaisonName,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyId != null">
+        currency_id = #{currencyId,jdbcType=INTEGER},
+      </if>
+      <if test="priceConditions != null">
+        price_conditions = #{priceConditions,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentConditions != null">
+        payment_conditions = #{paymentConditions,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilePhone != null">
+        mobile_phone = #{mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="faxNumber != null">
+        fax_number = #{faxNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="accountingSubjectId != null">
+        accounting_subject_id = #{accountingSubjectId,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="purchasePriceJan != null">
+        purchase_price_jan = #{purchasePriceJan,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseCountJan != null">
+        purchase_count_jan = #{purchaseCountJan,jdbcType=INTEGER},
+      </if>
+      <if test="overdueCountJan != null">
+        overdue_count_jan = #{overdueCountJan,jdbcType=INTEGER},
+      </if>
+      <if test="harmfulCountJan != null">
+        harmful_count_jan = #{harmfulCountJan,jdbcType=INTEGER},
+      </if>
+      <if test="purchasePriceFeb != null">
+        purchase_price_feb = #{purchasePriceFeb,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseCountFeb != null">
+        purchase_count_feb = #{purchaseCountFeb,jdbcType=INTEGER},
+      </if>
+      <if test="overdueCountFeb != null">
+        overdue_count_feb = #{overdueCountFeb,jdbcType=INTEGER},
+      </if>
+      <if test="harmfulCountFeb != null">
+        harmful_count_feb = #{harmfulCountFeb,jdbcType=INTEGER},
+      </if>
+      <if test="purchasePriceMar != null">
+        purchase_price_mar = #{purchasePriceMar,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseCountMar != null">
+        purchase_count_mar = #{purchaseCountMar,jdbcType=INTEGER},
+      </if>
+      <if test="overdueCountMar != null">
+        overdue_count_mar = #{overdueCountMar,jdbcType=INTEGER},
+      </if>
+      <if test="harmfulCountMar != null">
+        harmful_count_mar = #{harmfulCountMar,jdbcType=INTEGER},
+      </if>
+      <if test="purchasePriceApr != null">
+        purchase_price_apr = #{purchasePriceApr,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseCountApr != null">
+        purchase_count_apr = #{purchaseCountApr,jdbcType=INTEGER},
+      </if>
+      <if test="overdueCountApr != null">
+        overdue_count_apr = #{overdueCountApr,jdbcType=INTEGER},
+      </if>
+      <if test="harmfulCountApr != null">
+        harmful_count_apr = #{harmfulCountApr,jdbcType=INTEGER},
+      </if>
+      <if test="purchasePriceMay != null">
+        purchase_price_may = #{purchasePriceMay,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseCountMay != null">
+        purchase_count_may = #{purchaseCountMay,jdbcType=INTEGER},
+      </if>
+      <if test="overdueCountMay != null">
+        overdue_count_may = #{overdueCountMay,jdbcType=INTEGER},
+      </if>
+      <if test="harmfulCountMay != null">
+        harmful_count_may = #{harmfulCountMay,jdbcType=INTEGER},
+      </if>
+      <if test="purchasePriceJune != null">
+        purchase_price_june = #{purchasePriceJune,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseCountJune != null">
+        purchase_count_june = #{purchaseCountJune,jdbcType=INTEGER},
+      </if>
+      <if test="overdueCountJune != null">
+        overdue_count_june = #{overdueCountJune,jdbcType=INTEGER},
+      </if>
+      <if test="harmfulCountJune != null">
+        harmful_count_june = #{harmfulCountJune,jdbcType=INTEGER},
+      </if>
+      <if test="purchasePriceJuly != null">
+        purchase_price_july = #{purchasePriceJuly,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseCountJuly != null">
+        purchase_count_july = #{purchaseCountJuly,jdbcType=INTEGER},
+      </if>
+      <if test="overdueCountJuly != null">
+        overdue_count_july = #{overdueCountJuly,jdbcType=INTEGER},
+      </if>
+      <if test="harmfulCountJuly != null">
+        harmful_count_july = #{harmfulCountJuly,jdbcType=INTEGER},
+      </if>
+      <if test="purchasePriceAug != null">
+        purchase_price_aug = #{purchasePriceAug,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseCountAug != null">
+        purchase_count_aug = #{purchaseCountAug,jdbcType=INTEGER},
+      </if>
+      <if test="overdueCountAug != null">
+        overdue_count_aug = #{overdueCountAug,jdbcType=INTEGER},
+      </if>
+      <if test="harmfulCountAug != null">
+        harmful_count_aug = #{harmfulCountAug,jdbcType=INTEGER},
+      </if>
+      <if test="purchasePriceSept != null">
+        purchase_price_sept = #{purchasePriceSept,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseCountSept != null">
+        purchase_count_sept = #{purchaseCountSept,jdbcType=INTEGER},
+      </if>
+      <if test="overdueCountSept != null">
+        overdue_count_sept = #{overdueCountSept,jdbcType=INTEGER},
+      </if>
+      <if test="harmfulCountSept != null">
+        harmful_count_sept = #{harmfulCountSept,jdbcType=INTEGER},
+      </if>
+      <if test="purchasePriceOct != null">
+        purchase_price_oct = #{purchasePriceOct,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseCountOct != null">
+        purchase_count_oct = #{purchaseCountOct,jdbcType=INTEGER},
+      </if>
+      <if test="overdueCountOct != null">
+        overdue_count_oct = #{overdueCountOct,jdbcType=INTEGER},
+      </if>
+      <if test="harmfulCountOct != null">
+        harmful_count_oct = #{harmfulCountOct,jdbcType=INTEGER},
+      </if>
+      <if test="purchasePriceNov != null">
+        purchase_price_nov = #{purchasePriceNov,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseCountNov != null">
+        purchase_count_nov = #{purchaseCountNov,jdbcType=INTEGER},
+      </if>
+      <if test="overdueCountNov != null">
+        overdue_count_nov = #{overdueCountNov,jdbcType=INTEGER},
+      </if>
+      <if test="harmfulCountNov != null">
+        harmful_count_nov = #{harmfulCountNov,jdbcType=INTEGER},
+      </if>
+      <if test="purchasePriceDec != null">
+        purchase_price_dec = #{purchasePriceDec,jdbcType=BIGINT},
+      </if>
+      <if test="purchaseCountDec != null">
+        purchase_count_dec = #{purchaseCountDec,jdbcType=INTEGER},
+      </if>
+      <if test="overdueCountDec != null">
+        overdue_count_dec = #{overdueCountDec,jdbcType=INTEGER},
+      </if>
+      <if test="harmfulCountDec != null">
+        harmful_count_dec = #{harmfulCountDec,jdbcType=INTEGER},
+      </if>
+      <if test="checkoutMonth != null">
+        checkout_month = #{checkoutMonth,jdbcType=TINYINT},
+      </if>
+      <if test="checkoutDay != null">
+        checkout_day = #{checkoutDay,jdbcType=TINYINT},
+      </if>
+      <if test="paymentMonth != null">
+        payment_month = #{paymentMonth,jdbcType=TINYINT},
+      </if>
+      <if test="paymentDay != null">
+        payment_day = #{paymentDay,jdbcType=TINYINT},
+      </if>
+      <if test="voucherMonth != null">
+        voucher_month = #{voucherMonth,jdbcType=TINYINT},
+      </if>
+      <if test="voucherDay != null">
+        voucher_day = #{voucherDay,jdbcType=TINYINT},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where supplier_id = #{supplierId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.learning.demo.bean.domain.erp.ErpSuppliers">
+    update erp_suppliers
+    set erp_id = #{erpId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      unified_code = #{unifiedCode,jdbcType=VARCHAR},
+      opening_day = #{openingDay,jdbcType=INTEGER},
+      capital_amount = #{capitalAmount,jdbcType=BIGINT},
+      staff_count = #{staffCount,jdbcType=INTEGER},
+      begin_trade = #{beginTrade,jdbcType=INTEGER},
+      last_trade = #{lastTrade,jdbcType=INTEGER},
+      ABC_level = #{abcLevel,jdbcType=CHAR},
+      delivery_level = #{deliveryLevel,jdbcType=CHAR},
+      quality_level = #{qualityLevel,jdbcType=CHAR},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      province = #{province,jdbcType=INTEGER},
+      city = #{city,jdbcType=INTEGER},
+      district = #{district,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      responsible_person_name = #{responsiblePersonName,jdbcType=VARCHAR},
+      liaison_name = #{liaisonName,jdbcType=VARCHAR},
+      currency_id = #{currencyId,jdbcType=INTEGER},
+      price_conditions = #{priceConditions,jdbcType=VARCHAR},
+      payment_conditions = #{paymentConditions,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      mobile_phone = #{mobilePhone,jdbcType=VARCHAR},
+      fax_number = #{faxNumber,jdbcType=VARCHAR},
+      accounting_subject_id = #{accountingSubjectId,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      purchase_price_jan = #{purchasePriceJan,jdbcType=BIGINT},
+      purchase_count_jan = #{purchaseCountJan,jdbcType=INTEGER},
+      overdue_count_jan = #{overdueCountJan,jdbcType=INTEGER},
+      harmful_count_jan = #{harmfulCountJan,jdbcType=INTEGER},
+      purchase_price_feb = #{purchasePriceFeb,jdbcType=BIGINT},
+      purchase_count_feb = #{purchaseCountFeb,jdbcType=INTEGER},
+      overdue_count_feb = #{overdueCountFeb,jdbcType=INTEGER},
+      harmful_count_feb = #{harmfulCountFeb,jdbcType=INTEGER},
+      purchase_price_mar = #{purchasePriceMar,jdbcType=BIGINT},
+      purchase_count_mar = #{purchaseCountMar,jdbcType=INTEGER},
+      overdue_count_mar = #{overdueCountMar,jdbcType=INTEGER},
+      harmful_count_mar = #{harmfulCountMar,jdbcType=INTEGER},
+      purchase_price_apr = #{purchasePriceApr,jdbcType=BIGINT},
+      purchase_count_apr = #{purchaseCountApr,jdbcType=INTEGER},
+      overdue_count_apr = #{overdueCountApr,jdbcType=INTEGER},
+      harmful_count_apr = #{harmfulCountApr,jdbcType=INTEGER},
+      purchase_price_may = #{purchasePriceMay,jdbcType=BIGINT},
+      purchase_count_may = #{purchaseCountMay,jdbcType=INTEGER},
+      overdue_count_may = #{overdueCountMay,jdbcType=INTEGER},
+      harmful_count_may = #{harmfulCountMay,jdbcType=INTEGER},
+      purchase_price_june = #{purchasePriceJune,jdbcType=BIGINT},
+      purchase_count_june = #{purchaseCountJune,jdbcType=INTEGER},
+      overdue_count_june = #{overdueCountJune,jdbcType=INTEGER},
+      harmful_count_june = #{harmfulCountJune,jdbcType=INTEGER},
+      purchase_price_july = #{purchasePriceJuly,jdbcType=BIGINT},
+      purchase_count_july = #{purchaseCountJuly,jdbcType=INTEGER},
+      overdue_count_july = #{overdueCountJuly,jdbcType=INTEGER},
+      harmful_count_july = #{harmfulCountJuly,jdbcType=INTEGER},
+      purchase_price_aug = #{purchasePriceAug,jdbcType=BIGINT},
+      purchase_count_aug = #{purchaseCountAug,jdbcType=INTEGER},
+      overdue_count_aug = #{overdueCountAug,jdbcType=INTEGER},
+      harmful_count_aug = #{harmfulCountAug,jdbcType=INTEGER},
+      purchase_price_sept = #{purchasePriceSept,jdbcType=BIGINT},
+      purchase_count_sept = #{purchaseCountSept,jdbcType=INTEGER},
+      overdue_count_sept = #{overdueCountSept,jdbcType=INTEGER},
+      harmful_count_sept = #{harmfulCountSept,jdbcType=INTEGER},
+      purchase_price_oct = #{purchasePriceOct,jdbcType=BIGINT},
+      purchase_count_oct = #{purchaseCountOct,jdbcType=INTEGER},
+      overdue_count_oct = #{overdueCountOct,jdbcType=INTEGER},
+      harmful_count_oct = #{harmfulCountOct,jdbcType=INTEGER},
+      purchase_price_nov = #{purchasePriceNov,jdbcType=BIGINT},
+      purchase_count_nov = #{purchaseCountNov,jdbcType=INTEGER},
+      overdue_count_nov = #{overdueCountNov,jdbcType=INTEGER},
+      harmful_count_nov = #{harmfulCountNov,jdbcType=INTEGER},
+      purchase_price_dec = #{purchasePriceDec,jdbcType=BIGINT},
+      purchase_count_dec = #{purchaseCountDec,jdbcType=INTEGER},
+      overdue_count_dec = #{overdueCountDec,jdbcType=INTEGER},
+      harmful_count_dec = #{harmfulCountDec,jdbcType=INTEGER},
+      checkout_month = #{checkoutMonth,jdbcType=TINYINT},
+      checkout_day = #{checkoutDay,jdbcType=TINYINT},
+      payment_month = #{paymentMonth,jdbcType=TINYINT},
+      payment_day = #{paymentDay,jdbcType=TINYINT},
+      voucher_month = #{voucherMonth,jdbcType=TINYINT},
+      voucher_day = #{voucherDay,jdbcType=TINYINT},
+      created = #{created,jdbcType=INTEGER},
+      updated = #{updated,jdbcType=INTEGER},
+      is_deleted = #{isDeleted,jdbcType=TINYINT}
+    where supplier_id = #{supplierId,jdbcType=INTEGER}
+  </update>
+</mapper>
