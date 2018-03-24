@@ -5,24 +5,6 @@
 
 	<display-name>Archetype Created Web Application</display-name>
 
-	<filter>
-		<filter-name>characterEncodingFilter</filter-name>
-		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-		<init-param>
-			<param-name>encoding</param-name>
-			<param-value>UTF-8</param-value>
-		</init-param>
-		<init-param>
-			<param-name>forceEncoding</param-name>
-			<param-value>true</param-value>
-		</init-param>
-	</filter>
-
-	<filter-mapping>
-		<filter-name>characterEncodingFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-
 	<listener>
 		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
 	</listener>
@@ -49,10 +31,57 @@
 
 	<servlet-mapping>
 		<servlet-name>DispatcherServlet</servlet-name>
-		<url-pattern>*.do</url-pattern> <!--会拦截URL中带“/”的请求。 -->
+		<url-pattern>/*</url-pattern> <!--会拦截URL中带“/”的请求。 -->
 	</servlet-mapping>
+	
+	<!-- 编码格式 -->
+	<filter>
+		<filter-name>characterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
 
-	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
-	</welcome-file-list>
+	<filter-mapping>
+		<filter-name>characterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<!-- 通过CORS技术实现AJAX跨域访问 -->
+	<!-- CORS响应头意义:
+		 Access-Control-Allow-Origin：允许访问的客户端域名，例如：http://web.xxx.com，若为*，则表示从任意域都能访问，即不做任何限制；
+		 Access-Control-Allow-Methods：允许访问的方法名，多个方法名用逗号分割，例如：GET,POST,PUT,DELETE,OPTIONS；
+		 Access-Control-Allow-Credentials：是否允许请求带有验证信息，若要获取客户端域下的cookie时，需要将其设置为true；
+		 Access-Control-Allow-Headers：允许服务端访问的客户端请求头，多个请求头用逗号分割，例如：Content-Type；
+		 Access-Control-Expose-Headers：允许客户端访问的服务端响应头，多个响应头用逗号分割。 -->
+	<filter>
+		<filter-name>corsFilter</filter-name>
+		<filter-class>com.learning.demo.filter.CorsFilter</filter-class>
+		<init-param>
+			<param-name>allowOrigin</param-name>
+			<param-value>*</param-value>
+		</init-param>
+		<init-param>
+			<param-name>allowMethods</param-name>
+			<param-value>GET,POST,PUT,DELETE,OPTIONS</param-value>
+		</init-param>
+		<init-param>
+			<param-name>allowCredentials</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>allowHeaders</param-name>
+			<param-value>Content-Type,X-Token</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>corsFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 </web-app>

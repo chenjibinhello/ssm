@@ -82,12 +82,12 @@
 		<!-- 选择一个table来生成相关文件，可以有一个或多个table，必须要有table元素 选择的table会生成一下文件： 1，SQL 
 			map文件 2，生成一个主键类； 3，除了BLOB和主键的其他字段的类； 4，包含BLOB的类； 5，一个用户生成动态查询的条件类（selectByExample, 
 			deleteByExample），可选； 6，Mapper接口（可选） tableName（必要）：要生成对象的表名； -->
-		<table schema="" tableName="erp_%" domainObjectName="erp." mapperName="erp.{0}"
+		<table schema="" tableName="erp_companies%" domainObjectName="erp." mapperName="erp.{0}"
 			enableCountByExample="false" enableUpdateByExample="false"
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false">
 			<generatedKey column="ID" sqlStatement="selectuuid_short()"
-				identity="false" />
+				identity="true" />
 		</table>
 	</context>
 </generatorConfiguration>

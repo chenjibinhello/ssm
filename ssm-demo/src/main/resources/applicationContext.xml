@@ -1,35 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mybatis="http://mybatis.org/schema/mybatis-spring" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
-	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
-	http://www.springframework.org/schema/aop
-	http://www.springframework.org/schema/aop/spring-aop.xsd
-	http://www.springframework.org/schema/context
-    http://www.springframework.org/schema/context/spring-context.xsd
-    http://www.springframework.org/schema/tx
-    http://www.springframework.org/schema/tx/spring-tx.xsd">
+           http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-4.0.xsd
+           http://mybatis.org/schema/mybatis-spring 
+		   http://mybatis.org/schema/mybatis-spring.xsd
+		   http://www.springframework.org/schema/tx 
+           http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+           http://www.springframework.org/schema/aop 
+           http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 
-	<context:component-scan base-package="com.learning.demo"
-		annotation-config="true"></context:component-scan>
-	<!-- 告诉spring使用的是注解方式的aop -->
+	<!-- 启用注解扫描，并定义组件查找规则 ，除了@controller，扫描所有的Bean -->
+	<context:component-scan base-package="com.learning.demo">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+	<!--加载properties配置文件 -->
+	<context:property-placeholder location="classpath:application.properties"
+		ignore-unresolvable="true" />
+	<!-- 启用 @AspectJ -->
 	<aop:aspectj-autoproxy />
 
-	<!-- <tx:jta-transaction-manager /> -->
+	<!-- 启用支持annotation注解方式事务管理 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
 
-	<!--加载properties配置文件 -->
-	<bean id="propertyConfigurer"
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="order" value="2" />
-		<property name="ignoreUnresolvablePlaceholders" value="true" />
-		<property name="locations">
-			<list>
-				<value>classpath:application.properties</value>
-			</list>
-		</property>
-		<property name="fileEncoding" value="utf-8" />
-	</bean>
+	<!-- ****************************************************************** -->
+
+	<!-- mybatis:scan会将cn.edu.tju.rico.mapper包里的所有接口当作mapper配置，之后可以自动引入mapper类 -->
+	<mybatis:scan base-package="com.learning.demo.dao" />
+
+	<!-- ****************************************************************** -->
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
@@ -65,14 +69,17 @@
 		<property name="validationQuery" value="SELECT 1 FROM dual" />
 	</bean>
 
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations" value="${mapper.locations}"></property>
+	</bean>
+
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
 	<!--自动扫描，将Mapper接口生成代理注入Spring中 -->
 	<bean name="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.learning.demo.dao" />
-	</bean>
-
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" />
-		<property name="mapperLocations" value="classpath*:mappers/*Mapper.xml"></property>
 	</bean>
 
 	<!-- 注解方式启用声明 -->
@@ -83,8 +90,8 @@
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate"> 
-		<constructor-arg index="0" ref="sqlSessionFactory"/> </bean>
+
+	<bean id="tokenManager" class="com.learning.demo.authorization.DefaultTokenManager" />
 
 	<!-- 定义事件的范围以及传播类型 -->
 	<!--<tx:advice id="txAdvice"> <tx:attributes> <tx:method name="get*" read-only="true"/> 
