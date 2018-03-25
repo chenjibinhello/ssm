@@ -86,7 +86,7 @@
 			enableCountByExample="false" enableUpdateByExample="false"
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false">
-			<generatedKey column="ID" sqlStatement="selectuuid_short()"
+			<generatedKey column="id" sqlStatement="MySql"
 				identity="true" />
 		</table>
 	</context>

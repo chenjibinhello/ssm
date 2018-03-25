@@ -32,19 +32,18 @@ public class DemoController extends BaseController {
 
 	@RequestMapping(value = "/company", method = RequestMethod.POST)
 	public Response createCompany(ErpCompanies erpCompanies, ModelAndView modelAndView) {
-		System.out.println(erpCompanies);
 		Response response = new Response();
 		if (erpCompanies == null) {
 			response.failure("入参错误");
 			return response;
 		}
-		Integer companyId = iErpCompaniesService.insert(erpCompanies);
-		System.out.println(companyId);
-		if (companyId == null) {
+		Integer flag = iErpCompaniesService.insert(erpCompanies);
+		Integer id = erpCompanies.getId();
+		if (flag != 1) {
 			response.failure("新增错误");
 			return response;
 		}
-		response.success(companyId, "新增成功");
+		response.success(id, "新增成功");
 		return response;
 	}
 }

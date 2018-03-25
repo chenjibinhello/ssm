@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.learning.demo.dao.erp.ErpCompaniesDao">
   <resultMap id="BaseResultMap" type="com.learning.demo.bean.domain.erp.ErpCompanies">
-    <id column="company_id" jdbcType="INTEGER" property="companyId" />
+    <id column="id" jdbcType="INTEGER" property="id" />
     <result column="erp_id" jdbcType="INTEGER" property="erpId" />
     <result column="cn_name" jdbcType="VARCHAR" property="cnName" />
     <result column="en_name" jdbcType="VARCHAR" property="enName" />
@@ -17,8 +17,8 @@
   </resultMap>
   <sql id="Base_Column_List">
     <if test="fields == null">
-      company_id, erp_id, cn_name, en_name, cn_address, en_address, phone, fax, url, created, 
-      updated, is_deleted
+      id, erp_id, cn_name, en_name, cn_address, en_address, phone, fax, url, created, updated, 
+      is_deleted
     </if>
     <if test="fields != null">
       ${fields}
@@ -26,30 +26,33 @@
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
-    company_id,erp_id,cn_name,en_name,cn_address,en_address,phone,fax,url,created,updated,is_deleted
+    id,erp_id,cn_name,en_name,cn_address,en_address,phone,fax,url,created,updated,is_deleted
     from erp_companies
-    where company_id = #{companyId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from erp_companies
-    where company_id = #{companyId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.learning.demo.bean.domain.erp.ErpCompanies">
-    insert into erp_companies (company_id, erp_id, cn_name, 
-      en_name, cn_address, en_address, 
-      phone, fax, url, created, 
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into erp_companies (erp_id, cn_name, en_name, 
+      cn_address, en_address, phone, 
+      fax, url, created, 
       updated, is_deleted)
-    values (#{companyId,jdbcType=INTEGER}, #{erpId,jdbcType=INTEGER}, #{cnName,jdbcType=VARCHAR}, 
-      #{enName,jdbcType=VARCHAR}, #{cnAddress,jdbcType=VARCHAR}, #{enAddress,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{fax,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{created,jdbcType=INTEGER}, 
+    values (#{erpId,jdbcType=INTEGER}, #{cnName,jdbcType=VARCHAR}, #{enName,jdbcType=VARCHAR}, 
+      #{cnAddress,jdbcType=VARCHAR}, #{enAddress,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{fax,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{created,jdbcType=INTEGER}, 
       #{updated,jdbcType=INTEGER}, #{isDeleted,jdbcType=TINYINT})
   </insert>
   <insert id="insertSelective" parameterType="com.learning.demo.bean.domain.erp.ErpCompanies">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into erp_companies
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="companyId != null">
-        company_id,
-      </if>
       <if test="erpId != null">
         erp_id,
       </if>
@@ -85,9 +88,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="companyId != null">
-        #{companyId,jdbcType=INTEGER},
-      </if>
       <if test="erpId != null">
         #{erpId,jdbcType=INTEGER},
       </if>
@@ -160,7 +160,7 @@
         is_deleted = #{isDeleted,jdbcType=TINYINT},
       </if>
     </set>
-    where company_id = #{companyId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.learning.demo.bean.domain.erp.ErpCompanies">
     update erp_companies
@@ -175,6 +175,6 @@
       created = #{created,jdbcType=INTEGER},
       updated = #{updated,jdbcType=INTEGER},
       is_deleted = #{isDeleted,jdbcType=TINYINT}
-    where company_id = #{companyId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

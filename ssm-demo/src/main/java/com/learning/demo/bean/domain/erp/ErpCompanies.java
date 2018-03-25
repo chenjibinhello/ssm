@@ -3,7 +3,7 @@ package com.learning.demo.bean.domain.erp;
 import java.io.Serializable;
 
 public class ErpCompanies implements Serializable {
-    private Integer companyId;
+    private Integer id;
 
     private Integer erpId;
 
@@ -29,12 +29,12 @@ public class ErpCompanies implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public Integer getCompanyId() {
-        return companyId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setCompanyId(Integer companyId) {
-        this.companyId = companyId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getErpId() {
@@ -131,7 +131,7 @@ public class ErpCompanies implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", companyId=").append(companyId);
+        sb.append(", id=").append(id);
         sb.append(", erpId=").append(erpId);
         sb.append(", cnName=").append(cnName);
         sb.append(", enName=").append(enName);
