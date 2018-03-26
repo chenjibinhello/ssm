@@ -6,8 +6,7 @@
 		<artifactId>root</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>ssm-demo</artifactId>
-	<packaging>war</packaging>
+	<artifactId>ssm-dubbo</artifactId>
 
 	<properties>
 		<mybatis.version>3.4.2</mybatis.version>
@@ -40,8 +39,9 @@
 			<version>${mybatis.compiler.version}</version>
 		</dependency>
 	</dependencies>
+
 	<build>
-		<finalName>ssm-demo</finalName>
+		<finalName>ssm-dubbo</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

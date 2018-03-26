@@ -1,15 +1,13 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>priv.cjb.demo</groupId>
-		<artifactId>root</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</parent>
-	<artifactId>ssm-demo</artifactId>
-	<packaging>war</packaging>
-
-	<properties>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>priv.cjb.demo</groupId>
+    <artifactId>root</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>ssm-memery-cache</artifactId>
+  
+  <properties>
 		<mybatis.version>3.4.2</mybatis.version>
 		<mybatis.spring.version>1.3.1</mybatis.spring.version>
 		<mybatis.generator.version>1.3.5</mybatis.generator.version>
@@ -41,7 +39,7 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>ssm-demo</finalName>
+		<finalName>ssm-memery-cache</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
