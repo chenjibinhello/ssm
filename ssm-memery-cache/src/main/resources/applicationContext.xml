@@ -80,7 +80,7 @@
 	</bean>
 	<!--自动扫描，将Mapper接口生成代理注入Spring中 -->
 	<bean name="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="${dao.package}" />
+		<property name="basePackage" value="priv.cjb.demo.dao" />
 	</bean>
 
 	<!-- 注解方式启用声明 -->
