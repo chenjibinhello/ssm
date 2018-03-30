@@ -17,6 +17,7 @@ public class Test {
 		long begin1 = System.currentTimeMillis();
 		byte[] b1 = MessagePackUtil.serialize(erp);
 		ErpCompanies result1 = (ErpCompanies)MessagePackUtil.deserialize(b1, ErpCompanies.class);
+		System.out.println(result1.getClass().getName());
 		System.out.println(System.currentTimeMillis() - begin1);
 		
 		long begin = System.currentTimeMillis();

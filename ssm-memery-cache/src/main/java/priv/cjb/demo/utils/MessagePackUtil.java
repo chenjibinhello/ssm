@@ -3,30 +3,31 @@ package priv.cjb.demo.utils;
 import java.io.IOException;
 
 import org.msgpack.MessagePack;
+import org.msgpack.template.Template;
 import org.msgpack.type.Value;
-import org.msgpack.unpacker.Converter;
 
 public class MessagePackUtil {
 
-	private static MessagePack messagePack;
-
-	static {
-		messagePack = new MessagePack();
-	}
+	private final static MessagePack messagePack = new MessagePack();
 
 	public static void register(Class<?> type) {
 		messagePack.register(type);
 	};
 
 	public static byte[] serialize(Object obj) throws IOException {
-		messagePack.register(obj.getClass());
-		byte[] b = messagePack.write(obj);
-		return b;
+		register(obj.getClass());
+		return messagePack.write(obj);
 	}
 
-	@SuppressWarnings("resource")
+	public static Value deserialize(byte[] b) throws IOException {
+		return messagePack.read(b);
+	}
+
 	public static Object deserialize(byte[] b, Class<?> type) throws IOException {
-		Value value = messagePack.read(b);
-		return new Converter(messagePack,value).read(type);
+		return messagePack.read(b, type);
+	}
+	
+	public static Template<?> lookup(Class<?> c) {
+		return messagePack.lookup(c);
 	}
 }
