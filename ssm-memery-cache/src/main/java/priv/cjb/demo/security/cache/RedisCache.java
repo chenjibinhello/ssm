@@ -9,7 +9,6 @@ import org.apache.log4j.Logger;
 import org.springframework.data.redis.connection.jedis.JedisConnection;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 
-import priv.cjb.demo.bean.domain.erp.ErpCompanies;
 import priv.cjb.demo.utils.SerializeUtil;
 import redis.clients.jedis.exceptions.JedisConnectionException;
 
@@ -60,9 +59,8 @@ public class RedisCache implements Cache{
 		JedisConnection connection = null;
 		try {
 			connection = jedisConnectionFactory.getConnection();
-			//RedisSerializer<Object> serializer = new JdkSerializationRedisSerializer();
 			ArrayList<?> list = (ArrayList<?>)SerializeUtil.deserialize(connection.get(SerializeUtil.serialize(key)));
-			result = (ErpCompanies)list.get(0);
+			result = list;
 		} catch (JedisConnectionException e) {
 			e.printStackTrace();
 		} finally {
@@ -100,7 +98,7 @@ public class RedisCache implements Cache{
 		JedisConnection connection = null;
 		try {
 			connection = jedisConnectionFactory.getConnection();
-			//RedisSerializer<Object> serializer = new JdkSerializationRedisSerializer();
+			System.out.println("insert message to redis");
 			connection.set(SerializeUtil.serialize(key), SerializeUtil.serialize(value));
 		} catch (JedisConnectionException e) {
 			e.printStackTrace();
@@ -117,7 +115,6 @@ public class RedisCache implements Cache{
 		Object result = null;
 		try {
 			connection = jedisConnectionFactory.getConnection();
-			//RedisSerializer<Object> serializer = new JdkSerializationRedisSerializer();
 			result = connection.expire(SerializeUtil.serialize(key), 0);
 		} catch (JedisConnectionException e) {
 			e.printStackTrace();

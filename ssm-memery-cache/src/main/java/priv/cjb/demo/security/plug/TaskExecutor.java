@@ -19,7 +19,7 @@ public class TaskExecutor {
 	public void execute() {
 		if (!isRunning) {
 			System.out.println("Quartz的任务调度----" + (new Date()).toString());
-			System.out.println(redisService.get("one").toString());
+			//System.out.println(redisService.get("one").toString());
 		}
 	}
 

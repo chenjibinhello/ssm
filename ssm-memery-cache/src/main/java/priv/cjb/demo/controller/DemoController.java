@@ -25,7 +25,9 @@ public class DemoController extends BaseController {
 	@RequestMapping(value = "/get/{id}")
 	public ErpCompanies get(@PathVariable Integer id) {
 		ErpCompanies erpCompanies = iErpCompaniesService.getByPrimaryId(id);
+		System.out.println(erpCompanies.toString() + "...");
 		logger.info(erpCompanies.toString() + "...");
+		
 		return erpCompanies;
 	}
 
