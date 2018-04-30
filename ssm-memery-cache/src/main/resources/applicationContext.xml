@@ -31,8 +31,8 @@
 
 	<!-- ****************************************************************** -->
 
-	<!-- mybatis:scan会将cn.edu.tju.rico.mapper包里的所有接口当作mapper配置，之后可以自动引入mapper类 -->
-	<mybatis:scan base-package="com.learning.demo.dao" />
+	<!-- mybatis:scan会将priv.cjb.demo.dao包里的所有接口当作mapper配置，之后可以自动引入mapper类 -->
+	<mybatis:scan base-package="priv.cjb.demo.dao" />
 
 	<!-- ****************************************************************** -->
 
