@@ -32,4 +32,14 @@ public class StringUtil {
 		}
 		return true;
 	}
+	
+	/**     
+	 * @description 给定字符创去空字符串
+	 * @created 2017年7月4日 下午5:15:46     
+	 * @param str
+	 * @return     
+	 */
+	public static String trim(String str) {
+		return str.replace(" ", "");
+	}
 }

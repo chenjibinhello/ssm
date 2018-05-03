@@ -1,9 +1,9 @@
-package priv.cjb.demo.bean;
+package priv.cjb.demo;
 
 import java.io.IOException;
 
 import priv.cjb.demo.bean.domain.erp.ErpCompanies;
-import priv.cjb.demo.service.impl.RedisService;
+import priv.cjb.demo.redis.RedisServiceImpl;
 import priv.cjb.demo.utils.MessagePackUtil;
 import priv.cjb.demo.utils.SerializeUtil;
 
@@ -28,7 +28,7 @@ public class Test {
 	
 	@org.junit.Test
 	public void test() {
-		RedisService redisService = new RedisService();
+		RedisServiceImpl redisService = new RedisServiceImpl();
 		System.out.println(redisService.get("one"));
 	}
 }

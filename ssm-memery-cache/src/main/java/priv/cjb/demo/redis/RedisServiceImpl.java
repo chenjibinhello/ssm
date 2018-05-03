@@ -1,5 +1,6 @@
-package priv.cjb.demo.service.impl;
+package priv.cjb.demo.redis;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -10,11 +11,10 @@ import org.springframework.data.redis.connection.jedis.JedisConnection;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.stereotype.Service;
 
-import priv.cjb.demo.service.IRedisService;
 import redis.clients.jedis.Jedis;
 
 @Service
-public class RedisService implements IRedisService {
+public class RedisServiceImpl implements IRedisService {
 
 	@Autowired
 	@Qualifier("jedisConnectionFactory")
@@ -43,12 +43,15 @@ public class RedisService implements IRedisService {
 		return this.getJedis().get(key);
 	}
 	
-	public List<String> getAll() {
+	public List<String> getAll() throws UnsupportedEncodingException {
 		this.getJedis();
 		Set<String> keys = jedis.keys("*");
 		List<String> values = new ArrayList<>();
 		for(String key : keys) {
-			String value = jedis.get(key);
+			String keyCatch = new String(key.getBytes("ISO8859-1"), "utf-8");
+			System.out.println(keyCatch + "...");
+			String value = jedis.get(keyCatch);
+			System.out.println(value + "...value");
 			values.add(value);
 		}
 		return values;

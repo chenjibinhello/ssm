@@ -3,13 +3,13 @@ package priv.cjb.demo.dao.erp;
 import priv.cjb.demo.bean.domain.erp.ErpCompanies;
 
 public interface ErpCompaniesDao {
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Integer companyId);
 
     int insert(ErpCompanies record);
 
     int insertSelective(ErpCompanies record);
 
-    ErpCompanies selectByPrimaryKey(Integer id);
+    ErpCompanies selectByPrimaryKey(Integer companyId);
 
     int updateByPrimaryKeySelective(ErpCompanies record);
 

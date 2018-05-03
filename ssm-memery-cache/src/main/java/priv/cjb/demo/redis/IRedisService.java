@@ -1,5 +1,6 @@
-package priv.cjb.demo.service;
+package priv.cjb.demo.redis;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 public interface IRedisService {
@@ -8,7 +9,7 @@ public interface IRedisService {
 
 	byte[] get(byte[] key);
 
-	List<String> getAll();
+	List<String> getAll() throws UnsupportedEncodingException;
 
 	/**
 	 * 查看是否存在某个数据
